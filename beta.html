@@ -1,10 +1,18 @@
 
 
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-11GVYLFSCP"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-11GVYLFSCP');
+</script>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
 <title>⚡ Thunderstudy | CBT </title>
@@ -12,6 +20,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=DM+Mono:wght@400;500&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://www.google.com/recaptcha/enterprise.js?render=6Le1MbgsAAAAAB9cCe9aA66Cz9sHC-pK6nZicxse"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
@@ -546,7 +555,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--fn);display:flex;}
 @media (min-width: 769px) {
   #ts-boot {
     /* Changed from 5.1s to 4.8s to start slightly earlier if desired */
-    animation: tsBootExit 0.8s cubic-bezier(0.4, 0, 0.2, 1) 1.8s forwards;
+    animation: tsBootExit 0.8s cubic-bezier(0.4, 0, 0.2, 1) 4.8s forwards;
   }
 }
 /* Mobile exit — slide down */
@@ -1276,10 +1285,6 @@ body{background:var(--bg);color:var(--text);font-family:var(--fn);display:flex;}
 .mini-bar-track{flex:1;height:5px;background:#f0f3fa;border-radius:5px;overflow:hidden;border:0.5px solid rgba(0,0,0,.07);}
 .mini-bar-fill{height:100%;background:#4f6ef7;border-radius:5px;}
 .mini-bar-label{font-size:11px;color:#5a5f7a;font-weight:600;white-space:nowrap;}
-
-.section-ad-top{padding:0 0 16px 0;}
-.section-ad-footer{padding:20px 0 0 0;margin-top:10px;border-top:1px solid var(--border);}
-.ad-banner-wrap{background:var(--card2);border-radius:14px;overflow:hidden;min-height:90px;display:flex;align-items:center;justify-content:center;border:1px solid var(--border);}
 </style>
 </head>
 <body>
@@ -1475,15 +1480,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--fn);display:flex;}
     <div class="nav-item" onclick="goPage('analytics')"><span class="nav-icon">📈</span> Analytics<span class="nav-badge green">NEW</span></div>
     <div class="nav-item" onclick="goPage('rank')"><span class="nav-icon">🏆</span> Class Rank<span class="nav-badge">LIVE</span></div>
     <div class="sb-section-label" style="margin-top:12px;">Tools</div>
-<div class="nav-item" onclick="goPage('settings')"><span class="nav-icon">⚙️</span> Settings<span class="sync-dot" id="sync-dot-nav" title="Sync status"></span></div>
-    <div style="padding:10px;margin:6px 0;">
-      <div id="sb-ad-banner" style="min-height:60px;background:var(--card2);border-radius:10px;overflow:hidden;display:flex;align-items:center;justify-content:center;">
-  <!-- Zone 10863325 Epic tag In-Page Push MULTI -->
-  <script async="async" data-cfasync="false" src="//thubanoa.com/1?z=10863325"></script>
-  <!-- Zone 10863257 Pretty tag Push Notifications HTTPS -->
-  <script async="async" data-cfasync="false" src="//thubanoa.com/1?z=10863257"></script>
-</div>
-    </div>
+    <div class="nav-item" onclick="goPage('settings')"><span class="nav-icon">⚙️</span> Settings<span class="sync-dot" id="sync-dot-nav" title="Sync status"></span></div>
   </div>
   <div class="sb-profile" onclick="openProfileModal()">
     <div class="sb-av" id="sb-av-disp">S</div>
@@ -2188,7 +2185,7 @@ const SUBJECT_URLS={bst:"https://commercesehoga.github.io/commerce/bst/",eco:"ht
 const SUBJECTS_MASTER=[
   {id:"bst",name:"Business Studies",icon:"📊",color:"#4f6ef7",group:"Commerce",chapters:[{id:"bst1",name:"Ch 1 – Nature & Significance",type:"chapwise"},{id:"bst2",name:"Ch 2 – Principles",type:"chapwise"},{id:"bst3",name:"Ch 3 – Business Environment",type:"chapwise"},{id:"bst4",name:"Ch 4 – Planning",type:"chapwise"},{id:"bst5",name:"Ch 5 – Organising",type:"chapwise"},{id:"bst6",name:"Ch 6 – Staffing",type:"chapwise"},{id:"bst7",name:"Ch 7 – Directing",type:"chapwise"},{id:"bst8",name:"Ch 8 – Controlling",type:"chapwise"},{id:"bst9",name:"Ch 9 – Financial Management",type:"chapwise"},{id:"bst10",name:"Ch 10 – Financial Markets",type:"chapwise"},{id:"bst11",name:"Ch 11 – Marketing",type:"chapwise"},{id:"bst12",name:"Ch 12 – Consumer Protection",type:"chapwise"},{id:"bst-img1",name:"Image Based Mock 1",type:"imgbased"},{id:"bst-full1",name:"Full Mock 1",type:"fullmock"},{id:"bst-full2",name:"Full Mock 2",type:"fullmock"},{id:"bst-full3",name:"Full Mock 3",type:"fullmock"},{id:"bst-full4",name:"Full Mock 4",type:"fullmock"},{id:"bst-full5",name:"Full Mock 5",type:"fullmock"},{id:"bst-full6",name:"Full Mock 6",type:"fullmock"},{id:"bst-full7",name:"Full Mock 7",type:"fullmock"},{id:"bst-full8",name:"Full Mock 8",type:"fullmock"},{id:"bst-full9",name:"Full Mock 9",type:"fullmock"},{id:"bst-full10",name:"Full Mock 10",type:"fullmock"},{id:"bst-andr1",name:"A&R Chapterwise 1",type:"andr"},{id:"bst-andr2",name:"A&R Chapterwise 2",type:"andr"},{id:"bst-pyq23",name:"PYQ 2023",type:"pyq"},{id:"bst-pyq24",name:"PYQ 2024",type:"pyq"},{id:"bst-pyq25",name:"PYQ 2025",type:"pyq"},{id:"bst-sp1",name:"Special Mock 1",type:"special"}]},
   {id:"eco",name:"Economics",icon:"📈",color:"#10b981",group:"Commerce",chapters:[{id:"macro1",name:"Macro Ch 1 – National Income Basics",type:"chapwise"},{id:"macro2",name:"Macro Ch 2 – Related Aggregates",type:"chapwise"},{id:"macro3",name:"Macro Ch 3 – Money & Banking",type:"chapwise"},{id:"macro4",name:"Macro Ch 4 – Income Determination",type:"chapwise"},{id:"macro5",name:"Macro Ch 5 – Government Budget",type:"chapwise"},{id:"macro6",name:"Macro Ch 6 – Balance of Payments",type:"chapwise"},{id:"micro1",name:"Micro Ch 1 – Introduction",type:"chapwise"},{id:"micro2",name:"Micro Ch 2 – Consumer Equilibrium",type:"chapwise"},{id:"micro3",name:"Micro Ch 3 – Demand",type:"chapwise"},{id:"micro4",name:"Micro Ch 4 – Production & Costs",type:"chapwise"},{id:"micro5",name:"Micro Ch 5 – Supply & Market",type:"chapwise"},{id:"indian1",name:"IED Unit I: Development Policies and Experience (1947-90)",type:"chapwise"},{id:"indian2",name:"IED Unit II Economic Reforms since 1991: Macroeconomics: Meaning",type:"chapwise"},{id:"indian3",name:"IED Unit III: Current challenges facing the Indian Economy",type:"chapwise"},{id:"indian4",name:"IED Unit IV: Development Experiences of India: A comparison with neighbours",type:"chapwise"},{id:"eco-img1",name:"Image Based Mock 1",type:"imgbased"},{id:"eco-full1",name:"Full Mock 1",type:"fullmock"},{id:"eco-full2",name:"Full Mock 2",type:"fullmock"},{id:"eco-andr1",name:"A&R Chapterwise 1",type:"andr"},{id:"eco-pyq23",name:"PYQ 2023",type:"pyq"},{id:"eco-pyq24",name:"PYQ 2024",type:"pyq"},{id:"eco-pyq25",name:"PYQ 2025",type:"pyq"},{id:"bst-sp1",name:"Special Mock 1",type:"special"}]},
-  {id:"acc",name:"Accountancy",icon:"📒",color:"#06b6d4",group:"Commerce",chapters:[{id:"acc1",name:"Unit I: Accounting for Partnership",type:"chapwise"},{id:"acc2",name:"Unit II: Reconstitution of a Partnership firm",type:"chapwise"},{id:"acc3",name:"Unit III: Dissolution of Partnership Firm ",type:"chapwise"},{id:"acc4",name:"Unit IV: Company Accounts",type:"chapwise"},{id:"acc5",name:"Unit V: Analysis of Financial Statements",type:"chapwise"},{id:"acc6",name:"Unit V: Computerised Accounting System",type:"chapwise"},{id:"acc-img1",name:"Image Based Mock 1",type:"imgbased"},{id:"acc-img2",name:"Image Based Mock 2",type:"imgbased"},{id:"acc-full1",name:"Full Mock 1",type:"fullmock"},{id:"acc-full2",name:"Full Mock 2",type:"fullmock"},{id:"acc-andr1",name:"A&R Chapterwise 1",type:"andr"},{id:"acc-pyq23",name:"PYQ 2023",type:"pyq"},{id:"acc-pyq24",name:"PYQ 2024",type:"pyq"},{id:"acc-pyq25",name:"PYQ 2025",type:"pyq"}]},
+  {id:"acc",name:"Accountancy",icon:"📒",color:"#06b6d4",group:"Commerce",chapters:[{id:"acc1",name:"Unit I: Accounting for Partnership",type:"chapwise"},{id:"acc2",name:"Unit II: Reconstitution of a Partnership firm",type:"chapwise"},{id:"acc3",name:"Unit III: Dissolution of Partnership Firm ",type:"chapwise"},{id:"acc4",name:"Unit IV: Company Accounts",type:"chapwise"},{id:"acc5",name:"Unit V: Analysis of Financial Statements",type:"chapwise"},{id:"acc6",name:"Unit V: Computerised Accounting System",type:"chapwise"},{id:"acc-full1",name:"Full Mock 1",type:"fullmock"},{id:"acc-full2",name:"Full Mock 2",type:"fullmock"},{id:"acc-andr1",name:"A&R Chapterwise 1",type:"andr"},{id:"acc-pyq23",name:"PYQ 2023",type:"pyq"},{id:"acc-pyq24",name:"PYQ 2024",type:"pyq"},{id:"acc-pyq25",name:"PYQ 2025",type:"pyq"}]},
   {id:"eng",name:"English",icon:"📝",color:"#ec4899",group:"Languages",chapters:[{id:"eng-voc-ows",name:"One Word Substitution",type:"vocabulary",section:"Vocabulary"},{id:"eng-voc-spell",name:"Commonly Mis-Spelt Words",type:"vocabulary",section:"Vocabulary"},{id:"eng-voc-idiom",name:"Idioms",type:"vocabulary",section:"Vocabulary"},{id:"eng-voc-synant",name:"Antonyms & Synonyms",type:"vocabulary",section:"Vocabulary"},{id:"eng-voc-phv",name:"Phrasal Verbs",type:"vocabulary",section:"Vocabulary"},{id:"eng-voc-fos",name:"Figure of Speech",type:"vocabulary",section:"Vocabulary"},{id:"eng-voc-va",name:"Verbal Analogy",type:"vocabulary",section:"Vocabulary"},{id:"eng-voc-fw",name:"Foreign Words in English",type:"vocabulary",section:"Vocabulary"},{id:"eng-grm-basic",name:"Grammar Basic",type:"grammar",section:"Grammar"},{id:"eng-grm-sc",name:"Sentence Completion",type:"grammar",section:"Grammar"},{id:"eng-grm-cl",name:"Clauses",type:"grammar",section:"Grammar"},{id:"eng-grm-cond",name:"Conditional Sentences",type:"grammar",section:"Grammar"},{id:"eng-grm-noun",name:"Nouns",type:"grammar",section:"Grammar"},{id:"eng-grm-pron",name:"Pronouns",type:"grammar",section:"Grammar"},{id:"eng-grm-adj",name:"Adjectives",type:"grammar",section:"Grammar"},{id:"eng-grm-verb",name:"Verbs",type:"grammar",section:"Grammar"},{id:"eng-grm-sva",name:"Subject Verb Agreement",type:"grammar",section:"Grammar"},{id:"eng-grm-mod",name:"Modals",type:"grammar",section:"Grammar"},{id:"eng-grm-adv",name:"Adverb",type:"grammar",section:"Grammar"},{id:"eng-grm-prep",name:"Preposition",type:"grammar",section:"Grammar"},{id:"eng-grm-conj",name:"Conjunction",type:"grammar",section:"Grammar"},{id:"eng-grm-tense",name:"Tenses",type:"grammar",section:"Grammar"},{id:"eng-ra-cloze",name:"Cloze Test",type:"reading",section:"Reading Ability"},{id:"eng-ra-para",name:"Parajumbles",type:"reading",section:"Reading Ability"},{id:"eng-ra-letter",name:"Letter Writing",type:"reading",section:"Reading Ability"},{id:"eng-rc1",name:"Reading Comprehension 1",type:"rc"},{id:"eng-rc2",name:"Reading Comprehension 2",type:"rc"},{id:"eng-rc3",name:"Reading Comprehension 3",type:"rc"},{id:"eng-rc4",name:"Reading Comprehension 4",type:"rc"},{id:"eng-rc5",name:"Reading Comprehension 5",type:"rc"},{id:"eng-rc6",name:"Reading Comprehension 6",type:"rc"},{id:"eng-full1",name:"Full Mock 1",type:"fullmock"},{id:"eng-full2",name:"Full Mock 2",type:"fullmock"},{id:"eng-pyq23",name:"PYQ 2023",type:"pyq"},{id:"eng-pyq24",name:"PYQ 2024",type:"pyq"},{id:"eng-pyq25",name:"PYQ 2025",type:"pyq"},{id:"eng-sp1",name:"Special Mock 1",type:"special"}]},
   {id:"gat",name:"General Aptitude",icon:"🧠",color:"#f59e0b",group:"Aptitude",chapters:[{id:"gat1",name:"Quant Aptitude 1",type:"chapwise"},{id:"gat2",name:"Quant Aptitude 2",type:"chapwise"},{id:"gat3",name:"Logical Reasoning 1",type:"chapwise"},{id:"gat4",name:"Logical Reasoning 2",type:"chapwise"},{id:"gat5",name:"Verbal Ability 1",type:"chapwise"},{id:"gat-full1",name:"Full Mock 1",type:"fullmock"},{id:"gat-full2",name:"Full Mock 2",type:"fullmock"},{id:"gat-pyq23",name:"PYQ 2023",type:"pyq"},{id:"gat-pyq24",name:"PYQ 2024",type:"pyq"},{id:"gat-pyq25",name:"PYQ 2025",type:"pyq"},{id:"gat-sp1",name:"Special Mock 1",type:"special"}]},
   {id:"phy",name:"Physics",icon:"⚛️",color:"#6366f1",group:"Science",chapters:[{id:"phy1",name:"Unit 1: Electrostatics",type:"chapwise"},{id:"phy2",name:"Unit 2: Current Electricity",type:"chapwise"},{id:"phy3",name:"Unit 3: Magnetic Effects of Current and Magnetism",type:"chapwise"},{id:"phy4",name:"Unit 4: Electromagnetic Induction and Alternating Currents",type:"chapwise"},{id:"phy5",name:"Unit 5: Electromagnetic Waves",type:"chapwise"},{id:"phy6",name:"Unit 6: Optics",type:"chapwise"},{id:"phy7",name:"Unit 7: Dual Nature of Matter and Radiation",type:"chapwise"},{id:"phy8",name:"Unit 8: Atoms and Nuclei",type:"chapwise"},{id:"phy9",name:"Unit 9: Electronic Devices",type:"chapwise"},{id:"phy-full1",name:"Full Mock 1",type:"fullmock"},{id:"phy-full2",name:"Full Mock 2",type:"fullmock"},{id:"phy-full3",name:"Full Mock 3",type:"fullmock"},{id:"phy-pyq23",name:"PYQ 2023",type:"pyq"},{id:"phy-pyq24",name:"PYQ 2024",type:"pyq"},{id:"phy-pyq25",name:"PYQ 2025",type:"pyq"},{id:"phy-sp1",name:"Special Mock 1",type:"special"}]},
@@ -2200,7 +2197,7 @@ const SUBJECTS_MASTER=[
   {id:"geo",name:"Geography",icon:"🌏",color:"#0ea5e9",group:"Humanities",chapters:[{id:"geo1",name:"Ch 1 – Human Geography",type:"chapwise"},{id:"geo2",name:"Ch 2 – World Population Distribution",type:"chapwise"},{id:"geo3",name:"Ch 3 – Population Composition",type:"chapwise"},{id:"geo4",name:"Ch 4 – Human Development",type:"chapwise"},{id:"geo5",name:"Ch 5 – Primary Activities",type:"chapwise"},{id:"geo6",name:"Ch 6 – Secondary Activities",type:"chapwise"},{id:"geo7",name:"Ch 7 – Tertiary & Quaternary Activities",type:"chapwise"},{id:"geo8",name:"Ch 8 – Transport & Communication",type:"chapwise"},{id:"geo9",name:"Ch 9 – International Trade",type:"chapwise"},{id:"geo10",name:"Ch 10 – Human Settlements",type:"chapwise"},{id:"geo11",name:"Ch 11 – India – Location",type:"chapwise"},{id:"geo12",name:"Ch 12 – Morphology of India",type:"chapwise"},{id:"geo13",name:"Ch 13 – Drainage Systems",type:"chapwise"},{id:"geo14",name:"Ch 14 – Climate of India",type:"chapwise"},{id:"geo15",name:"Ch 15 – Natural Vegetation",type:"chapwise"},{id:"geo16",name:"Ch 16 – Soils",type:"chapwise"},{id:"geo17",name:"Ch 17 – Natural Hazards",type:"chapwise"},{id:"geo-full1",name:"Full Mock 1",type:"fullmock"},{id:"geo-full2",name:"Full Mock 2",type:"fullmock"},{id:"geo-pyq23",name:"PYQ 2023",type:"pyq"},{id:"geo-pyq24",name:"PYQ 2024",type:"pyq"},{id:"geo-pyq25",name:"PYQ 2025",type:"pyq"},{id:"geo-sp1",name:"Special Mock 1",type:"special"}]},
   {id:"his",name:"History",icon:"📜",color:"#d97706",group:"Humanities",chapters:[{id:"his1",name:"Harappan Civilisation and Archaeology",type:"chapwise"},{id:"his2",name:"Political and Economic Systems in Early States: Inscriptional Evidences",type:"chapwise"},{id:"his3",name:"Social Histories of Early Societies: Mahabharata",type:"chapwise"},{id:"his4",name:"History of Buddhism and Jainism: Cultural Developments",type:"chapwise"},{id:"his5",name:"Medieval Society through Travellers Accounts",type:"chapwise"},{id:"his6",name:"Religious History: Bhakti-Sufi Traditions",type:"chapwise"},{id:"his7",name:"Vijayanagara Empire: Politics, Economy and Architecture",type:"chapwise"},{id:"his8",name:"The Mughal Empire and Agrarian Society",type:"chapwise"},{id:"his9",name:"Colonialism and Rural Society: Evidence from Official Reports",type:"chapwise"},{id:"his10",name:"Revolt of 1857: Patterns and Representations",type:"chapwise"},{id:"his11",name:"Mahatma Gandhi and National Movements",type:"chapwise"},{id:"his12",name:"The Making of the Constitution",type:"chapwise"},{id:"his-full1",name:"Full Mock 1",type:"fullmock"},{id:"his-full2",name:"Full Mock 2",type:"fullmock"},{id:"his-pyq23",name:"PYQ 2023",type:"pyq"},{id:"his-pyq24",name:"PYQ 2024",type:"pyq"},{id:"his-pyq25",name:"PYQ 2025",type:"pyq"},{id:"his-sp1",name:"Special Mock 1",type:"special"}]},
   {id:"psy",name:"Psychology",icon:"🧠",color:"#a855f7",group:"Humanities",chapters:[{id:"psy1",name:"Ch 1 – Variations in Psychological Attributes",type:"chapwise"},{id:"psy2",name:"Ch 2 – Self and Personality",type:"chapwise"},{id:"psy3",name:"Ch 3 – Meeting Life Challenges",type:"chapwise"},{id:"psy4",name:"Ch 4 – Psychological Disorders",type:"chapwise"},{id:"psy5",name:"Ch 5 – Therapeutic Approaches",type:"chapwise"},{id:"psy6",name:"Ch 6 – Attitude and Social Cognition",type:"chapwise"},{id:"psy7",name:"Ch 7 – Social Influence & Group Processes",type:"chapwise"},{id:"psy8",name:"Ch 8 – Psychology and Life",type:"chapwise"},{id:"psy9",name:"Ch 9 – Developing Psychological Skills",type:"chapwise"},{id:"psy-full1",name:"Full Mock 1",type:"fullmock"},{id:"psy-full2",name:"Full Mock 2",type:"fullmock"},{id:"psy-pyq23",name:"PYQ 2023",type:"pyq"},{id:"psy-pyq24",name:"PYQ 2024",type:"pyq"},{id:"psy-pyq25",name:"PYQ 2025",type:"pyq"},{id:"psy-sp1",name:"Special Mock 1",type:"special"}]},
-  {id:"pe",name:"Physical Education",icon:"🏃",color:"#ef4444",group:"Physical Education",chapters:[{id:"pe1",name:"Ch 1 – Planning in Sports",type:"chapwise"},{id:"pe2",name:"Ch 2 – Sports & Nutrition",type:"chapwise"},{id:"pe3",name:"Ch 3 – Yoga as Preventive Measure",type:"chapwise"},{id:"pe4",name:"Ch 4 – Physical Education & Sports for CWSN",type:"chapwise"},{id:"pe5",name:"Ch 5 – Children & Sports",type:"chapwise"},{id:"pe6",name:"Ch 6 – Women & Sports",type:"chapwise"},{id:"pe7",name:"Ch 7 – Test & Measurement in Sports",type:"chapwise"},{id:"pe8",name:"Ch 8 – Physiology & Sports",type:"chapwise"},{id:"pe9",name:"Ch 9 – Sports Medicine",type:"chapwise"},{id:"pe10",name:"Ch 10 – Kinesiology, Biomechanics & Sports",type:"chapwise"},{id:"pe11",name:"Ch 11 – Psychology & Sports",type:"chapwise"},{id:"pe12",name:"Ch 12 – Training in Sports",type:"chapwise"},{id:"pe-full1",name:"Full Mock 1",type:"fullmock"},{id:"pe-full2",name:"Full Mock 2",type:"fullmock"},{id:"pe-full3",name:"Full Mock 3",type:"fullmock"},{id:"pe-pyq23",name:"PYQ 2023",type:"pyq"},{id:"pe-pyq24",name:"PYQ 2024",type:"pyq"},{id:"pe-pyq25",name:"PYQ 2025",type:"pyq"},{id:"pe-sp1",name:"Special Mock 1",type:"special"}]},
+  {id:"pe",name:"Physical Education",icon:"🏃",color:"#ef4444",group:"Physical Education",chapters:[{id:"pe1",name:"UNIT - I: Health Status and Programmes In India Major Diseases and Health Policies Present Health Status",type:"chapwise"},{id:"pe2",name:"Unit-II: Psychological and Sociological Aspects of Physical Education and Sports Psychological Aspects",type:"chapwise"},{id:"pe3",name:"Unit - III: Theoretical Aspect of Games, Sports and Yogic Practice Basics of Games and Sports Athletics, Badminton, Basketball, Cricket, Football, Gymnastics, Hand ball, Hockey, Judo, Kabaddi, Kho-Kho, Volleyball, Swimming, Table tennis and Wrestling Handball.",type:"chapwise"},{id:"pe4",name:"Unit - IV: Yoga Basics of Yogic Practices",type:"chapwise"},{id:"pe5",name:"Unit - V: Nutrition and Athlete's Care Food and Nutrition",type:"chapwise"},{id:"pe6",name:"Unit - VI: Policies, Programmes and Career Options in sports",type:"chapwise"},{id:"pe7",name:"Unit-VII: Skill Related Physical Fitness- Means and methods",type:"chapwise"},{id:"pe8",name:"Unit-VIII:Measurement and Evaluation",type:"chapwise"},{id:"pe9",name:"Unit-IX: Physiology and biomechanics in sports",type:"chapwise"},{id:"pe-full1",name:"Full Mock 1",type:"fullmock"},{id:"pe-full2",name:"Full Mock 2",type:"fullmock"},{id:"pe-full3",name:"Full Mock 3",type:"fullmock"},{id:"pe-pyq23",name:"PYQ 2023",type:"pyq"},{id:"pe-pyq24",name:"PYQ 2024",type:"pyq"},{id:"pe-pyq25",name:"PYQ 2025",type:"pyq"},{id:"pe-sp1",name:"Special Mock 1",type:"special"}]},
   {id:"ip",name:"Informatics Practices",icon:"💻",color:"#0ea5e9",group:"Computer",chapters:[{id:"ip1",name:"Ch 1 – Computer Networks",type:"chapwise"},{id:"ip2",name:"Ch 2 – Database Concepts",type:"chapwise"},{id:"ip3",name:"Ch 3 – SQL",type:"chapwise"},{id:"ip4",name:"Ch 4 – Emerging Trends",type:"chapwise"},{id:"ip-full1",name:"Full Mock 1",type:"fullmock"},{id:"ip-full2",name:"Full Mock 2",type:"fullmock"},{id:"ip-pyq23",name:"PYQ 2023",type:"pyq"},{id:"ip-pyq24",name:"PYQ 2024",type:"pyq"},{id:"ip-pyq25",name:"PYQ 2025",type:"pyq"}]},
   {id:"cs",name:"Computer Science",icon:"🖥️",color:"#6366f1",group:"Computer",chapters:[{id:"cs1",name:"Ch 1 – Functions",type:"chapwise"},{id:"cs2",name:"Ch 2 – File Handling",type:"chapwise"},{id:"cs3",name:"Ch 3 – Stack",type:"chapwise"},{id:"cs4",name:"Ch 4 – Queue",type:"chapwise"},{id:"cs5",name:"Ch 5 – Database & SQL",type:"chapwise"},{id:"cs6",name:"Ch 6 – Computer Networks",type:"chapwise"},{id:"cs7",name:"Ch 7 – Cybersecurity",type:"chapwise"},{id:"cs-full1",name:"Full Mock 1",type:"fullmock"},{id:"cs-full2",name:"Full Mock 2",type:"fullmock"},{id:"cs-pyq23",name:"PYQ 2023",type:"pyq"},{id:"cs-pyq24",name:"PYQ 2024",type:"pyq"},{id:"cs-pyq25",name:"PYQ 2025",type:"pyq"}]}
 ];
@@ -3288,46 +3285,28 @@ function goPage(id){
   document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));
   document.getElementById('page-'+id).classList.add('active');
   document.querySelectorAll('.nav-item').forEach(n=>{if(n.getAttribute('onclick')===`goPage('${id}')`)n.classList.add('active');});
-  document.querySelectorAll('.dock-item').forEach(d=>d.classList.remove('active'));
+document.querySelectorAll('.dock-item').forEach(d=>d.classList.remove('active'));
   const de=document.getElementById('dock-'+id);
-  if(de)de.classList.add('active');
+  if(de){
+    de.classList.add('active');
+  } else {
+    // pages not in main dock (mocks, settings) — no dock item highlights
+  }
   destroyCharts();
   const map={home:renderHome,scoreboard:renderScoreboard,subjects:renderSubjects,mocks:renderMocks,analytics:renderAnalytics,rank:renderRank,settings:renderSettings};
   if(map[id]){
-    const contentId={home:'home-content',scoreboard:'scoreboard-content',subjects:'subjects-content',mocks:'mocks-content',analytics:'analytics-content',rank:'rank-content',settings:'settings-content'}[id];
-    if(contentId){
-      const el=document.getElementById(contentId);
-      if(el){
-        el.innerHTML=`<div class="sk-card"><div class="skeleton sk-line" style="width:40%;height:22px;margin-bottom:16px;"></div><div class="skeleton sk-line" style="width:100%;height:14px;"></div><div class="skeleton sk-line" style="width:85%;height:14px;"></div></div>`;
-      }
+  // Show skeleton first
+  const contentId={home:'home-content',scoreboard:'scoreboard-content',subjects:'subjects-content',mocks:'mocks-content',analytics:'analytics-content',rank:'rank-content',settings:'settings-content'}[id];
+  if(contentId){
+    const el=document.getElementById(contentId);
+    if(el){
+      el.innerHTML=`<div class="sk-card"><div class="skeleton sk-line" style="width:40%;height:22px;margin-bottom:16px;"></div><div class="skeleton sk-line" style="width:100%;height:14px;"></div><div class="skeleton sk-line" style="width:85%;height:14px;"></div><div class="skeleton sk-line" style="width:70%;height:14px;"></div></div><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin-bottom:20px;">${Array(4).fill(0).map(()=>`<div class="sk-card" style="padding:18px;"><div class="skeleton sk-line" style="width:38px;height:38px;border-radius:11px;margin-bottom:12px;"></div><div class="skeleton sk-line" style="width:60%;height:24px;"></div><div class="skeleton sk-line" style="width:80%;height:10px;"></div></div>`).join('')}</div><div class="sk-card"><div class="skeleton sk-line" style="width:30%;height:16px;margin-bottom:14px;"></div>${Array(3).fill(0).map(()=>`<div class="skeleton sk-line" style="width:100%;height:11px;"></div>`).join('')}</div>`;
     }
-    // Run render immediately, then inject ads
-    requestAnimationFrame(()=>{
-      map[id]();
-      setTimeout(injectAllAds, 150);
-    });
   }
+  setTimeout(()=>map[id](),80);
+}
 }
 
-function getTopAdHTML(){
-  return`<div class="section-ad-top"><div class="ad-banner-wrap ts-ad-slot" data-zone="10863326" style="min-height:90px;"></div></div>`;
-}
-function getFooterAdHTML(){
-  return`<div class="section-ad-footer"><div style="font-size:9px;color:var(--text3);text-align:center;margin-bottom:6px;font-weight:600;text-transform:uppercase;letter-spacing:.8px;">Advertisement</div><div class="ad-banner-wrap ts-ad-slot" data-zone="10863260" style="min-height:90px;border-radius:14px;overflow:hidden;border:1px solid var(--border);"></div></div>`;
-}
-function injectAllAds(){
-  requestAnimationFrame(()=>{
-    document.querySelectorAll('.ts-ad-slot:not([data-ad-loaded])').forEach(el=>{
-      el.setAttribute('data-ad-loaded','1');
-      const zone=el.dataset.zone||'10863326';
-      const s=document.createElement('script');
-      s.async=true;
-      s.setAttribute('data-cfasync','false');
-      s.src='//thubanoa.com/1?z='+zone;
-      el.appendChild(s);
-    });
-  });
-}
 /* ══════════════════════════════════════════
    HOME PAGE
 ══════════════════════════════════════════ */
@@ -3652,7 +3631,7 @@ H+=`<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin
   });
   H+=`<div class="sec-hdr" style="margin-top:20px;"><div class="sec-title">🎯 Target Score Planner</div></div>${buildTargetSetter(sv)}`;
   setTimeout(()=>calcTarget(),150);
-  document.getElementById('home-content').innerHTML = getTopAdHTML() + H + getFooterAdHTML();
+  document.getElementById('home-content').innerHTML=H;
   // Fetch StudentID from leaderboard
 const localSID = getStudentID();
 const sidEl = document.getElementById('hero-sid');
@@ -3757,7 +3736,7 @@ function renderScoreboard(){
   if(calcStreak(allAtt)>=7)badges.push({icon:'🏆',name:'Week Warrior',on:true});
   ['💯','🌟','💎','🏆'].forEach(ic=>{if(!badges.find(b=>b.icon===ic))badges.push({icon:ic,name:ic==='💯'?'Perfect':ic==='🌟'?'Ace':ic==='💎'?'25 Tests':'Week Warrior',on:false});});
   H+=`<div class="card card-p" style="margin-bottom:18px;"><div class="sec-hdr"><div class="sec-title">🏅 Achievements</div></div><div class="badge-row">${badges.map(b=>`<span class="badge ${b.on?'on':'off'}">${b.icon} ${b.name}</span>`).join('')}</div></div>`;
-  document.getElementById('scoreboard-content').innerHTML = getTopAdHTML() + H + getFooterAdHTML();
+  document.getElementById('scoreboard-content').innerHTML=H;
   if(sv.length)renderCuetTargetCard(document.getElementById('scoreboard-content'),allAtt,sv);
   setTimeout(()=>{
     const subjs=sv.map(sId=>{const s=SUBJECTS_MASTER.find(x=>x.id===sId);if(!s)return null;const att=[];s.chapters.forEach(ch=>{const r=lR(sId,ch.id);if(r)att.push(r);});return{name:s.name,pct:att.length>0?att.reduce((a,d)=>a+d.percentage,0)/att.length:0,color:s.color};}).filter(Boolean);
@@ -3818,7 +3797,7 @@ function renderSubjects(){
   let H=`<div class="subj-tabs">`;
   sv.forEach(sId=>{const s=SUBJECTS_MASTER.find(x=>x.id===sId);if(!s)return;H+=`<div class="subj-tab ${sId===currentSubjectTab?'active':''}" onclick="switchSubjTab('${sId}')">${s.icon} ${s.name}</div>`;});
   H+=`</div><div id="subj-tab-content"></div>`;
-  document.getElementById('subjects-content').innerHTML = getTopAdHTML() + H + getFooterAdHTML();
+  document.getElementById('subjects-content').innerHTML=H;
   renderSubjTab(currentSubjectTab);
 }
 function switchSubjTab(sId){currentSubjectTab=sId;document.querySelectorAll('.subj-tab').forEach(t=>{t.classList.toggle('active',t.getAttribute('onclick')===`switchSubjTab('${sId}')`);});renderSubjTab(sId);}
@@ -4054,7 +4033,7 @@ typeTests.forEach((ch, i) => {
       H += `</div></div>`; // Closes mock-grid and the type section
     });
   }
-  document.getElementById('mocks-content').innerHTML = getTopAdHTML() + H + getFooterAdHTML();
+  document.getElementById('mocks-content').innerHTML=H;
 }
 function switchMockSubj(sId){currentMockSubj=sId;renderMocks();}
 
@@ -4075,7 +4054,7 @@ function renderAnalytics(){
     {id:'report',label:'📋 Weekly Report',hint:'5'},
   ];
   let H=`<div class="analytics-tabs">${tabs.map(t=>`<div class="analytics-tab ${t.id===currentAnalyticsTab?'active':''}" onclick="showAnalyticsSection('${t.id}')">${t.label}<span class="kbd-hint">${t.hint}</span></div>`).join('')}</div><div id="analytics-section"></div>`;
-  document.getElementById('analytics-content').innerHTML = getTopAdHTML() + H + getFooterAdHTML();
+  document.getElementById('analytics-content').innerHTML=H;
   showAnalyticsSection(currentAnalyticsTab);
 }
 
@@ -5209,7 +5188,7 @@ function renderSettings(){
   // ── 15. STORAGE (at bottom) ──
   H+=`<div id="storage-card-wrap">${renderStorageCard()}</div>`;
 
-  document.getElementById('settings-content').innerHTML = getTopAdHTML() + H + getFooterAdHTML();
+  document.getElementById('settings-content').innerHTML=H;
 
   const navDot=document.getElementById('sync-dot-nav');
   const settDot=document.getElementById('sync-dot-settings');
@@ -7034,7 +7013,6 @@ function hideTip(){document.getElementById('tooltip').style.display='none';}
    INIT
 ══════════════════════════════════════════ */
 window.addEventListener('load',()=>{
-  checkAdGate();
   // Back to top button visibility
 document.querySelector('.main').addEventListener('scroll',function(){
   const btn=document.getElementById('btt-btn');
@@ -7277,20 +7255,22 @@ function saveIDFromPopup(){
 (function () {
   var boot = document.getElementById('ts-boot');
   if (!boot) return;
+
   var isMobile = window.innerWidth <= 768;
+
   if (isMobile) {
-    // Was 3600ms → now 1400ms
+    // Mobile: slide down at 3.6s, then remove from DOM at 4.3s
     setTimeout(function () {
       boot.classList.add('exit-mobile');
-    }, 1400);
+    }, 3600);
     setTimeout(function () {
       if (boot && boot.parentNode) boot.parentNode.removeChild(boot);
-    }, 2100);
+    }, 4300);
   } else {
-    // Was 5700ms → now 2200ms
+    // Desktop: CSS handles the fade+scale exit at 5.1s
     setTimeout(function () {
       if (boot && boot.parentNode) boot.parentNode.removeChild(boot);
-    }, 2200);
+    }, 5700);
   }
 })();
 /* ══════════════════════════════════════════
@@ -7912,27 +7892,46 @@ function wvFallbackCopy(url, btn, label) {
 ══════════════════════════════════════════ */
 function firebaseGoogleLogin() {
   const btn = document.getElementById('firebase-google-btn');
-  if (btn) { btn.disabled = true; btn.textContent = '⏳ Signing in…'; }
+  if (btn) { btn.disabled = true; btn.textContent = '⏳ Verifying…'; }
 
-  fbAuth.signInWithPopup(fbProvider)
-    .then(async function(result) {
-      const user = result.user;
-      showToast('✅ Signed in! Checking cloud data…', 'success', 2500);
-      await checkCloudConflictAndSignIn(user);
+  grecaptcha.enterprise.ready(async function() {
+    try {
+      const token = await grecaptcha.enterprise.execute(
+        '6Le1MbgsAAAAAB9cCe9aA66Cz9sHC-pK6nZicxse',
+        { action: 'LOGIN' }
+      );
+
+      // reCAPTCHA passed — now do Google login
+      if (btn) { btn.textContent = '⏳ Signing in…'; }
+
+      fbAuth.signInWithPopup(fbProvider)
+        .then(async function(result) {
+          const user = result.user;
+          showToast('✅ Signed in! Checking cloud data…', 'success', 2500);
+          await checkCloudConflictAndSignIn(user);
+          if (btn) {
+            btn.disabled = false;
+            btn.innerHTML = '<img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" width="20" height="20"> Sign in with Google';
+          }
+        })
+        .catch(function(e) {
+          if (btn) {
+            btn.disabled = false;
+            btn.innerHTML = '<img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" width="20" height="20"> Sign in with Google';
+          }
+          if (e.code !== 'auth/popup-closed-by-user') {
+            showToast('❌ Google login failed: ' + e.message, 'error');
+          }
+        });
+
+    } catch(e) {
       if (btn) {
         btn.disabled = false;
         btn.innerHTML = '<img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" width="20" height="20"> Sign in with Google';
       }
-    })
-    .catch(function(e) {
-      if (btn) {
-        btn.disabled = false;
-        btn.innerHTML = '<img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" width="20" height="20"> Sign in with Google';
-      }
-      if (e.code !== 'auth/popup-closed-by-user') {
-        showToast('❌ Google login failed: ' + e.message, 'error');
-      }
-    });
+      showToast('❌ Verification failed. Try again.', 'error');
+    }
+  });
 }
 
 function applyGoogleUserToUI(googleUser) {
@@ -8014,8 +8013,14 @@ function getGoogleUser() {
 async function homeScreenGoogleLogin() {
   const btn = document.getElementById('home-google-btn');
   const st = document.getElementById('home-google-status');
-  if(btn){ btn.disabled=true; btn.innerHTML='<span class="spin"></span> Signing in…'; }
-  if(st) st.innerHTML = '';
+  if(btn){ btn.disabled=true; btn.innerHTML='<span class="spin"></span> Verifying…'; }
+
+  grecaptcha.enterprise.ready(async function() {
+    try {
+      await grecaptcha.enterprise.execute(
+        '6Le1MbgsAAAAAB9cCe9aA66Cz9sHC-pK6nZicxse',
+        { action: 'LOGIN' }
+      );
 
   try {
     const result = await fbAuth.signInWithPopup(fbProvider);
@@ -8268,85 +8273,6 @@ async function sheetSyncFromHomeTopbar(btn) {
     btn.disabled = false;
   }
 }
-
-/* ══════════════════════════════════════════
-   AD GATE — 5 second ad for 5 hours access
-══════════════════════════════════════════ */
-function checkAdGate(){
-  const ACCESS_DURATION=5*60*60*1000;
-  const lastAccess=localStorage.getItem('ts_ad_access');
-  if(lastAccess){
-    const elapsed=Date.now()-parseInt(lastAccess);
-    if(elapsed<ACCESS_DURATION)return;
-  }
-  const ov=document.getElementById('ad-gate-overlay');
-  if(!ov)return;
-  ov.style.display='flex';
-
-  // Inject ad gate banner — Zone 10863324 Epic tag OnClick Popunder (MULTI)
-  setTimeout(()=>{
-    const gate=document.getElementById('ad-gate-banner');
-    if(!gate)return;
-    const s=document.createElement('script');
-    s.async=true;s.setAttribute('data-cfasync','false');
-    s.src='//thubanoa.com/1?z=10863324';
-    gate.appendChild(s);
-    // Also fire Zone 10862904 Surprising tag OnClick Popunder (MULTI)
-    const s2=document.createElement('script');
-    s2.async=true;s2.setAttribute('data-cfasync','false');
-    s2.src='//thubanoa.com/1?z=10862904';
-    gate.appendChild(s2);
-  },300);
-
-  let seconds=5;
-  const secEl=document.getElementById('ad-gate-seconds');
-  const progEl=document.getElementById('ad-gate-progress');
-  const btn=document.getElementById('ad-gate-btn');
-  setTimeout(()=>{if(progEl)progEl.style.width='100%';},100);
-  const timer=setInterval(()=>{
-    seconds--;
-    if(secEl)secEl.textContent=seconds;
-    if(seconds<=0){
-      clearInterval(timer);
-      if(btn){
-        btn.disabled=false;
-        btn.style.cssText='width:100%;padding:13px;border-radius:15px;border:none;cursor:pointer;background:linear-gradient(135deg,#4f6ef7,#7c3aed);color:#fff;font-size:14px;font-weight:800;font-family:var(--fn);box-shadow:0 6px 20px rgba(79,110,247,.35);';
-        btn.textContent='✅ Start 5 Hours of Access!';
-        btn.onclick=claimAdAccess;
-      }
-    }
-  },1000);
-}
-function claimAdAccess(){
-  localStorage.setItem('ts_ad_access', Date.now().toString());
-  const ov = document.getElementById('ad-gate-overlay');
-  if(ov){ ov.style.opacity='0'; ov.style.transition='opacity .4s'; setTimeout(()=>ov.style.display='none', 400); }
-  showToast('⚡ 5 hours of access unlocked!', 'success', 3000);
-}
 </script>
-<!-- AD GATE MODAL -->
-<div id="ad-gate-overlay" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:999998;align-items:center;justify-content:center;backdrop-filter:blur(8px);padding:16px;">
-  <div style="background:var(--card);border-radius:26px;padding:28px;max-width:440px;width:100%;border:1px solid var(--border);text-align:center;box-shadow:0 24px 80px rgba(0,0,0,.4);">
-    <div style="font-size:44px;margin-bottom:10px;">⚡</div>
-    <div style="font-size:19px;font-weight:900;margin-bottom:6px;">Support Thunderstudy</div>
-    <div style="font-size:13px;color:var(--text3);line-height:1.7;margin-bottom:18px;">Watch a short ad to unlock <strong style="color:var(--acc)">5 hours of free access</strong>. Your support keeps this platform free!</div>
-    <div style="background:var(--card2);border-radius:16px;overflow:hidden;min-height:120px;display:flex;align-items:center;justify-content:center;margin-bottom:18px;border:1px solid var(--border);" id="ad-gate-banner">
-      <!-- Monetag Interstitial / Banner -->
-      <script async="async" data-cfasync="false" src="//thubanoa.com/1?z=10863324"></script>
-    </div>
-    <div id="ad-gate-timer-wrap">
-      <div style="font-size:12px;color:var(--text3);margin-bottom:10px;">Please wait <strong id="ad-gate-seconds" style="color:var(--acc);">5</strong> seconds…</div>
-      <div style="height:5px;background:var(--border);border-radius:5px;overflow:hidden;margin-bottom:14px;">
-        <div id="ad-gate-progress" style="height:100%;width:0%;background:linear-gradient(90deg,#4f6ef7,#7c3aed);border-radius:5px;transition:width .9s linear;"></div>
-      </div>
-      <button id="ad-gate-btn" disabled style="width:100%;padding:13px;border-radius:15px;border:none;cursor:not-allowed;background:var(--border);color:var(--text3);font-size:14px;font-weight:800;font-family:var(--fn);opacity:.6;">⏳ Please wait…</button>
-    </div>
-    <div style="font-size:10px;color:var(--text3);margin-top:12px;">Access valid for 5 hours. After that, a new ad will unlock the next session.</div>
-  </div>
-</div>
-<!-- Zone 10863327 Epic tag Push Notifications MULTI — fires globally -->
-<script async="async" data-cfasync="false" src="//thubanoa.com/1?z=10863327"></script>
-<!-- Zone 10862905 Surprising tag In-Page Push MULTI — fires globally -->
-<script async="async" data-cfasync="false" src="//thubanoa.com/1?z=10862905"></script>
 </body>
 </html>
