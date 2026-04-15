@@ -1,64 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-
   <url>
     <loc>https://commercesehoga.github.io/</loc>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
-
   <url>
-    <loc>https://commercesehoga.github.io/dashboard</loc>
+    <loc>https://commercesehoga.github.io/dashboard/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
-
   <url>
-    <loc>https://commercesehoga.github.io/science</loc>
+    <loc>https://commercesehoga.github.io/science/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
-
   <url>
-    <loc>https://commercesehoga.github.io/commerce</loc>
+    <loc>https://commercesehoga.github.io/commerce/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
-
   <url>
-    <loc>https://commercesehoga.github.io/studyhub</loc>
+    <loc>https://commercesehoga.github.io/studyhub/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
-
   <url>
-    <loc>https://commercesehoga.github.io/english</loc>
+    <loc>https://commercesehoga.github.io/english/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
-
   <url>
-    <loc>https://commercesehoga.github.io/physical</loc>
+    <loc>https://commercesehoga.github.io/physical/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
-
   <url>
-    <loc>https://commercesehoga.github.io/humanities</loc>
+    <loc>https://commercesehoga.github.io/humanities/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
-
   <url>
-    <loc>https://commercesehoga.github.io/guide</loc>
+    <loc>https://commercesehoga.github.io/guide/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
-
   <url>
-    <loc>https://commercesehoga.github.io/THUNDERSTUDY</loc>
+    <loc>https://commercesehoga.github.io/THUNDERSTUDY/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
-
 </urlset>
