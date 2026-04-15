@@ -8022,49 +8022,50 @@ async function homeScreenGoogleLogin() {
         { action: 'LOGIN' }
       );
 
-  try {
-    const result = await fbAuth.signInWithPopup(fbProvider);
-    const user = result.user;
-    const gu = buildGoogleUser(user);
-    localStorage.setItem('ts_google_user', JSON.stringify(gu));
-    localStorage.setItem('cbtUserName', gu.name);
+      try {
+        const result = await fbAuth.signInWithPopup(fbProvider);
+        const user = result.user;
+        const gu = buildGoogleUser(user);
+        localStorage.setItem('ts_google_user', JSON.stringify(gu));
+        localStorage.setItem('cbtUserName', gu.name);
 
-    // Update profile name if not set
-    const p = getProfile();
-    if(!p.name && gu.name){ p.name = gu.name; localStorage.setItem('ts_profile', JSON.stringify(p)); }
+        const p = getProfile();
+        if(!p.name && gu.name){ p.name = gu.name; localStorage.setItem('ts_profile', JSON.stringify(p)); }
 
-    // Auto-generate Student ID if none
-    if(!getStudentID()){
-      const newId = 'TS'+String(Math.floor(Math.random()*100000)).padStart(5,'0');
-      localStorage.setItem('ts_student_id', newId);
+        if(!getStudentID()){
+          const newId = 'TS'+String(Math.floor(Math.random()*100000)).padStart(5,'0');
+          localStorage.setItem('ts_student_id', newId);
+        }
+
+        if(st) st.innerHTML = `<span style="color:var(--acc)">⏳ Checking cloud for your data…</span>`;
+        const cloudResult = await cloudFetchCritical(user.uid);
+
+        if(cloudResult.ok && cloudResult.data){
+          if(st) st.innerHTML = `<span style="color:var(--green)">✅ Found your data! Restoring…</span>`;
+          await applyCloudData(cloudResult.data);
+          showToast(`☁️ Welcome back, ${gu.name.split(' ')[0]}!`, 'success', 3000);
+          setTimeout(()=>{ renderHome(); }, 800);
+        } else {
+          if(st) st.innerHTML = `<span style="color:var(--green)">✅ Signed in as ${escH(gu.name)}!</span>`;
+          showToast(`👋 Welcome, ${gu.name.split(' ')[0]}!`, 'success', 2000);
+          setTimeout(()=>{ renderHome(); }, 600);
+        }
+
+        scheduleAutoCloudSync();
+
+      } catch(err) {
+        if(btn){ btn.disabled=false; btn.innerHTML='<img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" width="22" height="22"> Continue with Google'; }
+        if(err.code !== 'auth/popup-closed-by-user'){
+          if(st) st.innerHTML = `<span style="color:var(--red)">❌ ${escH(err.message)}</span>`;
+        }
+      }
+
+    } catch(e) {
+      // reCAPTCHA execution failed
+      if(btn){ btn.disabled=false; btn.innerHTML='<img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" width="22" height="22"> Continue with Google'; }
+      if(st) st.innerHTML = `<span style="color:var(--red)">❌ Verification failed. Try again.</span>`;
     }
-
-    // Check cloud for existing data
-    if(st) st.innerHTML = `<span style="color:var(--acc)">⏳ Checking cloud for your data…</span>`;
-    const cloudResult = await cloudFetchCritical(user.uid);
-
-    if(cloudResult.ok && cloudResult.data){
-      // Has cloud data — restore it
-      if(st) st.innerHTML = `<span style="color:var(--green)">✅ Found your data! Restoring…</span>`;
-      await applyCloudData(cloudResult.data);
-      showToast(`☁️ Welcome back, ${gu.name.split(' ')[0]}!`, 'success', 3000);
-      setTimeout(()=>{ renderHome(); }, 800);
-    } else {
-      // New user — show onboarding
-      if(st) st.innerHTML = `<span style="color:var(--green)">✅ Signed in as ${escH(gu.name)}!</span>`;
-      showToast(`👋 Welcome, ${gu.name.split(' ')[0]}!`, 'success', 2000);
-      setTimeout(()=>{ renderHome(); }, 600);
-    }
-
-    // Schedule cloud sync
-    scheduleAutoCloudSync();
-
-  } catch(err) {
-    if(btn){ btn.disabled=false; btn.innerHTML='<img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" width="22" height="22"> Continue with Google'; }
-    if(err.code !== 'auth/popup-closed-by-user'){
-      if(st) st.innerHTML = `<span style="color:var(--red)">❌ ${escH(err.message)}</span>`;
-    }
-  }
+  }); // ← closes grecaptcha.enterprise.ready(
 }
 
 function wvDownloadBackup(btn) {
