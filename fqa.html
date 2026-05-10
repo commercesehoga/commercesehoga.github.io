@@ -1,0 +1,1436 @@
+<!-- ╔══════════════════════════════════════════════════════════════╗
+     ║  Thunderstudy — FAQ Fragment                                 ║
+     ║  Drop this inside the "More" section of the dashboard.       ║
+     ║  No <html>, <head>, or <body> tags — embeds as-is.          ║
+     ╚══════════════════════════════════════════════════════════════╝ -->
+
+<style>
+/* ── FAQ ROOT ── */
+.ts-faq-root {
+  font-family: var(--fn, 'Plus Jakarta Sans', sans-serif);
+  color: var(--text, #1a1d2e);
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 0 0 40px;
+  animation: faqPageIn .45s cubic-bezier(.34,1.56,.64,1) both;
+}
+@keyframes faqPageIn {
+  from { opacity:0; transform:translateY(18px); }
+  to   { opacity:1; transform:none; }
+}
+
+/* ── PAGE HEADER ── */
+.ts-faq-header {
+  position: relative;
+  padding: 32px 28px 28px;
+  border-radius: 24px;
+  background: linear-gradient(135deg, rgba(79,110,247,.09) 0%, rgba(124,58,237,.07) 55%, rgba(236,72,153,.05) 100%);
+  border: 1.5px solid rgba(79,110,247,.18);
+  margin-bottom: 28px;
+  overflow: hidden;
+}
+.ts-faq-header::before {
+  content: '';
+  position: absolute;
+  top: -40px; right: -40px;
+  width: 180px; height: 180px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(79,110,247,.12) 0%, transparent 70%);
+  pointer-events: none;
+}
+.ts-faq-header::after {
+  content: '';
+  position: absolute;
+  bottom: -30px; left: 40px;
+  width: 120px; height: 120px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(236,72,153,.09) 0%, transparent 70%);
+  pointer-events: none;
+}
+.ts-faq-eyebrow {
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--acc, #4f6ef7);
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.ts-faq-eyebrow-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--acc, #4f6ef7);
+  animation: faqDotPulse 2s ease-in-out infinite;
+}
+@keyframes faqDotPulse {
+  0%,100% { transform:scale(1); opacity:1; }
+  50%      { transform:scale(1.5); opacity:.6; }
+}
+.ts-faq-title {
+  font-size: clamp(22px, 4vw, 30px);
+  font-weight: 900;
+  line-height: 1.15;
+  margin-bottom: 8px;
+  letter-spacing: -.5px;
+}
+.ts-faq-title span { color: var(--acc, #4f6ef7); }
+.ts-faq-sub {
+  font-size: 13px;
+  color: var(--text2, #5a5f7a);
+  line-height: 1.6;
+  max-width: 520px;
+}
+.ts-faq-meta {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 18px;
+  flex-wrap: wrap;
+}
+.ts-faq-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 12px;
+  border-radius: 30px;
+  font-size: 11px;
+  font-weight: 800;
+  background: var(--card, #fff);
+  border: 1.5px solid var(--border, #e8ecf4);
+  color: var(--text2, #5a5f7a);
+}
+.ts-faq-pill svg { flex-shrink:0; }
+
+/* ── SEARCH ── */
+.ts-faq-search-wrap {
+  position: relative;
+  margin-bottom: 24px;
+}
+.ts-faq-search-icon {
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text3, #9298b5);
+  pointer-events: none;
+  display: flex;
+}
+.ts-faq-search {
+  width: 100%;
+  background: var(--card, #fff);
+  border: 1.5px solid var(--border, #e8ecf4);
+  border-radius: 16px;
+  padding: 13px 16px 13px 44px;
+  font-size: 14px;
+  font-family: var(--fn, 'Plus Jakarta Sans', sans-serif);
+  color: var(--text, #1a1d2e);
+  outline: none;
+  transition: border-color .2s, box-shadow .2s;
+  box-shadow: 0 2px 12px rgba(79,110,247,.06);
+}
+.ts-faq-search:focus {
+  border-color: var(--acc, #4f6ef7);
+  box-shadow: 0 0 0 3px rgba(79,110,247,.12), 0 2px 12px rgba(79,110,247,.08);
+}
+.ts-faq-search::placeholder { color: var(--text3, #9298b5); }
+.ts-faq-clear {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text3, #9298b5);
+  font-size: 18px;
+  display: none;
+  padding: 2px;
+  line-height: 1;
+}
+.ts-faq-clear.visible { display: block; }
+
+/* ── COUNT BAR ── */
+.ts-faq-count-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.ts-faq-count-text {
+  font-size: 12px;
+  color: var(--text3, #9298b5);
+  font-weight: 600;
+}
+.ts-faq-expand-all {
+  background: none;
+  border: 1.5px solid var(--border, #e8ecf4);
+  border-radius: 10px;
+  padding: 5px 12px;
+  font-size: 11px;
+  font-weight: 800;
+  color: var(--text2, #5a5f7a);
+  cursor: pointer;
+  font-family: var(--fn, 'Plus Jakarta Sans', sans-serif);
+  transition: all .2s;
+}
+.ts-faq-expand-all:hover {
+  background: var(--card, #fff);
+  color: var(--acc, #4f6ef7);
+  border-color: var(--acc, #4f6ef7);
+}
+
+/* ── CATEGORY GROUP ── */
+.ts-faq-group {
+  margin-bottom: 20px;
+}
+.ts-faq-group-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+  padding: 0 2px;
+}
+.ts-faq-group-icon {
+  width: 32px; height: 32px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 15px;
+}
+.ts-faq-group-name {
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  color: var(--text2, #5a5f7a);
+}
+.ts-faq-group-count {
+  margin-left: auto;
+  font-size: 10px;
+  font-weight: 800;
+  padding: 2px 8px;
+  border-radius: 20px;
+  background: var(--card, #fff);
+  border: 1.5px solid var(--border, #e8ecf4);
+  color: var(--text3, #9298b5);
+  font-family: var(--mono, 'DM Mono', monospace);
+}
+
+/* ── ACCORDION ITEMS ── */
+.ts-faq-item {
+  background: var(--card, #fff);
+  border: 1.5px solid var(--border, #e8ecf4);
+  border-radius: 16px;
+  margin-bottom: 7px;
+  overflow: hidden;
+  transition: box-shadow .2s, border-color .2s;
+}
+.ts-faq-item:hover {
+  border-color: rgba(79,110,247,.25);
+  box-shadow: 0 4px 20px rgba(79,110,247,.08);
+}
+.ts-faq-item.open {
+  border-color: rgba(79,110,247,.3);
+  box-shadow: 0 4px 24px rgba(79,110,247,.1);
+}
+.ts-faq-item.hidden {
+  display: none;
+}
+.ts-faq-q {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 15px 18px;
+  cursor: pointer;
+  user-select: none;
+  transition: background .15s;
+}
+.ts-faq-q:hover { background: var(--card2, #f7f8fd); }
+.ts-faq-item.open .ts-faq-q { background: var(--card2, #f7f8fd); }
+.ts-faq-q-text {
+  flex: 1;
+  font-size: 13.5px;
+  font-weight: 700;
+  line-height: 1.4;
+  color: var(--text, #1a1d2e);
+}
+.ts-faq-item.open .ts-faq-q-text { color: var(--acc, #4f6ef7); }
+.ts-faq-chevron {
+  width: 22px; height: 22px;
+  border-radius: 7px;
+  background: var(--bg, #f0f3fa);
+  border: 1.5px solid var(--border, #e8ecf4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: transform .3s cubic-bezier(.34,1.56,.64,1), background .2s, border-color .2s;
+  color: var(--text3, #9298b5);
+}
+.ts-faq-item.open .ts-faq-chevron {
+  transform: rotate(180deg);
+  background: var(--acc, #4f6ef7);
+  border-color: var(--acc, #4f6ef7);
+  color: #fff;
+}
+.ts-faq-a {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height .4s cubic-bezier(.4,0,.2,1);
+}
+.ts-faq-item.open .ts-faq-a {
+  max-height: 600px;
+}
+.ts-faq-a-inner {
+  padding: 0 18px 16px 18px;
+  font-size: 13px;
+  line-height: 1.75;
+  color: var(--text2, #5a5f7a);
+  border-top: 1px solid var(--border, #e8ecf4);
+  padding-top: 13px;
+}
+.ts-faq-a-inner strong { color: var(--text, #1a1d2e); font-weight: 700; }
+.ts-faq-a-inner a { color: var(--acc, #4f6ef7); text-decoration: none; font-weight: 600; }
+.ts-faq-a-inner a:hover { text-decoration: underline; }
+.ts-faq-a-inner .ts-faq-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 8px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 700;
+  background: rgba(79,110,247,.1);
+  color: var(--acc, #4f6ef7);
+  margin: 0 2px;
+}
+.ts-faq-a-inner .ts-faq-tag.green {
+  background: rgba(16,185,129,.1);
+  color: var(--green, #10b981);
+}
+.ts-faq-a-inner .ts-faq-tag.yellow {
+  background: rgba(245,158,11,.1);
+  color: var(--yellow, #f59e0b);
+}
+.ts-faq-a-inner .ts-faq-tag.red {
+  background: rgba(244,63,94,.1);
+  color: var(--red, #f43f5e);
+}
+
+/* ── NO RESULTS ── */
+.ts-faq-noresult {
+  text-align: center;
+  padding: 52px 20px;
+  display: none;
+}
+.ts-faq-noresult.visible { display: block; }
+.ts-faq-noresult-icon {
+  font-size: 42px;
+  margin-bottom: 12px;
+}
+.ts-faq-noresult-title {
+  font-size: 16px;
+  font-weight: 800;
+  margin-bottom: 6px;
+}
+.ts-faq-noresult-sub {
+  font-size: 13px;
+  color: var(--text3, #9298b5);
+}
+
+/* ── FOOTER CTA ── */
+.ts-faq-footer {
+  background: linear-gradient(135deg, rgba(79,110,247,.08), rgba(124,58,237,.06));
+  border: 1.5px solid rgba(79,110,247,.18);
+  border-radius: 20px;
+  padding: 24px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-top: 28px;
+}
+.ts-faq-footer-text strong {
+  display: block;
+  font-size: 15px;
+  font-weight: 800;
+  margin-bottom: 4px;
+}
+.ts-faq-footer-text span {
+  font-size: 12px;
+  color: var(--text2, #5a5f7a);
+}
+.ts-faq-footer-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 20px;
+  border-radius: 14px;
+  font-size: 13px;
+  font-weight: 800;
+  color: #fff;
+  background: linear-gradient(135deg, #4f6ef7, #7c3aed);
+  border: none;
+  cursor: pointer;
+  font-family: var(--fn, 'Plus Jakarta Sans', sans-serif);
+  text-decoration: none;
+  transition: transform .2s, box-shadow .2s;
+  box-shadow: 0 4px 16px rgba(79,110,247,.3);
+  white-space: nowrap;
+}
+.ts-faq-footer-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(79,110,247,.4);
+}
+
+/* ── SEARCH HIGHLIGHT ── */
+.ts-faq-hl {
+  background: rgba(245,158,11,.25);
+  color: var(--text, #1a1d2e);
+  border-radius: 3px;
+  padding: 0 2px;
+}
+
+/* ── DARK MODE OVERRIDES ── */
+body.dark-mode .ts-faq-item { background: var(--card); border-color: var(--border); }
+body.dark-mode .ts-faq-q:hover { background: var(--card2); }
+body.dark-mode .ts-faq-item.open .ts-faq-q { background: var(--card2); }
+body.dark-mode .ts-faq-chevron { background: var(--card2); }
+body.dark-mode .ts-faq-search { background: var(--card); border-color: var(--border); }
+body.dark-mode .ts-faq-footer { background: linear-gradient(135deg,rgba(79,110,247,.1),rgba(124,58,237,.07)); }
+body.dark-mode .ts-faq-header { background: linear-gradient(135deg,rgba(79,110,247,.1),rgba(124,58,237,.08),rgba(236,72,153,.06)); border-color: rgba(79,110,247,.22); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 600px) {
+  .ts-faq-header { padding: 22px 18px; }
+  .ts-faq-root { padding: 0 0 28px; }
+  .ts-faq-footer { flex-direction: column; align-items: flex-start; }
+  .ts-faq-footer-btn { width: 100%; justify-content: center; }
+  .ts-faq-q { padding: 13px 14px; }
+  .ts-faq-a-inner { padding: 12px 14px; }
+}
+
+/* ── ENHANCED Q&A UI ── */
+/* Question row: left accent line + question number */
+.ts-faq-q {
+  position: relative;
+  padding: 16px 18px 16px 20px;
+}
+.ts-faq-item.open .ts-faq-q::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 3px;
+  border-radius: 0 3px 3px 0;
+  background: linear-gradient(180deg, #4f6ef7, #7c3aed);
+}
+.ts-faq-q-text {
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.45;
+  letter-spacing: -.1px;
+}
+.ts-faq-item:not(.open) .ts-faq-q-text {
+  color: var(--text, #1a1d2e);
+}
+/* Answer: left accent + richer spacing */
+.ts-faq-a-inner {
+  padding: 14px 20px 18px 20px;
+  font-size: 13.5px;
+  line-height: 1.8;
+  border-top: 1px dashed rgba(79,110,247,.18);
+  background: linear-gradient(180deg, rgba(79,110,247,.025) 0%, transparent 60%);
+}
+/* Chevron: slightly bigger, smoother */
+.ts-faq-chevron {
+  width: 24px; height: 24px;
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+/* Group header: refined separator */
+.ts-faq-group-header {
+  border-bottom: 1.5px solid var(--border, #e8ecf4);
+  padding-bottom: 10px;
+  margin-bottom: 12px;
+}
+.ts-faq-group-icon {
+  border: 1.5px solid rgba(0,0,0,.06);
+}
+.ts-faq-group-name {
+  font-size: 11.5px;
+  letter-spacing: 1.5px;
+}
+/* Question row hover: subtle left bar hint */
+.ts-faq-q:hover::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 3px;
+  border-radius: 0 3px 3px 0;
+  background: rgba(79,110,247,.3);
+}
+/* No-result icon fix: remove old font-size */
+.ts-faq-noresult-icon {
+  font-size: 0;
+  line-height: 0;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 14px;
+}
+/* Item: slightly more rounded */
+.ts-faq-item {
+  border-radius: 18px;
+  margin-bottom: 8px;
+}
+/* Answer code tag */
+.ts-faq-a-inner code {
+  background: rgba(79,110,247,.08);
+  color: var(--acc, #4f6ef7);
+  padding: 1px 6px;
+  border-radius: 5px;
+  font-size: 12.5px;
+  font-family: var(--mono, 'DM Mono', monospace);
+}
+
+</style>
+
+<div class="ts-faq-root" id="ts-faq-root">
+
+  <!-- ── PAGE HEADER ── -->
+  <div class="ts-faq-header">
+    <div class="ts-faq-eyebrow">
+      <span class="ts-faq-eyebrow-dot"></span>
+      Help Center
+    </div>
+    <div class="ts-faq-title">Frequently Asked <span>Questions</span></div>
+    <div class="ts-faq-sub">
+      Everything you need to know about Thunderstudy — CUET mock tests, analytics, badges, rank tracking, and more.
+    </div>
+    <div class="ts-faq-meta">
+      <span class="ts-faq-pill">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+        Updated May 2026
+      </span>
+      <span class="ts-faq-pill">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        54 Questions
+      </span>
+      <span class="ts-faq-pill" style="color:var(--green,#10b981);border-color:rgba(16,185,129,.25);background:rgba(16,185,129,.08);">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        100% Free Platform
+      </span>
+    </div>
+  </div>
+
+  <!-- ── SEARCH ── -->
+  <div class="ts-faq-search-wrap">
+    <span class="ts-faq-search-icon">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+    </span>
+    <input
+      class="ts-faq-search"
+      id="ts-faq-search"
+      placeholder="Search questions — e.g. "mock test", "dark mode", "rank""
+      oninput="tsFaqSearch(this.value)"
+      autocomplete="off"
+      spellcheck="false"
+    >
+    <button class="ts-faq-clear" id="ts-faq-clear" onclick="tsFaqClear()" title="Clear search">×</button>
+  </div>
+
+  <!-- ── COUNT BAR ── -->
+  <div class="ts-faq-count-bar">
+    <span class="ts-faq-count-text" id="ts-faq-count">Showing all 54 questions</span>
+    <button class="ts-faq-expand-all" onclick="tsFaqToggleAll()" id="ts-faq-expand-all-btn">Expand all</button>
+  </div>
+
+  <!-- ── NO RESULTS ── -->
+  <div class="ts-faq-noresult" id="ts-faq-noresult">
+    <div class="ts-faq-noresult-icon"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--text3,#9298b5)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
+    <div class="ts-faq-noresult-title">No questions found</div>
+    <div class="ts-faq-noresult-sub">Try a different keyword — or <a href="https://t.me/mindmaster_robot" target="_blank" rel="noopener" style="color:var(--acc,#4f6ef7);font-weight:700;text-decoration:none;">ask on Telegram</a>.</div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════
+       CATEGORY 1 — ABOUT THUNDERSTUDY
+  ════════════════════════════════════════════════════════════ -->
+  <div class="ts-faq-group" data-group="about">
+    <div class="ts-faq-group-header">
+      <div class="ts-faq-group-icon" style="background:linear-gradient(135deg,rgba(79,110,247,.15),rgba(124,58,237,.12));"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#4f6ef7" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
+      <span class="ts-faq-group-name">About Thunderstudy</span>
+      <span class="ts-faq-group-count">8 Q</span>
+    </div>
+
+    <div class="ts-faq-item" data-q="What is Thunderstudy?">
+      <div class="ts-faq-q" onclick="tsFaqToggle(this)">
+        <span class="ts-faq-q-text">What is Thunderstudy?</span>
+        <span class="ts-faq-chevron"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+      </div>
+      <div class="ts-faq-a"><div class="ts-faq-a-inner">
+        Thunderstudy is a <strong>free CUET preparation platform</strong> built by Wondermayank. It offers chapter-wise CBT (Computer-Based Test) mock tests, real-time score analytics, a class rank leaderboard, XP-based gamification, achievement badges, and streak tracking — all without any subscription fee.
+      </div></div>
+    </div>
+
+    <div class="ts-faq-item" data-q="Is Thunderstudy completely free?">
+      <div class="ts-faq-q" onclick="tsFaqToggle(this)">
+        <span class="ts-faq-q-text">Is Thunderstudy completely free?</span>
+        <span class="ts-faq-chevron"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+      </div>
+      <div class="ts-faq-a"><div class="ts-faq-a-inner">
+        <strong>Yes, 100%.</strong> Every feature — mock tests, analytics, leaderboard, badges, and downloads — is completely free. There are no paywalls, premium tiers, or hidden charges. It is a passion project by Wondermayank for the CUET community. <span class="ts-faq-tag green">Free forever</span>
+      </div></div>
+    </div>
+
+    <div class="ts-faq-item" data-q="Who created Thunderstudy and why?">
+      <div class="ts-faq-q" onclick="tsFaqToggle(this)">
+        <span class="ts-faq-q-text">Who created Thunderstudy and why?</span>
+        <span class="ts-faq-chevron"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+      </div>
+      <div class="ts-faq-a"><div class="ts-faq-a-inner">
+        Thunderstudy was created by <strong>Wondermayank</strong> — a student and developer — after noticing a gap in high-quality, free CUET prep tools. The goal was to build a platform that feels modern and motivating, not just another question dump. You can follow Wondermayank on <a href="https://instagram.com/wondermayank" target="_blank" rel="noopener">Instagram</a>, <a href="https://t.me/mindmaster_robot" target="_blank" rel="noopener">Telegram</a>, or <a href="https://youtube.com/@wondermayank" target="_blank" rel="noopener">YouTube</a>.
+      </div></div>
+    </div>
+
+    <div class="ts-faq-item" data-q="Which streams and subjects does Thunderstudy cover?">
+      <div class="ts-faq-q" onclick="tsFaqToggle(this)">
+        <span class="ts-faq-q-text">Which streams and subjects does Thunderstudy cover?</span>
+        <span class="ts-faq-chevron"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+      </div>
+      <div class="ts-faq-a"><div class="ts-faq-a-inner">
+        Thunderstudy covers all major CUET streams:<br><br>
+        <strong>Commerce</strong> — Accountancy, Business Studies, Economics<br>
+        <strong>Science</strong> — Physics, Chemistry, Biology, Mathematics<br>
+        <strong>Humanities</strong> — History, Political Science, Geography, Sociology, Psychology<br>
+        <strong>Languages</strong> — English (General Test)<br>
+        <strong>General Test (GAT)</strong> — Reasoning, Quantitative Aptitude, GK<br>
+        <strong>Computer Science &amp; IP</strong> — CS, Informatics Practices<br>
+        <strong>Physical Education</strong> — PE Theory<br><br>
+        New chapters and subjects are added regularly based on community demand.
+      </div></div>
+    </div>
+
+    <div class="ts-faq-item" data-q="Can I use Thunderstudy on my phone?">
+      <div class="ts-faq-q" onclick="tsFaqToggle(this)">
+        <span class="ts-faq-q-text">Can I use Thunderstudy on my phone?</span>
+        <span class="ts-faq-chevron"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+      </div>
+      <div class="ts-faq-a"><div class="ts-faq-a-inner">
+        Absolutely! Thunderstudy is <strong>fully responsive</strong> and works on all screen sizes. You can also install it as a <strong>PWA (Progressive Web App)</strong> on both Android and iOS — it works like a native app with offline support. Look for the install prompt when you visit the site.
+      </div></div>
+    </div>
+
+    <div class="ts-faq-item" data-q="Does Thunderstudy work offline?">
+      <div class="ts-faq-q" onclick="tsFaqToggle(this)">
+        <span class="ts-faq-q-text">Does Thunderstudy work offline?</span>
+        <span class="ts-faq-chevron"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+      </div>
+      <div class="ts-faq-a"><div class="ts-faq-a-inner">
+        Core pages load offline after the first visit thanks to PWA caching. However, <strong>live features like leaderboard, score sync, and cloud analytics require an internet connection</strong>. Install the PWA for the best offline experience.
+      </div></div>
+    </div>
+
+    <div class="ts-faq-item" data-q="Is there a Thunderstudy app on the Play Store or App Store?">
+      <div class="ts-faq-q" onclick="tsFaqToggle(this)">
+        <span class="ts-faq-q-text">Is there a Thunderstudy app on the Play Store or App Store?</span>
+        <span class="ts-faq-chevron"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+      </div>
+      <div class="ts-faq-a"><div class="ts-faq-a-inner">
+        There is no separate native app yet. Instead, you can install Thunderstudy directly from your browser as a <strong>PWA</strong> — it feels exactly like a native app, saves to your home screen, and works great. Android users see an automatic install prompt; iOS users tap Share → Add to Home Screen.
+      </div></div>
+    </div>
+
+    <div class="ts-faq-item" data-q="How do I report a bug or suggest a feature?">
+      <div class="ts-faq-q" onclick="tsFaqToggle(this)">
+        <span class="ts-faq-q-text">How do I report a bug or suggest a feature?</span>
+        <span class="ts-faq-chevron"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+      </div>
+      <div class="ts-faq-a"><div class="ts-faq-a-inner">
+        Use the <strong>Report a Bug</strong> button in the More → Support section, or reach out directly on <a href="https://t.me/mindmaster_robot" target="_blank" rel="noopener">Telegram</a> or <a href="https://instagram.com/wondermayank" target="_blank" rel="noopener">Instagram</a>. Feature suggestions are always welcome and many have made it into the app!
+      </div></div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════
+       CATEGORY 2 — CUET EXAM
+  ════════════════════════════════════════════════════════════ -->
+  <div class="ts-faq-group" data-group="cuet">
+    <div class="ts-faq-group-header">
+      <div class="ts-faq-group-icon" style="background:linear-gradient(135deg,rgba(16,185,129,.15),rgba(6,182,212,.12));"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></div>
+      <span class="ts-faq-group-name">CUET Exam</span>
+      <span class="ts-faq-group-count">8 Q</span>
+    </div>
+
+    <div class="ts-faq-item" data-q="What is CUET UG?">
+      <div class="ts-faq-q" onclick="tsFaqToggle(this)">
+        <span class="ts-faq-q-text">What is CUET UG?</span>
+        <span class="ts-faq-chevron"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+      </div>
+      <div class="ts-faq-a"><div class="ts-faq-a-inner">
+        <strong>CUET UG (Common University Entrance Test — Undergraduate)</strong> is a national-level entrance examination conducted by NTA for admission to undergraduate programs in central, state, deemed, and private universities across India. It replaced the individual university entrance tests for most participating institutions.
+      </div></div>
+    </div>
+
+    <div class="ts-faq-item" data-q="What is the CUET marking scheme?">
+      <div class="ts-faq-q" onclick="tsFaqToggle(this)">
+        <span class="ts-faq-q-text">What is the CUET marking scheme?</span>
+        <span class="ts-faq-chevron"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+      </div>
+      <div class="ts-faq-a"><div class="ts-faq-a-inner">
+        CUET follows this marking scheme:<br><br>
+        <span class="ts-faq-tag green">+5</span> for each correct answer<br>
+        <span class="ts-faq-tag red">−1</span> negative marking for each wrong answer<br>
+        <span class="ts-faq-tag">0</span> for unattempted questions<br><br>
+        Thunderstudy's mock tests replicate this exact scheme so your practice score directly maps to your real exam score.
+      </div></div>
+    </div>
+
+    <div class="ts-faq-item" data-q="How many questions can I attempt in CUET?">
+      <div class="ts-faq-q" onclick="tsFaqToggle(this)">
+        <span class="ts-faq-q-text">How many questions can I attempt in CUET?</span>
+        <span class="ts-faq-chevron"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+      </div>
+      <div class="ts-faq-a"><div class="ts-faq-a-inner">
+        Each domain subject paper typically has <strong>50 questions to attempt out of 60</strong>. The General Test (Section III) has <strong>60 questions to attempt out of 75</strong>. Language papers (Section I) are typically 50/50. Always verify the latest pattern from the official NTA notification as it may change each year.
+      </div></div>
+    </div>
+
+    <div class="ts-faq-item" data-q="What is the ideal CUET score for top colleges?">
+      <div class="ts-faq-q" onclick="tsFaqToggle(this)">
+        <span class="ts-faq-q-text">What is the ideal CUET score for top colleges?</span>
+        <span class="ts-faq-chevron"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+      </div>
+      <div class="ts-faq-a"><div class="ts-faq-a-inner">
+        For top central universities (DU, BHU, JNU, etc.) a score of <strong>200–250 / 250</strong> is typically competitive for popular programs. Use the <strong>Target Score Simulator</strong> in Thunderstudy's Analytics section to calculate exactly how many correct answers you need to hit your target. <span class="ts-faq-tag yellow">Varies by college &amp; cutoff</span>
+      </div></div>
+    </div>
+
+    <div class="ts-faq-item" data-q="How many subjects can I appear for in CUET?">
+      <div class="ts-faq-q" onclick="tsFaqToggle(this)">
+        <span class="ts-faq-q-text">How many subjects can I appear for in CUET?</span>
+        <span class="ts-faq-chevron"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+      </div>
+      <div class="ts-faq-a"><div class="ts-faq-a-inner">
+        Students can appear for a maximum of <strong>6 domain subjects</strong> + at least 1 language + the General Test. The exact combination depends on your target universities' requirements. Plan your subjects carefully to maximise your options.
+      </div></div>
+    </div>
+
+    <div class="ts-faq-item" data-q="What is the difference between Section IA, IB, II, and III in CUET?">
+      <div class="ts-faq-q" onclick="tsFaqToggle(this)">
+        <span class="ts-faq-q-text">What is the difference between Section IA, IB, II, and III in CUET?</span>
+        <span class="ts-faq-chevron"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+      </div>
+      <div class="ts-faq-a"><div class="ts-faq-a-inner">
+        <strong>Section IA</strong> — 13 languages (Reading comprehension, vocabulary, grammar)<br>
+        <strong>Section IB</strong> — 19 additional languages<br>
+        <strong>Section II</strong> — 27 domain-specific subjects (your stream subjects)<br>
+        <strong>Section III</strong> — General Test: General Knowledge, Current Affairs, Mental Ability, Numerical Ability, Logical Reasoning<br><br>
+        Thunderstudy's mock tests are organised by these sections for targeted practice.
+      </div></div>
+    </div>
+
+    <div class="ts-faq-item" data-q="Does CUET have negative marking?">
+      <div class="ts-faq-q" onclick="tsFaqToggle(this)">
+        <span class="ts-faq-q-text">Does CUET have negative marking?</span>
+        <span class="ts-faq-chevron"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+      </div>
+      <div class="ts-faq-a"><div class="ts-faq-a-inner">
+        <strong>Yes</strong> — CUET deducts <span class="ts-faq-tag red">−1 mark</span> for every wrong answer. Thunderstudy's analytics show you your accuracy rate and warn you when guessing is hurting your net score. Use the <strong>Question Log</strong> to review every wrong answer after a test.
+      </div></div>
+    </div>
+
+    <div class="ts-faq-item" data-q="Is CUET conducted in online or offline mode?">
+      <div class="ts-faq-q" onclick="tsFaqToggle(this)">
+        <span class="ts-faq-q-text">Is CUET conducted in online or offline mode?</span>
+        <span class="ts-faq-chevron"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+      </div>
+      <div class="ts-faq-a"><div class="ts-faq-a-inner">
+        CUET is conducted in <strong>online (CBT) mode</strong> — Computer-Based Test. This means you answer on a computer at an official test centre. Thunderstudy's CBT interface is designed to mimic this exactly, so you are already comfortable with the format on exam day.
+      </div></div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════
+       CATEGORY 3 — MOCK TESTS & CBTs
+  ════════════════════════════════════════════════════════════ -->
+  <div class="ts-faq-group" data-group="tests">
+    <div class="ts-faq-group-header">
+      <div class="ts-faq-group-icon" style="background:linear-gradient(135deg,rgba(245,158,11,.15),rgba(249,115,22,.12));"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg></div>
+      <span class="ts-faq-group-name">Mock Tests &amp; CBTs</span>
+      <span class="ts-faq-group-count">8 Q</span>
+    </div>
+
+    <div class="ts-faq-item" data-q="How do I start a mock test on Thunderstudy?">
+      <div class="ts-faq-q" onclick="tsFaqToggle(this)">
+        <span class="ts-faq-q-text">How do I start a mock test on Thunderstudy?</span>
+        <span class="ts-faq-chevron"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+      </div>
+      <div class="ts-faq-a"><div class="ts-faq-a-inner">
+        Go to the <strong>Tests</strong> tab → select your subject → choose a chapter → tap <strong>Start CBT</strong>. The CBT interface opens full-screen, mimicking the real CUET environment with a timer, question palette, and mark-for-review functionality.
+      </div></div>
+    </div>
+
+    <div class="ts-faq-item" data-q="Can I pause a test and resume it later?">
+      <div class="ts-faq-q" onclick="tsFaqToggle(this)">
+        <span class="ts-faq-q-text">Can I pause a test and resume it later?</span>
+        <span class="ts-faq-chevron"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+      </div>
+      <div class="ts-faq-a"><div class="ts-faq-a-inner">
+        Mock tests run with a live countdown timer and are meant to simulate exam conditions. <strong>Pausing is not supported</strong> — just like the real exam. If you close the tab, the test is auto-submitted with your answers so far. Practice under timed conditions to build real exam stamina.
+      </div></div>
+    </div>
+
+    <div class="ts-faq-item" data-q="How are chapter-wise CBTs different from full mock tests?">
+      <div class="ts-faq-q" onclick="tsFaqToggle(this)">
+        <span class="ts-faq-q-text">How are chapter-wise CBTs different from full mock tests?</span>
+        <span class="ts-faq-chevron"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+      </div>
+      <div class="ts-faq-a"><div class="ts-faq-a-inner">
+        <strong>Chapter-wise CBTs</strong> focus on a single chapter at a time — perfect for targeted revision after studying a topic. <strong>Full mock tests</strong> cover the entire syllabus in one sitting, matching the actual CUET paper pattern. Use chapter CBTs during preparation and full mocks in the weeks before the exam.
+      </div></div>
+    </div>
+
+    <div class="ts-faq-item" data-q="Can I review my answers after a test?">
+      <div class="ts-faq-q" onclick="tsFaqToggle(this)">
+        <span class="ts-faq-q-text">Can I review my answers after a test?</span>
+        <span class="ts-faq-chevron"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+      </div>
+      <div class="ts-faq-a"><div class="ts-faq-a-inner">
+        Yes! After every test, you get a detailed <strong>Question Log</strong> that shows each question with your answer, the correct answer, and the explanation. You can filter by Correct / Wrong / Skipped to focus your review. All past tests are saved in your history under Results.
+      </div></div>
+    </div>
+
+    <div class="ts-faq-item" data-q="Are the questions in Thunderstudy CBTs original or from previous years?">
+      <div class="ts-faq-q" onclick="tsFaqToggle(this)">
+        <span class="ts-faq-q-text">Are the questions in Thunderstudy CBTs original or from previous years?</span>
+        <span class="ts-faq-chevron"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+      </div>
+      <div class="ts-faq-a"><div class="ts-faq-a-inner">
+        Thunderstudy includes a mix of <strong>NTA-pattern original questions</strong> as well as curated questions aligned with NCERT and previous CUET papers. The question bank is continuously reviewed and updated to match current exam trends and syllabus.
+      </div></div>
+    </div>
+
+    <div class="ts-faq-item" data-q="What happens if my internet disconnects mid-test?">
+      <div class="ts-faq-q" onclick="tsFaqToggle(this)">
+        <span class="ts-faq-q-text">What happens if my internet disconnects mid-test?</span>
+        <span class="ts-faq-chevron"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+      </div>
+      <div class="ts-faq-a"><div class="ts-faq-a-inner">
+        Your answers are <strong>saved locally in your browser</strong> as you go. If your connection drops and you reload within the session window, your answers are restored. However, the timer continues — so reconnect quickly. This also replicates a real test centre experience where connectivity issues don't halt your answers.
+      </div></div>
+    </div>
+
+    <div class="ts-faq-item" data-q="Can I retake the same chapter CBT multiple times?">
+      <div class="ts-faq-q" onclick="tsFaqToggle(this)">
+        <span class="ts-faq-q-text">Can I retake the same chapter CBT multiple times?</span>
+        <span class="ts-faq-chevron"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+      </div>
+      <div class="ts-faq-a"><div class="ts-faq-a-inner">
+        Yes, unlimited retakes! Each attempt is tracked separately in your history, so you can see your improvement over time. Your <strong>Best Score</strong> is highlighted on the chapter card, and your Analytics shows the trend across all attempts.
+      </div></div>
+    </div>
+
+    <div class="ts-faq-item" data-q="Is the timer in Thunderstudy the same as in the real CUET?">
+      <div class="ts-faq-q" onclick="tsFaqToggle(this)">
+        <span class="ts-faq-q-text">Is the timer in Thunderstudy the same as in the real CUET?</span>
+        <span class="ts-faq-chevron"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+      </div>
+      <div class="ts-faq-a"><div class="ts-faq-a-inner">
+        Chapter CBTs use a <strong>scaled time</strong> based on the number of questions (roughly 1.2 minutes per question). Full mock tests use the <strong>exact CUET time allocation</strong> — 45 to 60 minutes depending on the section. The countdown is always visible and turns red in the final 5 minutes to simulate exam pressure.
+      </div></div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════
+       CATEGORY 4 — SCORE ANALYTICS
+  ════════════════════════════════════════════════════════════ -->
+  <div class="ts-faq-group" data-group="analytics">
+    <div class="ts-faq-group-header">
+      <div class="ts-faq-group-icon" style="background:linear-gradient(135deg,rgba(6,182,212,.15),rgba(79,110,247,.12));"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#06b6d4" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div>
+      <span class="ts-faq-group-name">Score Analytics</span>
+      <span class="ts-faq-group-count">8 Q</span>
+    </div>
+
+    <div class="ts-faq-item" data-q="What analytics does Thunderstudy provide?">
+      <div class="ts-faq-q" onclick="tsFaqToggle(this)">
+        <span class="ts-faq-q-text">What analytics does Thunderstudy provide?</span>
+        <span class="ts-faq-chevron"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+      </div>
+      <div class="ts-faq-a"><div class="ts-faq-a-inner">
+        The Analytics section shows:<br><br>
+        • <strong>Score Trend</strong> — line chart of all your test scores over time<br>
+        • <strong>Subject Breakdown</strong> — donut chart with per-subject performance<br>
+        • <strong>Accuracy Rate</strong> — correct vs. wrong vs. skipped ratio<br>
+        • <strong>Predicted Score</strong> — estimated CUET score based on your practice data<br>
+        • <strong>Chapter Heatmap</strong> — which chapters need the most attention<br>
+        • <strong>Time-per-Question</strong> — speed analysis to spot slow chapters
+      </div></div>
+    </div>
+
+    <div class="ts-faq-item" data-q="How is my predicted CUET score calculated?">
+      <div class="ts-faq-q" onclick="tsFaqToggle(this)">
+        <span class="ts-faq-q-text">How is my predicted CUET score calculated?</span>
+        <span class="ts-faq-chevron"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+      </div>
+      <div class="ts-faq-a"><div class="ts-faq-a-inner">
+        Your predicted score is based on a weighted average of your <strong>recent test performances</strong>, accuracy, and the CUET marking scheme (+5/−1). More recent tests carry higher weight so the prediction stays current. <span class="ts-faq-tag yellow">Indicative only</span> — actual exam scores may vary based on paper difficulty and normalisation.
+      </div></div>
+    </div>
+
+    <div class="ts-faq-item" data-q="Can I download my score report or share it?">
+      <div class="ts-faq-q" onclick="tsFaqToggle(this)">
+        <span class="ts-faq-q-text">Can I download my score report or share it?</span>
+        <span class="ts-faq-chevron"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+      </div>
+      <div class="ts-faq-a"><div class="ts-faq-a-inner">
+        Yes! Use the <strong>Download PDF Report</strong> button in Analytics to generate a beautiful PDF scorecard with your performance summary, chapter breakdown, and trend chart. You can also download your <strong>badge certificate</strong> and share it on social media.
+      </div></div>
+    </div>
+
+    <div class="ts-faq-item" data-q="How do I set a target score and track my gap?">
+      <div class="ts-faq-q" onclick="tsFaqToggle(this)">
+        <span class="ts-faq-q-text">How do I set a target score and track my gap?</span>
+        <span class="ts-faq-chevron"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+      </div>
+      <div class="ts-faq-a"><div class="ts-faq-a-inner">
+        Open the <strong>Target Score Simulator</strong> in Analytics, drag the sliders to set your target for each subject, and Thunderstudy will calculate exactly how many correct answers you need in each paper to hit your goal. Your current gap is shown with a colour-coded progress bar.
+      </div></div>
+    </div>
+
+    <div class="ts-faq-item" data-q="Does my analytics data sync across devices?">
+      <div class="ts-faq-q" onclick="tsFaqToggle(this)">
+        <span class="ts-faq-q-text">Does my analytics data sync across devices?</span>
+        <span class="ts-faq-chevron"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+      </div>
+      <div class="ts-faq-a"><div class="ts-faq-a-inner">
+        Yes — when you are signed in with your account, all test results, scores, streaks, XP, and badges sync to the cloud via Firebase. You can seamlessly switch between phone and laptop and your data stays in sync.
+      </div></div>
+    </div>
+
+    <div class="ts-faq-item" data-q="Can I see my weakest chapters at a glance?">
+      <div class="ts-faq-q" onclick="tsFaqToggle(this)">
+        <span class="ts-faq-q-text">Can I see my weakest chapters at a glance?</span>
+        <span class="ts-faq-chevron"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+      </div>
+      <div class="ts-faq-a"><div class="ts-faq-a-inner">
+        Yes — the <strong>Chapter Heatmap</strong> in Analytics uses colour coding (green = strong, red = needs work) across all your subjects and chapters. Tap any chapter in the heatmap to jump directly to its practice CBT.
+      </div></div>
+    </div>
+
+    <div class="ts-faq-item" data-q="How do I clear my test history?">
+      <div class="ts-faq-q" onclick="tsFaqToggle(this)">
+        <span class="ts-faq-q-text">How do I clear my test history?</span>
+        <span class="ts-faq-chevron"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+      </div>
+      <div class="ts-faq-a"><div class="ts-faq-a-inner">
+        Go to <strong>Settings → Data &amp; Privacy → Clear Test History</strong>. Note this is irreversible — your analytics charts will reset. If you just want a fresh streak, you can use the reset streak option instead.
+      </div></div>
+    </div>
+
+    <div class="ts-faq-item" data-q="What is the Question Log?">
+      <div class="ts-faq-q" onclick="tsFaqToggle(this)">
+        <span class="ts-faq-q-text">What is the Question Log?</span>
+        <span class="ts-faq-chevron"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+      </div>
+      <div class="ts-faq-a"><div class="ts-faq-a-inner">
+        The <strong>Question Log</strong> is your post-test review screen. It lists every question in the test with: your selected answer, the correct answer highlighted, the explanation, and the time you spent. Filter by ✅ Correct, ❌ Wrong, or ⏭ Skipped. This is the most powerful revision tool on the platform.
+      </div></div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════
+       CATEGORY 5 — RANK TRACKER & LEADERBOARD
+  ════════════════════════════════════════════════════════════ -->
+  <div class="ts-faq-group" data-group="rank">
+    <div class="ts-faq-group-header">
+      <div class="ts-faq-group-icon" style="background:linear-gradient(135deg,rgba(245,158,11,.15),rgba(249,115,22,.12));"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 0 0 5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 1 0 5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2z"/></svg></div>
+      <span class="ts-faq-group-name">Rank Tracker &amp; Leaderboard</span>
+      <span class="ts-faq-group-count">6 Q</span>
+    </div>
+
+    <div class="ts-faq-item" data-q="What is the Thunderstudy class rank leaderboard?">
+      <div class="ts-faq-q" onclick="tsFaqToggle(this)">
+        <span class="ts-faq-q-text">What is the Thunderstudy class rank leaderboard?</span>
+        <span class="ts-faq-chevron"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+      </div>
+      <div class="ts-faq-a"><div class="ts-faq-a-inner">
+        The <strong>Leaderboard</strong> ranks all Thunderstudy users by their <strong>overall XP</strong> and <strong>average test score</strong>. You can see your global rank, your position among your subject-mates, and how far you are from the next rank. It refreshes in real time after every test submission.
+      </div></div>
+    </div>
+
+    <div class="ts-faq-item" data-q="How is my rank calculated?">
+      <div class="ts-faq-q" onclick="tsFaqToggle(this)">
+        <span class="ts-faq-q-text">How is my rank calculated?</span>
+        <span class="ts-faq-chevron"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+      </div>
+      <div class="ts-faq-a"><div class="ts-faq-a-inner">
+        Rank is based on your <strong>total XP points</strong>, which you earn by completing tests, maintaining streaks, unlocking badges, and achieving milestones. Tests with higher accuracy give more XP. Tie-breaking is done by average score percentage.
+      </div></div>
+    </div>
+
+    <div class="ts-faq-item" data-q="Is the leaderboard visible to other users?">
+      <div class="ts-faq-q" onclick="tsFaqToggle(this)">
+        <span class="ts-faq-q-text">Is the leaderboard visible to other users?</span>
+        <span class="ts-faq-chevron"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+      </div>
+      <div class="ts-faq-a"><div class="ts-faq-a-inner">
+        Yes — the leaderboard shows display names and avatars publicly. If you prefer privacy, you can change your display name to a nickname in <strong>Settings → Profile</strong>. Your actual email and personal details are never visible to other users.
+      </div></div>
+    </div>
+
+    <div class="ts-faq-item" data-q="Can I filter the leaderboard by subject?">
+      <div class="ts-faq-q" onclick="tsFaqToggle(this)">
+        <span class="ts-faq-q-text">Can I filter the leaderboard by subject?</span>
+        <span class="ts-faq-chevron"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+      </div>
+      <div class="ts-faq-a"><div class="ts-faq-a-inner">
+        Yes! The leaderboard has filter tabs for each subject group — Commerce, Science, Humanities, GAT, and more. You can see who is topping your specific subject area. There is also a <strong>Weekly Rank</strong> view showing just the past 7 days.
+      </div></div>
+    </div>
+
+    <div class="ts-faq-item" data-q="Does the leaderboard reset every month?">
+      <div class="ts-faq-q" onclick="tsFaqToggle(this)">
+        <span class="ts-faq-q-text">Does the leaderboard reset every month?</span>
+        <span class="ts-faq-chevron"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+      </div>
+      <div class="ts-faq-a"><div class="ts-faq-a-inner">
+        The <strong>All-Time Leaderboard</strong> never resets. The <strong>Weekly Leaderboard</strong> resets every Monday at midnight. Monthly leaderboard seasons may be introduced in future updates — follow <a href="https://t.me/mindmaster_robot" target="_blank" rel="noopener">Telegram</a> for announcements.
+      </div></div>
+    </div>
+
+    <div class="ts-faq-item" data-q="How do I improve my rank quickly?">
+      <div class="ts-faq-q" onclick="tsFaqToggle(this)">
+        <span class="ts-faq-q-text">How do I improve my rank quickly?</span>
+        <span class="ts-faq-chevron"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+      </div>
+      <div class="ts-faq-a"><div class="ts-faq-a-inner">
+        The fastest ways to climb the leaderboard:<br>
+        1. <strong>Maintain your daily streak</strong> — streak bonus XP multiplies over time<br>
+        2. <strong>Score 80%+ accuracy</strong> in tests — high-accuracy tests give bonus XP<br>
+        3. <strong>Unlock badges</strong> — each badge awards a one-time XP bonus<br>
+        4. <strong>Complete all chapters</strong> in a subject for the subject mastery bonus
+      </div></div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════
+       CATEGORY 6 — XP, BADGES & STREAKS
+  ════════════════════════════════════════════════════════════ -->
+  <div class="ts-faq-group" data-group="gamification">
+    <div class="ts-faq-group-header">
+      <div class="ts-faq-group-icon" style="background:linear-gradient(135deg,rgba(236,72,153,.15),rgba(124,58,237,.12));"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ec4899" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="6" y1="12" x2="10" y2="12"/><line x1="8" y1="10" x2="8" y2="14"/><line x1="15" y1="13" x2="15.01" y2="13"/><line x1="18" y1="11" x2="18.01" y2="11"/><rect x="2" y="6" width="20" height="12" rx="2"/></svg></div>
+      <span class="ts-faq-group-name">XP, Badges &amp; Streaks</span>
+      <span class="ts-faq-group-count">8 Q</span>
+    </div>
+
+    <div class="ts-faq-item" data-q="What is XP and how do I earn it?">
+      <div class="ts-faq-q" onclick="tsFaqToggle(this)">
+        <span class="ts-faq-q-text">What is XP and how do I earn it?</span>
+        <span class="ts-faq-chevron"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+      </div>
+      <div class="ts-faq-a"><div class="ts-faq-a-inner">
+        <strong>XP (Experience Points)</strong> are the currency of progress on Thunderstudy. You earn XP by:<br><br>
+        • Completing a CBT (base XP scaled by score)<br>
+        • Scoring 100% in a chapter (Perfect score bonus)<br>
+        • Maintaining a daily study streak<br>
+        • Unlocking achievement badges<br>
+        • Logging in daily (login bonus)<br><br>
+        XP determines your leaderboard rank and unlocks new profile levels.
+      </div></div>
+    </div>
+
+    <div class="ts-faq-item" data-q="What badges can I earn on Thunderstudy?">
+      <div class="ts-faq-q" onclick="tsFaqToggle(this)">
+        <span class="ts-faq-q-text">What badges can I earn on Thunderstudy?</span>
+        <span class="ts-faq-chevron"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+      </div>
+      <div class="ts-faq-a"><div class="ts-faq-a-inner">
+        Thunderstudy has dozens of achievement badges including:<br><br>
+        🥇 <strong>First Test</strong> — Complete your very first CBT<br>
+        🔥 <strong>Streak Master</strong> — 7, 30, 100-day streak milestones<br>
+        💯 <strong>Perfect Score</strong> — Score 100% in any chapter<br>
+        🎓 <strong>Subject Champ</strong> — Complete all chapters in a subject<br>
+        ⚡ <strong>Speed Demon</strong> — Finish a test with 2+ minutes to spare<br>
+        🏆 <strong>Top 10</strong> — Reach the global leaderboard top 10<br><br>
+        Go to <strong>Achievements</strong> to see the full badge gallery with locked/unlocked status.
+      </div></div>
+    </div>
+
+    <div class="ts-faq-item" data-q="What is a study streak?">
+      <div class="ts-faq-q" onclick="tsFaqToggle(this)">
+        <span class="ts-faq-q-text">What is a study streak?</span>
+        <span class="ts-faq-chevron"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+      </div>
+      <div class="ts-faq-a"><div class="ts-faq-a-inner">
+        A <strong>study streak</strong> is the count of consecutive days you have completed at least one CBT. Streaks are shown on your dashboard home card with a flame icon 🔥. The longer your streak, the higher your XP multiplier. Streaks reset to 0 if you miss a day.
+      </div></div>
+    </div>
+
+    <div class="ts-faq-item" data-q="I forgot to study yesterday. Will my streak break?">
+      <div class="ts-faq-q" onclick="tsFaqToggle(this)">
+        <span class="ts-faq-q-text">I forgot to study yesterday. Will my streak break?</span>
+        <span class="ts-faq-chevron"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+      </div>
+      <div class="ts-faq-a"><div class="ts-faq-a-inner">
+        Unfortunately yes — streaks require daily activity to stay alive. However, Thunderstudy sends a <strong>daily reminder notification</strong> (if you have allowed browser/app notifications) to help you remember. There is no streak freeze feature currently, but it is planned for a future update.
+      </div></div>
+    </div>
+
+    <div class="ts-faq-item" data-q="Can I download and share my badges?">
+      <div class="ts-faq-q" onclick="tsFaqToggle(this)">
+        <span class="ts-faq-q-text">Can I download and share my badges?</span>
+        <span class="ts-faq-chevron"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+      </div>
+      <div class="ts-faq-a"><div class="ts-faq-a-inner">
+        Yes! Tap any earned badge → tap <strong>Download Certificate</strong>. You get a beautifully designed PNG/PDF certificate with your name, badge, date, and Thunderstudy branding. Share it on Instagram, WhatsApp, or anywhere. Tag <strong>@wondermayank</strong> to get featured!
+      </div></div>
+    </div>
+
+    <div class="ts-faq-item" data-q="Do badges and XP carry over to the next academic year?">
+      <div class="ts-faq-q" onclick="tsFaqToggle(this)">
+        <span class="ts-faq-q-text">Do badges and XP carry over to the next academic year?</span>
+        <span class="ts-faq-chevron"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+      </div>
+      <div class="ts-faq-a"><div class="ts-faq-a-inner">
+        <strong>Yes.</strong> Your XP, badges, and profile progress are permanently saved to your account. Only the weekly leaderboard resets. Your achievements are yours to keep forever.
+      </div></div>
+    </div>
+
+    <div class="ts-faq-item" data-q="What are XP levels and what do they unlock?">
+      <div class="ts-faq-q" onclick="tsFaqToggle(this)">
+        <span class="ts-faq-q-text">What are XP levels and what do they unlock?</span>
+        <span class="ts-faq-chevron"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+      </div>
+      <div class="ts-faq-a"><div class="ts-faq-a-inner">
+        XP levels go from <strong>Beginner → Explorer → Scholar → Expert → Champion → Legend</strong>. Each level unlocks a new profile frame, title, and bonus features. Your current level and progress bar are shown on your Profile card on the Home dashboard.
+      </div></div>
+    </div>
+
+    <div class="ts-faq-item" data-q="How do I enable study reminders?">
+      <div class="ts-faq-q" onclick="tsFaqToggle(this)">
+        <span class="ts-faq-q-text">How do I enable study reminders?</span>
+        <span class="ts-faq-chevron"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+      </div>
+      <div class="ts-faq-a"><div class="ts-faq-a-inner">
+        Go to <strong>Settings → Notifications → Daily Study Reminder</strong> and toggle it on. You can set a custom reminder time (e.g. 8 PM). The reminder is sent as a browser push notification (or app notification if PWA is installed). Make sure to allow notifications when prompted.
+      </div></div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════
+       CATEGORY 7 — ACCOUNT & SETTINGS
+  ════════════════════════════════════════════════════════════ -->
+  <div class="ts-faq-group" data-group="account">
+    <div class="ts-faq-group-header">
+      <div class="ts-faq-group-icon" style="background:linear-gradient(135deg,rgba(16,185,129,.15),rgba(6,182,212,.12));"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+      <span class="ts-faq-group-name">Account &amp; Settings</span>
+      <span class="ts-faq-group-count">8 Q</span>
+    </div>
+
+    <div class="ts-faq-item" data-q="Do I need an account to use Thunderstudy?">
+      <div class="ts-faq-q" onclick="tsFaqToggle(this)">
+        <span class="ts-faq-q-text">Do I need an account to use Thunderstudy?</span>
+        <span class="ts-faq-chevron"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+      </div>
+      <div class="ts-faq-a"><div class="ts-faq-a-inner">
+        You can take some tests as a guest, but creating a free account is <strong>strongly recommended</strong> — it unlocks cloud sync, the leaderboard, XP, badges, notifications, and the full analytics dashboard. Sign up with Google (one tap) or email/password.
+      </div></div>
+    </div>
+
+    <div class="ts-faq-item" data-q="How do I sign in to Thunderstudy?">
+      <div class="ts-faq-q" onclick="tsFaqToggle(this)">
+        <span class="ts-faq-q-text">How do I sign in to Thunderstudy?</span>
+        <span class="ts-faq-chevron"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+      </div>
+      <div class="ts-faq-a"><div class="ts-faq-a-inner">
+        Tap the <strong>Sign In</strong> button on the home page or in the sidebar. You can sign in with:<br><br>
+        • <strong>Google</strong> — one-tap, recommended<br>
+        • <strong>Email + Password</strong> — traditional sign-up<br><br>
+        Your data is secured by <strong>Firebase Authentication</strong> (Google's backend), so you never need to worry about password leaks on Thunderstudy's side.
+      </div></div>
+    </div>
+
+    <div class="ts-faq-item" data-q="How do I change my display name or avatar?">
+      <div class="ts-faq-q" onclick="tsFaqToggle(this)">
+        <span class="ts-faq-q-text">How do I change my display name or avatar?</span>
+        <span class="ts-faq-chevron"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+      </div>
+      <div class="ts-faq-a"><div class="ts-faq-a-inner">
+        Go to <strong>Settings → Profile → Edit Profile</strong>. You can change your display name and choose from a set of built-in avatars or upload your own profile picture. Changes are reflected on the leaderboard instantly.
+      </div></div>
+    </div>
+
+    <div class="ts-faq-item" data-q="How do I switch between dark mode and light mode?">
+      <div class="ts-faq-q" onclick="tsFaqToggle(this)">
+        <span class="ts-faq-q-text">How do I switch between dark mode and light mode?</span>
+        <span class="ts-faq-chevron"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+      </div>
+      <div class="ts-faq-a"><div class="ts-faq-a-inner">
+        Tap the <strong>🌙 moon / ☀️ sun icon</strong> in the top bar of the dashboard, or go to <strong>Settings → Appearance → Theme</strong>. You can choose Light, Dark, or follow your System setting. The preference is saved to your account.
+      </div></div>
+    </div>
+
+    <div class="ts-faq-item" data-q="How do I add or change my subjects?">
+      <div class="ts-faq-q" onclick="tsFaqToggle(this)">
+        <span class="ts-faq-q-text">How do I add or change my subjects?</span>
+        <span class="ts-faq-chevron"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+      </div>
+      <div class="ts-faq-a"><div class="ts-faq-a-inner">
+        Go to <strong>Settings → My Subjects</strong>. You can add or remove domain subjects that appear in your Tests tab and Analytics. This personalises your dashboard to show only the subjects relevant to your CUET plan.
+      </div></div>
+    </div>
+
+    <div class="ts-faq-item" data-q="How do I delete my account?">
+      <div class="ts-faq-q" onclick="tsFaqToggle(this)">
+        <span class="ts-faq-q-text">How do I delete my account?</span>
+        <span class="ts-faq-chevron"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+      </div>
+      <div class="ts-faq-a"><div class="ts-faq-a-inner">
+        Go to <strong>Settings → Data &amp; Privacy → Delete Account</strong>. You will be asked to confirm. Deleting your account permanently removes all your data — scores, XP, badges, streaks — from Thunderstudy's servers. This action is irreversible.
+      </div></div>
+    </div>
+
+    <div class="ts-faq-item" data-q="Is my data private and secure?">
+      <div class="ts-faq-q" onclick="tsFaqToggle(this)">
+        <span class="ts-faq-q-text">Is my data private and secure?</span>
+        <span class="ts-faq-chevron"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+      </div>
+      <div class="ts-faq-a"><div class="ts-faq-a-inner">
+        Yes. Thunderstudy uses <strong>Firebase (Google)</strong> for secure auth and data storage. Your email is never visible to other users. No personal data is sold or shared with third parties. Only your display name and public XP appear on the leaderboard. See the Privacy Policy linked in the footer.
+      </div></div>
+    </div>
+
+    <div class="ts-faq-item" data-q="I forgot my password. How do I reset it?">
+      <div class="ts-faq-q" onclick="tsFaqToggle(this)">
+        <span class="ts-faq-q-text">I forgot my password. How do I reset it?</span>
+        <span class="ts-faq-chevron"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+      </div>
+      <div class="ts-faq-a"><div class="ts-faq-a-inner">
+        On the sign-in screen tap <strong>Forgot Password</strong> and enter your email. You will receive a reset link from Firebase. If you signed up with Google, you don't have a Thunderstudy password — just sign in with Google again. Reset emails sometimes land in spam, so check there too.
+      </div></div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════
+       CATEGORY 8 — TECHNICAL & TROUBLESHOOTING
+  ════════════════════════════════════════════════════════════ -->
+  <div class="ts-faq-group" data-group="technical">
+    <div class="ts-faq-group-header">
+      <div class="ts-faq-group-icon" style="background:linear-gradient(135deg,rgba(244,63,94,.15),rgba(249,115,22,.12));"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f43f5e" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>
+      <span class="ts-faq-group-name">Technical &amp; Troubleshooting</span>
+      <span class="ts-faq-group-count">8 Q</span>
+    </div>
+
+    <div class="ts-faq-item" data-q="The dashboard is loading slowly. What should I do?">
+      <div class="ts-faq-q" onclick="tsFaqToggle(this)">
+        <span class="ts-faq-q-text">The dashboard is loading slowly. What should I do?</span>
+        <span class="ts-faq-chevron"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+      </div>
+      <div class="ts-faq-a"><div class="ts-faq-a-inner">
+        Try these steps:<br><br>
+        1. <strong>Hard refresh</strong> — Ctrl+Shift+R (Windows) or Cmd+Shift+R (Mac)<br>
+        2. <strong>Clear browser cache</strong> for the site<br>
+        3. Switch to a different network (e.g. mobile data vs Wi-Fi)<br>
+        4. Update your browser to the latest version<br>
+        5. Try incognito mode to rule out extension conflicts<br><br>
+        If the problem persists, report it via the Bug Report button.
+      </div></div>
+    </div>
+
+    <div class="ts-faq-item" data-q="My score did not save after a test. What happened?">
+      <div class="ts-faq-q" onclick="tsFaqToggle(this)">
+        <span class="ts-faq-q-text">My score did not save after a test. What happened?</span>
+        <span class="ts-faq-chevron"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+      </div>
+      <div class="ts-faq-a"><div class="ts-faq-a-inner">
+        Score saving requires:<br><br>
+        • Being <strong>signed in</strong> to your account<br>
+        • An active <strong>internet connection</strong> when the test ends<br>
+        • Not blocking cookies / Firebase in your browser<br><br>
+        If you were offline when the test ended, the score is saved locally and will sync when you next come online while signed in. If it still doesn't appear, report the issue with the test name and approximate time.
+      </div></div>
+    </div>
+
+    <div class="ts-faq-item" data-q="The dark mode toggle is not working on my device.">
+      <div class="ts-faq-q" onclick="tsFaqToggle(this)">
+        <span class="ts-faq-q-text">The dark mode toggle is not working on my device.</span>
+        <span class="ts-faq-chevron"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+      </div>
+      <div class="ts-faq-a"><div class="ts-faq-a-inner">
+        This is usually caused by browser extensions (like Dark Reader) overriding the site's CSS. Disable any dark mode extensions for this site and try the built-in toggle again. If your browser forces its own dark mode, go to browser settings and allow per-site theme control. Report it if the issue continues.
+      </div></div>
+    </div>
+
+    <div class="ts-faq-item" data-q="Charts and analytics graphs are not displaying.">
+      <div class="ts-faq-q" onclick="tsFaqToggle(this)">
+        <span class="ts-faq-q-text">Charts and analytics graphs are not displaying.</span>
+        <span class="ts-faq-chevron"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+      </div>
+      <div class="ts-faq-a"><div class="ts-faq-a-inner">
+        Charts are powered by <strong>Chart.js</strong> loaded from a CDN. If you have a strict content blocker or firewall, it may block the CDN. Try:<br><br>
+        1. Disable ad-blocker or allow the CDN <code>cdn.jsdelivr.net</code><br>
+        2. Ensure JavaScript is enabled<br>
+        3. Reload the page<br><br>
+        Charts also need at least 1 completed test to render — complete a test first if you are new.
+      </div></div>
+    </div>
+
+    <div class="ts-faq-item" data-q="The CBT timer ran out but the test didn't auto-submit.">
+      <div class="ts-faq-q" onclick="tsFaqToggle(this)">
+        <span class="ts-faq-q-text">The CBT timer ran out but the test didn't auto-submit.</span>
+        <span class="ts-faq-chevron"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+      </div>
+      <div class="ts-faq-a"><div class="ts-faq-a-inner">
+        Auto-submission requires JavaScript to be running and the tab to be active. If you switched to another tab and the browser throttled the background timer (common on mobile Chrome), the auto-submit may be delayed. Hit <strong>Submit</strong> manually when you notice. This edge case is being improved — report it with your device/browser details.
+      </div></div>
+    </div>
+
+    <div class="ts-faq-item" data-q="Notifications are not showing up on iOS.">
+      <div class="ts-faq-q" onclick="tsFaqToggle(this)">
+        <span class="ts-faq-q-text">Notifications are not showing up on iOS.</span>
+        <span class="ts-faq-chevron"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+      </div>
+      <div class="ts-faq-a"><div class="ts-faq-a-inner">
+        iOS push notifications for web apps require:<br><br>
+        1. Thunderstudy must be <strong>installed as a PWA</strong> (Add to Home Screen)<br>
+        2. You must be on <strong>iOS 16.4+</strong><br>
+        3. Allow notifications in <strong>iOS Settings → Thunderstudy → Notifications</strong><br><br>
+        Safari on iOS does not support push notifications for browser tabs — only for installed PWAs.
+      </div></div>
+    </div>
+
+    <div class="ts-faq-item" data-q="What browsers are supported?">
+      <div class="ts-faq-q" onclick="tsFaqToggle(this)">
+        <span class="ts-faq-q-text">What browsers are supported?</span>
+        <span class="ts-faq-chevron"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+      </div>
+      <div class="ts-faq-a"><div class="ts-faq-a-inner">
+        Thunderstudy is optimised for:<br><br>
+        <span class="ts-faq-tag green">Best</span> Chrome (Android &amp; Desktop), Edge (Desktop)<br>
+        <span class="ts-faq-tag">Good</span> Firefox (Desktop), Samsung Internet (Android)<br>
+        <span class="ts-faq-tag yellow">Limited</span> Safari (iOS) — PWA features require iOS 16.4+<br><br>
+        Always use the latest version of your browser for the best experience.
+      </div></div>
+    </div>
+
+    <div class="ts-faq-item" data-q="Can I use Thunderstudy on a tablet?">
+      <div class="ts-faq-q" onclick="tsFaqToggle(this)">
+        <span class="ts-faq-q-text">Can I use Thunderstudy on a tablet?</span>
+        <span class="ts-faq-chevron"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+      </div>
+      <div class="ts-faq-a"><div class="ts-faq-a-inner">
+        Absolutely! Thunderstudy uses a <strong>responsive layout</strong> that adapts to tablets (iPad, Android tablet) with an optimised sidebar navigation. On tablets in landscape mode, the full desktop sidebar is shown. Portrait mode shows the mobile dock.
+      </div></div>
+    </div>
+  </div>
+
+  <!-- ── NO RESULT PLACEHOLDER ── -->
+  <div class="ts-faq-noresult" id="ts-faq-noresult">
+    <div class="ts-faq-noresult-icon"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--text3,#9298b5)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
+    <div class="ts-faq-noresult-title">No questions found</div>
+    <div class="ts-faq-noresult-sub">Try a different keyword — or <a href="https://t.me/mindmaster_robot" target="_blank" rel="noopener">ask on Telegram</a>.</div>
+  </div>
+
+  <!-- ── FOOTER CTA ── -->
+  <div class="ts-faq-footer">
+    <div class="ts-faq-footer-text">
+      <strong>Still have a question?</strong>
+      <span>Reach out to Wondermayank directly — response within 24 hours.</span>
+    </div>
+    <a href="https://t.me/mindmaster_robot" target="_blank" rel="noopener" class="ts-faq-footer-btn">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 4.5L2.5 10.5l7 2.5M21.5 4.5l-7 15-4-7.5M21.5 4.5l-12 8"/></svg>
+      Ask on Telegram
+    </a>
+  </div>
+
+</div>
+
+<!-- ── FAQ LOGIC ── -->
+<script>
+(function() {
+  let allExpanded = false;
+
+  /* Toggle a single item */
+  window.tsFaqToggle = function(btn) {
+    const item = btn.closest('.ts-faq-item');
+    item.classList.toggle('open');
+  };
+
+  /* Expand / collapse all visible items */
+  window.tsFaqToggleAll = function() {
+    allExpanded = !allExpanded;
+    document.querySelectorAll('.ts-faq-item:not(.hidden)').forEach(function(item) {
+      item.classList.toggle('open', allExpanded);
+    });
+    document.getElementById('ts-faq-expand-all-btn').textContent =
+      allExpanded ? 'Collapse all' : 'Expand all';
+  };
+
+  /* Search */
+  window.tsFaqSearch = function(q) {
+    const clearBtn = document.getElementById('ts-faq-clear');
+    clearBtn.classList.toggle('visible', q.length > 0);
+
+    const term = q.toLowerCase().trim();
+    const items = document.querySelectorAll('.ts-faq-item');
+    const groups = document.querySelectorAll('.ts-faq-group');
+    let totalVisible = 0;
+
+    items.forEach(function(item) {
+      const text = (item.dataset.q || '') + ' ' + item.textContent;
+      const match = !term || text.toLowerCase().includes(term);
+      item.classList.toggle('hidden', !match);
+      if (match) {
+        totalVisible++;
+        if (term) item.classList.add('open');
+        else item.classList.remove('open');
+      }
+    });
+
+    /* Hide empty groups */
+    groups.forEach(function(group) {
+      const anyVisible = group.querySelectorAll('.ts-faq-item:not(.hidden)').length > 0;
+      group.style.display = anyVisible ? '' : 'none';
+    });
+
+    /* No result state */
+    const noResult = document.getElementById('ts-faq-noresult');
+    if (noResult) noResult.classList.toggle('visible', totalVisible === 0 && term.length > 0);
+
+    /* Count text */
+    const countEl = document.getElementById('ts-faq-count');
+    if (countEl) {
+      countEl.textContent = term
+        ? 'Showing ' + totalVisible + ' result' + (totalVisible !== 1 ? 's' : '') + ' for "' + q + '"'
+        : 'Showing all 54 questions';
+    }
+  };
+
+  /* Clear search */
+  window.tsFaqClear = function() {
+    const input = document.getElementById('ts-faq-search');
+    input.value = '';
+    tsFaqSearch('');
+    input.focus();
+  };
+
+  /* Keyboard shortcut: / to focus search */
+  document.addEventListener('keydown', function(e) {
+    if (e.key === '/' && document.activeElement.tagName !== 'INPUT') {
+      e.preventDefault();
+      const inp = document.getElementById('ts-faq-search');
+      if (inp) { inp.focus(); inp.select(); }
+    }
+    if (e.key === 'Escape') {
+      const inp = document.getElementById('ts-faq-search');
+      if (inp && document.activeElement === inp) tsFaqClear();
+    }
+  });
+})();
+</script>
