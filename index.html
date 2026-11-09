@@ -3,22 +3,58 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>This page has moved to thundertest.indevs.in | ThunderStudy</title>
-<meta name="description" content="ThunderStudy and ThunderTest pages have moved to thundertest.indevs.in. Use the button to open the same page at its new address.">
+
+<title>We have moved to thundertest.indevs.in | ThunderStudy</title>
+<meta name="description" content="ThunderStudy and ThunderTest have moved to thundertest.indevs.in. All sections kept their names: CUET, SSC, Banking, JEE / NEET, Exam, Commerce and Science.">
+
+<!-- search engines: do not index the old address, but do follow the links -->
 <meta name="robots" content="noindex, follow">
+<link rel="canonical" href="https://thundertest.indevs.in/">
+
+<!-- favicon lives in this repo, next to index.html -->
+<link rel="icon" type="image/svg+xml" href="./favicon.svg">
+<link rel="apple-touch-icon" href="./favicon.svg">
+<link rel="mask-icon" href="./favicon.svg" color="#573AFC">
+
+<!-- ============ OPEN GRAPH ============ -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="ThunderStudy">
+<meta property="og:locale" content="en_IN">
+<meta property="og:title" content="We have moved to thundertest.indevs.in">
+<meta property="og:description" content="Same tools, same free content, new address. CUET, SSC, Banking, JEE / NEET, Exam, Commerce and Science are all on thundertest.indevs.in.">
+<meta property="og:url" content="https://thundertest.indevs.in/">
+<meta property="og:image" content="./og-image.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="ThunderStudy has moved to thundertest.indevs.in">
+
+<!-- ============ TWITTER / X ============ -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="We have moved to thundertest.indevs.in">
+<meta name="twitter:description" content="Same tools, same free content, new address. All ThunderStudy sections are now on thundertest.indevs.in.">
+<meta name="twitter:image" content="./og-image.png">
+<meta name="twitter:image:alt" content="ThunderStudy has moved to thundertest.indevs.in">
+
 <meta name="theme-color" id="metaTheme" content="#573AFC">
 <meta name="color-scheme" id="metaScheme" content="light">
 <meta name="darkreader-lock">
+
 <script>
-/* Theme is only ever light (blue) or dark (purple), from the saved choice, never from the phone or system. */
-(function(){var t='light';try{var s=localStorage.getItem('theme');if(s==='dark'||s==='light')t=s;}catch(e){}
-document.documentElement.setAttribute('data-theme',t);
-var m=document.getElementById('metaTheme');if(m)m.setAttribute('content',t==='dark'?'#9A7AFB':'#573AFC');
-var c=document.getElementById('metaScheme');if(c)c.setAttribute('content',t);})();
+/* Theme is only light (blue) or dark (purple). It comes from the saved choice, never from the phone or system. */
+(function(){
+  var t='light';
+  try{ var s=localStorage.getItem('theme'); if(s==='dark'||s==='light') t=s; }catch(e){}
+  document.documentElement.setAttribute('data-theme',t);
+  var m=document.getElementById('metaTheme'); if(m) m.setAttribute('content',t==='dark'?'#9A7AFB':'#573AFC');
+  var c=document.getElementById('metaScheme'); if(c) c.setAttribute('content',t);
+})();
 </script>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
 <style>
 /* =========================================================
    TOKENS — clay system, light + dark, fixed
@@ -109,13 +145,22 @@ svg{flex-shrink:0}
 .wrap{max-width:1240px;margin:0 auto;padding:0 32px;width:100%}
 @media(max-width:640px){.wrap{padding:0 20px}}
 :focus-visible{outline:2px solid var(--primary);outline-offset:3px}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 
 /* =========================================================
    LOADER
 ========================================================= */
-#loader{position:fixed;inset:0;z-index:9999;background:var(--canvas);display:flex;align-items:center;justify-content:center;transition:opacity .4s ease,visibility .4s ease}
+#loader{
+  position:fixed;inset:0;z-index:9999;background:var(--canvas);
+  display:flex;align-items:center;justify-content:center;
+  transition:opacity .4s ease,visibility .4s ease;
+}
 #loader.hide{opacity:0;visibility:hidden}
-.loader-blob{width:64px;height:64px;border-radius:28px;background:var(--primary-soft);box-shadow:8px 8px 20px var(--clay-dark),-8px -8px 20px var(--clay-light);animation:pulse 1.1s ease-in-out infinite}
+.loader-blob{
+  width:64px;height:64px;border-radius:28px;background:var(--primary-soft);
+  box-shadow:8px 8px 20px var(--clay-dark),-8px -8px 20px var(--clay-light);
+  animation:pulse 1.1s ease-in-out infinite;
+}
 @keyframes pulse{0%,100%{transform:scale(.85)}50%{transform:scale(1.05)}}
 
 /* =========================================================
@@ -131,22 +176,49 @@ svg{flex-shrink:0}
 }
 .nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;height:76px}
 .brand{display:flex;align-items:center;gap:10px;min-width:0}
-.brand-mark{width:36px;height:36px;border-radius:12px;display:flex;align-items:center;justify-content:center;background:var(--primary);color:var(--on-primary);box-shadow:var(--e-sm);flex:none}
+.brand-mark{
+  width:36px;height:36px;border-radius:12px;flex:none;
+  display:flex;align-items:center;justify-content:center;
+  background:var(--primary);color:var(--on-primary);
+  box-shadow:var(--e-sm);
+}
 .brand-mark svg{width:20px;height:20px;fill:currentColor;stroke:none}
 .brand-text{display:flex;flex-direction:column;line-height:1.15;min-width:0}
 .brand-name{color:var(--ink);font-size:17px;font-weight:700;letter-spacing:-.2px;white-space:nowrap}
 .brand-accent{color:var(--primary)}
 .brand-by{color:var(--muted);font-size:11.5px;font-weight:400;white-space:nowrap}
 .nav-right{display:flex;align-items:center;gap:10px}
-.theme-btn{position:relative;overflow:hidden;width:44px;height:44px;border-radius:14px;background:var(--surface);display:flex;align-items:center;justify-content:center;color:var(--ink);box-shadow:var(--e-sm);transition:transform .2s var(--ease-out)}
+.theme-btn{
+  position:relative;overflow:hidden;
+  width:44px;height:44px;border-radius:14px;
+  background:var(--surface);color:var(--ink);
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:var(--e-sm);
+  transition:transform .2s var(--ease-out);
+}
 .theme-btn:hover{transform:translateY(-2px)}
 .theme-btn:active{transform:scale(.92)}
-.nav-cta{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:44px;padding:0 18px;border-radius:var(--radius-pill);background:var(--primary);color:var(--on-primary);font-size:14px;font-weight:600;box-shadow:var(--e-sm);transition:transform .2s var(--ease-out),background .2s}
+.nav-cta{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  height:44px;padding:0 18px;border-radius:var(--radius-pill);
+  background:var(--primary);color:var(--on-primary);
+  font-size:14px;font-weight:600;
+  box-shadow:var(--e-sm);
+  transition:transform .2s var(--ease-out),background .2s;
+}
 .nav-cta:hover{background:var(--primary-active);transform:translateY(-2px)}
 .nav-cta:active{transform:scale(.95)}
 .nav-cta svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-@media(max-width:640px){.nav .wrap{height:68px}.brand-by{display:none}.nav-cta span{display:none}.nav-cta{width:44px;padding:0}}
-@media(max-width:400px){.nav .wrap{padding:0 14px}.brand-name{font-size:15px}}
+@media(max-width:640px){
+  .nav .wrap{height:68px}
+  .brand-by{display:none}
+  .nav-cta span{display:none}
+  .nav-cta{width:44px;padding:0}
+}
+@media(max-width:400px){
+  .nav .wrap{padding:0 14px}
+  .brand-name{font-size:15px}
+}
 
 /* theme icon morph */
 .theme-btn svg{position:absolute;inset:0;margin:auto;transition:transform .55s cubic-bezier(.2,.8,.2,1),opacity .3s ease}
@@ -170,18 +242,19 @@ html.theme-swap *{transition:none!important}
 [data-theme="dark"] .blob{opacity:.15}
 .moved .wrap{position:relative;z-index:1}
 
-.hero-badge{display:inline-flex;align-items:center;gap:8px;padding:8px 16px;border-radius:var(--radius-pill);background:var(--primary-soft);color:var(--primary);font-size:12px;font-weight:700;letter-spacing:1.3px;text-transform:uppercase}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:8px 16px;border-radius:var(--radius-pill);
+  background:var(--primary-soft);color:var(--primary);
+  font-size:12px;font-weight:700;letter-spacing:1.3px;text-transform:uppercase;
+}
 [data-theme="dark"] .hero-badge{color:var(--primary-active)}
 .hero-dot{width:7px;height:7px;border-radius:50%;background:currentColor}
 
 .moved h1{
-  margin:20px auto 0;
-  max-width:820px;
-  font-size:clamp(32px,6vw,54px);
-  line-height:1.08;
-  font-weight:700;
-  letter-spacing:-.3px;
-  color:var(--ink);
+  margin:20px auto 0;max-width:840px;
+  font-size:clamp(32px,6vw,54px);line-height:1.08;
+  font-weight:700;letter-spacing:-.3px;color:var(--ink);
 }
 .moved h1 .accent{color:var(--primary)}
 .lede{margin:18px auto 0;max-width:620px;font-size:17.5px;line-height:1.6;color:var(--body-c)}
@@ -189,8 +262,7 @@ html.theme-swap *{transition:none!important}
 
 /* card */
 .move-card{
-  max-width:640px;
-  margin:34px auto 0;
+  max-width:640px;margin:34px auto 0;
   background:var(--surface);
   border-radius:var(--radius-card);
   padding:28px;
@@ -202,8 +274,7 @@ html.theme-swap *{transition:none!important}
 .swap{display:grid;gap:10px;margin:0 0 20px}
 .swap-row{
   display:flex;align-items:center;gap:14px;
-  padding:13px 16px;
-  min-height:64px;
+  padding:13px 16px;min-height:64px;
   border-radius:var(--radius-md);
   background:var(--canvas-deep);
   box-shadow:var(--e-pressed);
@@ -217,7 +288,8 @@ html.theme-swap *{transition:none!important}
 .swap-ico{
   flex:none;width:40px;height:40px;border-radius:14px;
   display:grid;place-items:center;
-  background:var(--surface);color:var(--muted);box-shadow:var(--e-sm);
+  background:var(--surface);color:var(--muted);
+  box-shadow:var(--e-sm);
 }
 .swap-ico svg{width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 .swap-row.new .swap-ico{
@@ -227,11 +299,17 @@ html.theme-swap *{transition:none!important}
 .swap-txt{min-width:0;flex:1}
 .swap-txt small{display:block;font-size:11px;font-weight:700;letter-spacing:1.3px;text-transform:uppercase;color:var(--muted)}
 .swap-txt b{display:block;margin-top:2px;font-size:15.5px;font-weight:700;color:var(--ink);overflow-wrap:anywhere;line-height:1.3}
-.swap-row.old .swap-txt b{color:var(--muted);text-decoration:line-through;text-decoration-thickness:2px;text-decoration-color:color-mix(in srgb,var(--muted) 60%,transparent)}
+.swap-row.old .swap-txt b{
+  color:var(--muted);
+  text-decoration:line-through;
+  text-decoration-thickness:2px;
+  text-decoration-color:color-mix(in srgb,var(--muted) 60%,transparent);
+}
 .swap-arrow{
   justify-self:center;display:grid;place-items:center;
   width:36px;height:36px;margin:-6px 0;border-radius:50%;
-  background:var(--surface);color:var(--primary);box-shadow:var(--e-sm);
+  background:var(--surface);color:var(--primary);
+  box-shadow:var(--e-sm);
 }
 .swap-arrow svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
 
@@ -242,21 +320,17 @@ html.theme-swap *{transition:none!important}
   font-size:15px;font-weight:600;
   transition:transform .2s var(--ease-out),box-shadow .2s,background .2s,color .2s;
 }
-.btn svg{width:17px;height:17px}
+.btn svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 .btn-primary{background:var(--primary);color:var(--on-primary);box-shadow:var(--e-md)}
 .btn-primary:hover{background:var(--primary-active);transform:translateY(-3px)}
 .btn-primary:active{transform:scale(.96)}
-.btn-secondary{background:var(--surface);color:var(--ink);box-shadow:var(--e-md)}
-.btn-secondary:hover{color:var(--primary);transform:translateY(-3px)}
-.btn-secondary:active{transform:scale(.96)}
 .btn-lg{min-height:56px;padding:0 30px;font-size:16px;font-weight:700}
 .btn-block{width:100%}
-.btn svg{fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 
+/* auto-open line */
 .auto{
   display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;
-  margin:16px 0 0;
-  font-size:13.5px;font-weight:600;color:var(--muted);
+  margin:16px 0 0;font-size:13.5px;font-weight:600;color:var(--muted);
 }
 .auto[hidden]{display:none}
 .auto b{color:var(--ink);font-variant-numeric:tabular-nums}
@@ -285,7 +359,8 @@ html.theme-swap *{transition:none!important}
   display:inline-flex;align-items:center;gap:7px;
   min-height:44px;padding:10px 18px;border-radius:var(--radius-pill);
   background:var(--surface);color:var(--ink);
-  font-size:13.5px;font-weight:600;border:1.5px solid transparent;
+  font-size:13.5px;font-weight:600;
+  border:1.5px solid transparent;
   box-shadow:var(--e-sm);
   transition:transform .2s var(--ease-out),color .2s,background .2s,border-color .2s;
 }
@@ -297,20 +372,38 @@ html.theme-swap *{transition:none!important}
 
 /* good to know */
 .know{max-width:640px;margin:44px auto 0;text-align:left}
-.know h2{font-size:13px;font-weight:700;letter-spacing:1.6px;text-transform:uppercase;color:var(--muted);margin-bottom:14px;text-align:center}
+.know h2{
+  font-size:13px;font-weight:700;letter-spacing:1.6px;text-transform:uppercase;
+  color:var(--muted);margin-bottom:14px;text-align:center;
+}
 .faq-list{display:flex;flex-direction:column;gap:12px}
 .faq-item{background:var(--surface);border-radius:20px;box-shadow:var(--e-sm);overflow:hidden}
-.faq-item summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:16px 20px;font-size:15.5px;font-weight:700;color:var(--ink);min-height:56px}
+.faq-item summary{
+  list-style:none;cursor:pointer;
+  display:flex;align-items:center;justify-content:space-between;gap:16px;
+  padding:16px 20px;min-height:56px;
+  font-size:15.5px;font-weight:700;color:var(--ink);
+}
 .faq-item summary::-webkit-details-marker{display:none}
 .faq-item summary:focus-visible{outline:2px solid var(--primary);outline-offset:-2px;border-radius:20px}
-.faq-chev{flex:none;width:30px;height:30px;border-radius:50%;background:var(--primary-soft);color:var(--primary);display:flex;align-items:center;justify-content:center;transition:transform .25s var(--ease-out),background .2s,color .2s}
+.faq-chev{
+  flex:none;width:30px;height:30px;border-radius:50%;
+  background:var(--primary-soft);color:var(--primary);
+  display:flex;align-items:center;justify-content:center;
+  transition:transform .25s var(--ease-out),background .2s,color .2s;
+}
 [data-theme="dark"] .faq-chev{color:var(--primary-active)}
 .faq-chev svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
 .faq-item[open] .faq-chev{transform:rotate(180deg);background:var(--primary);color:var(--on-primary)}
 .faq-item p{padding:0 20px 18px;font-size:14.5px;line-height:1.65;color:var(--muted)}
 .faq-item p a{color:var(--primary);font-weight:600;overflow-wrap:anywhere}
 
-.noscript{max-width:640px;margin:26px auto 0;padding:14px 18px;border-radius:var(--radius-md);background:var(--surface);border-left:5px solid var(--warning);color:var(--ink);font-size:14.5px;line-height:1.5;text-align:left}
+.noscript{
+  max-width:640px;margin:26px auto 0;padding:14px 18px;
+  border-radius:var(--radius-md);
+  background:var(--surface);border-left:5px solid var(--warning);
+  color:var(--ink);font-size:14.5px;line-height:1.5;text-align:left;
+}
 .noscript a{color:var(--primary);font-weight:700;overflow-wrap:anywhere}
 
 /* =========================================================
@@ -341,12 +434,19 @@ footer.ft{
   color:var(--body-c);font-size:14.5px;
   transition:color .2s ease;
 }
-.ft-links a:hover,.ft-links a:focus-visible,.ft-legal a:hover,.ft-legal a:focus-visible{color:var(--primary)}
+.ft-links a:hover,.ft-links a:focus-visible,
+.ft-legal a:hover,.ft-legal a:focus-visible{color:var(--primary)}
 .ft-bottom{border-top:1px solid var(--hairline)}
-.ft-bot-in{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px 24px;padding-top:12px;padding-bottom:12px}
+.ft-bot-in{
+  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;
+  gap:8px 24px;padding-top:12px;padding-bottom:12px;
+}
 .ft-copy{color:var(--muted);font-size:14px}
 .ft-legal{display:flex;flex-wrap:wrap;gap:0 26px}
-@media(max-width:640px){.ft-bot-in{flex-direction:column;align-items:flex-start}footer.ft{padding-top:40px}}
+@media(max-width:640px){
+  .ft-bot-in{flex-direction:column;align-items:flex-start}
+  footer.ft{padding-top:40px}
+}
 
 /* motion */
 @keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
@@ -355,7 +455,12 @@ footer.ft{
 .rise-3{animation-delay:.16s}
 .rise-4{animation-delay:.24s}
 @media(prefers-reduced-motion:reduce){
-  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
+  *,*::before,*::after{
+    animation-duration:.01ms!important;
+    animation-iteration-count:1!important;
+    transition-duration:.01ms!important;
+    scroll-behavior:auto!important;
+  }
 }
 </style>
 </head>
@@ -380,9 +485,10 @@ footer.ft{
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
         <span>thundertest.indevs.in</span>
       </a>
-      <button class="theme-btn" id="themeBtn" type="button" aria-label="Toggle dark mode" aria-pressed="false">
+      <button class="theme-btn" id="themeBtn" type="button" aria-label="Switch to dark mode" aria-pressed="false">
         <svg id="themeIconSun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true">
-          <circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.4M12 19.1v2.4M4.2 4.2l1.7 1.7M18.1 18.1l1.7 1.7M2.5 12h2.4M19.1 12h2.4M4.2 19.8l1.7-1.7M18.1 5.9l1.7-1.7"/>
+          <circle cx="12" cy="12" r="4.2"/>
+          <path d="M12 2.5v2.4M12 19.1v2.4M4.2 4.2l1.7 1.7M18.1 18.1l1.7 1.7M2.5 12h2.4M19.1 12h2.4M4.2 19.8l1.7-1.7M18.1 5.9l1.7-1.7"/>
         </svg>
         <svg id="themeIconMoon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true">
           <path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5Z"/>
@@ -392,18 +498,18 @@ footer.ft{
   </div>
 </header>
 
-<!-- ================= MOVED ================= -->
+<!-- ================= MAIN ================= -->
 <main>
   <section class="moved">
     <span class="blob blob-1" aria-hidden="true"></span>
     <span class="blob blob-2" aria-hidden="true"></span>
+
     <div class="wrap">
+      <span class="hero-badge rise"><span class="hero-dot"></span>We moved</span>
 
-      <span class="hero-badge rise"><span class="hero-dot"></span>Moved</span>
+      <h1 class="rise rise-2">This site has <span class="accent">moved</span></h1>
 
-      <h1 class="rise rise-2">This page has <span class="accent">moved</span></h1>
-
-      <p class="lede rise rise-3" id="lede">
+      <p class="lede rise rise-3">
         ThunderStudy and ThunderTest now live on <strong>thundertest.indevs.in</strong>.
         Same tools, same free content, new address.
       </p>
@@ -416,7 +522,7 @@ footer.ft{
             </span>
             <span class="swap-txt">
               <small>Old address</small>
-              <b id="oldUrl">commercesehoga.github.io/</b>
+              <b id="oldUrl">commercesehoga.github.io</b>
             </span>
           </div>
 
@@ -451,8 +557,8 @@ footer.ft{
 
       <noscript>
         <p class="noscript">
-          JavaScript is off, so the automatic check cannot run.
-          Head straight to <a href="https://thundertest.indevs.in">thundertest.indevs.in</a>.
+          JavaScript is off, so the automatic redirect cannot run.
+          Go straight to <a href="https://thundertest.indevs.in">thundertest.indevs.in</a>.
         </p>
       </noscript>
 
@@ -480,13 +586,23 @@ footer.ft{
             </summary>
             <p>Every ThunderStudy page now lives on one domain, <a href="https://thundertest.indevs.in">thundertest.indevs.in</a>. The old <strong>commercesehoga.github.io</strong> addresses are no longer used.</p>
           </details>
+
           <details class="faq-item">
             <summary>
               What about my bookmarks?
               <span class="faq-chev" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></span>
             </summary>
-            <p>They still open this page, so nothing is lost. Use the button above once and save the new address. Every old path keeps the same name, for example <strong>/cuet</strong> becomes <a href="https://thundertest.indevs.in/cuet">thundertest.indevs.in/cuet</a>.</p>
+            <p>They still open this page, so nothing is lost. Open the new address once and save it. Every section kept the same name, for example <strong>/cuet</strong> becomes <a href="https://thundertest.indevs.in/cuet">thundertest.indevs.in/cuet</a>.</p>
           </details>
+
+          <details class="faq-item">
+            <summary>
+              Which sections moved?
+              <span class="faq-chev" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></span>
+            </summary>
+            <p>CUET, SSC, Banking, JEE / NEET, Exam, Commerce and Science all moved to <strong>thundertest.indevs.in</strong> with the same names. Anything else goes to the new home page.</p>
+          </details>
+
           <details class="faq-item">
             <summary>
               I typed the address myself and got here.
@@ -496,7 +612,6 @@ footer.ft{
           </details>
         </div>
       </div>
-
     </div>
   </section>
 </main>
@@ -580,8 +695,11 @@ footer.ft{
     btn.setAttribute('aria-label',dark?'Switch to light mode':'Switch to dark mode');
   }
   sync();
+
   btn.addEventListener('click',function(){
-    var de=document.documentElement, next=de.getAttribute('data-theme')==='dark'?'light':'dark';
+    var de=document.documentElement;
+    var next=de.getAttribute('data-theme')==='dark'?'light':'dark';
+
     function apply(){
       de.setAttribute('data-theme',next);
       try{ localStorage.setItem('theme',next); }catch(e){}
@@ -591,10 +709,13 @@ footer.ft{
       if(ms) ms.setAttribute('content',next);
       sync();
     }
+
     var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
     if(!document.startViewTransition||reduce){ apply(); return; }
+
     var r=btn.getBoundingClientRect(), x=r.left+r.width/2, y=r.top+r.height/2;
     var rad=Math.hypot(Math.max(x,innerWidth-x),Math.max(y,innerHeight-y));
+
     de.classList.add('theme-swap');
     var t=document.startViewTransition(apply);
     t.ready.then(function(){
@@ -603,7 +724,8 @@ footer.ft{
         {duration:650,easing:'cubic-bezier(.4,0,.2,1)',pseudoElement:'::view-transition-new(root)'}
       );
     });
-    t.finished.then(function(){ de.classList.remove('theme-swap'); },function(){ de.classList.remove('theme-swap'); });
+    t.finished.then(function(){ de.classList.remove('theme-swap'); },
+                    function(){ de.classList.remove('theme-swap'); });
   });
 })();
 
@@ -677,10 +799,12 @@ footer.ft{
   }
 
   /* auto-open with a visible countdown and a cancel */
-  var line  = document.getElementById('autoLine');
-  var secsEl= document.getElementById('secs');
-  var stop  = document.getElementById('cancelAuto');
-  var left  = 9, timer = null, cancelled = false;
+  var line   = document.getElementById('autoLine');
+  var secsEl = document.getElementById('secs');
+  var stop   = document.getElementById('cancelAuto');
+  var left   = 9;
+  var timer  = null;
+  var cancelled = false;
 
   function tick(){
     left--;
@@ -703,12 +827,13 @@ footer.ft{
     if(e.key === 'Escape' && !cancelled) cancel();
   });
 
-  /* respect a reduced-motion / save-data hint by not auto-opening */
-  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  /* respect reduced motion and Data Saver by not auto-opening */
+  var reduce   = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
   var saveData = navigator.connection && navigator.connection.saveData;
+
   if(reduce || saveData){
     if(line) line.hidden = true;
-  }else if(timer === null){
+  }else{
     if(secsEl) secsEl.textContent = String(left);
     timer = setInterval(tick, 1000);
   }
