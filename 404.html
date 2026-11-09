@@ -1,443 +1,718 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-IN">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>404 – Page Not Found | CommerceSehoga</title>
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
-  <style>
-    :root {
-      --sky: #e8f4fd;
-      --sky-mid: #c5e3f7;
-      --sky-deep: #90c8ef;
-      --blue: #3a9fd6;
-      --blue-dark: #1e6fa3;
-      --white: #ffffff;
-      --text: #1a3a52;
-      --muted: #5a8aaa;
-    }
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>This page has moved to thundertest.indevs.in | ThunderStudy</title>
+<meta name="description" content="ThunderStudy and ThunderTest pages have moved to thundertest.indevs.in. Use the button to open the same page at its new address.">
+<meta name="robots" content="noindex, follow">
+<meta name="theme-color" id="metaTheme" content="#573AFC">
+<meta name="color-scheme" id="metaScheme" content="light">
+<meta name="darkreader-lock">
+<script>
+/* Theme is only ever light (blue) or dark (purple), from the saved choice, never from the phone or system. */
+(function(){var t='light';try{var s=localStorage.getItem('theme');if(s==='dark'||s==='light')t=s;}catch(e){}
+document.documentElement.setAttribute('data-theme',t);
+var m=document.getElementById('metaTheme');if(m)m.setAttribute('content',t==='dark'?'#9A7AFB':'#573AFC');
+var c=document.getElementById('metaScheme');if(c)c.setAttribute('content',t);})();
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+/* =========================================================
+   TOKENS — clay system, light + dark, fixed
+========================================================= */
+:root{
+  color-scheme:light;
+  --canvas:#F4F1FC;
+  --canvas-deep:#ECE6FB;
+  --surface:#FAF8FE;
 
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  --ink:#2B2640;
+  --body-c:#5C5575;
+  --muted:#6B6485;
 
-    html, body {
-      min-height: 100vh;
-      font-family: 'DM Sans', sans-serif;
-      background: linear-gradient(160deg, var(--white) 0%, var(--sky) 40%, var(--sky-mid) 100%);
-      color: var(--text);
-      overflow-x: hidden;
-    }
+  --hairline:rgba(43,38,64,.08);
+  --hairline-strong:rgba(43,38,64,.16);
 
-    /* ─── BACKGROUND CANVAS (GPU-only, no DOM bubbles) ─── */
-    #bg-canvas {
-      position: fixed; inset: 0;
-      pointer-events: none; z-index: 0;
-      will-change: transform; /* keep on own layer */
-    }
+  --primary:#573AFC;
+  --primary-active:#4527E0;
+  --primary-soft:#E4DEFF;
+  --on-primary:#ffffff;
 
-    /* ─── LAYOUT ─── */
-    .page {
-      position: relative; z-index: 1;
-      min-height: 100vh;
-      display: flex; flex-direction: column;
-      align-items: center;
-    }
+  --success:#22c55e;
+  --warning:#f59e0b;
+  --error:#dc2626;
 
-    /* ─── NAV ─── */
-    nav {
-      width: 100%;
-      padding: 1.2rem 2rem;
-      display: flex; justify-content: space-between; align-items: center;
-      background: rgba(255,255,255,0.8);
-      border-bottom: 1px solid rgba(144,200,239,0.35);
-    }
-    .logo {
-      font-family: 'Syne', sans-serif;
-      font-size: 1.1rem; font-weight: 800;
-      color: var(--blue-dark); text-decoration: none;
-    }
-    .logo span { color: var(--blue); }
-    nav a.nav-link {
-      font-size: 0.85rem; color: var(--muted);
-      text-decoration: none; font-weight: 500; transition: color 0.2s;
-    }
-    nav a.nav-link:hover { color: var(--blue); }
+  --clay-light:rgba(255,255,255,.9);
+  --clay-dark:rgba(120,108,180,.5);
 
-    /* ─── HERO ─── */
-    .hero {
-      flex: 1;
-      display: flex; flex-direction: column;
-      align-items: center; justify-content: center;
-      padding: 2.5rem 1.5rem 2rem; text-align: center;
-    }
+  --radius-card:28px;
+  --radius-lg:24px;
+  --radius-md:20px;
+  --radius-sm:16px;
+  --radius-pill:999px;
 
-    /* ─── 3D 404 — CSS-only, no filter stacks ─── */
-    .num-wrap {
-      margin-bottom: 1.5rem;
-      animation: tiltIn 0.9s cubic-bezier(0.34,1.56,0.64,1) both;
-      will-change: transform;
-    }
-    @keyframes tiltIn {
-      from { opacity:0; transform: rotateX(35deg) translateY(50px); }
-      to   { opacity:1; transform: rotateX(0) translateY(0); }
-    }
+  --font:'Inter',system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
 
-    .num {
-      font-family: 'Syne', sans-serif;
-      font-size: clamp(6.5rem, 20vw, 13rem);
-      font-weight: 800;
-      line-height: 1;
-      letter-spacing: -0.04em;
-      display: inline-block;
-      will-change: transform;
-      animation: sway 7s ease-in-out infinite;
-      /* 3D text-shadow stack — much cheaper than drop-shadow filter */
-      color: var(--white);
-      -webkit-text-stroke: 2px var(--blue);
-      text-shadow:
-        0 2px 0 #8ec4e0,
-        0 4px 0 #7ab9d9,
-        0 6px 0 #66aed2,
-        0 8px 0 #52a3ca,
-        0 10px 0 #3e98c3,
-        0 12px 0 var(--blue),
-        0 18px 28px rgba(30,111,163,0.3);
-    }
-    @keyframes sway {
-      0%,100% { transform: rotateY(-5deg) rotateX(3deg); }
-      50%      { transform: rotateY(5deg)  rotateX(-2deg); }
-    }
+  --e-sm:4px 4px 10px var(--clay-dark),-4px -4px 10px var(--clay-light);
+  --e-md:6px 6px 14px var(--clay-dark),-6px -6px 14px var(--clay-light);
+  --e-lg:10px 10px 24px var(--clay-dark),-10px -10px 24px var(--clay-light);
+  --e-pressed:inset 4px 4px 10px var(--clay-dark),inset -4px -4px 10px var(--clay-light);
+  --ease-out:cubic-bezier(.2,.8,.2,1);
+}
+[data-theme="dark"]{
+  color-scheme:dark;
+  --canvas:#1A1730;
+  --canvas-deep:#15122A;
+  --surface:#221D3C;
 
-    /* shine via ::before — no extra element needed */
-    .num::before {
-      content: attr(data-text);
-      position: absolute; inset: 0;
-      font: inherit;
-      background: linear-gradient(180deg,rgba(255,255,255,0.85) 0%,rgba(255,255,255,0.25) 50%,transparent 70%);
-      -webkit-background-clip: text; background-clip: text;
-      -webkit-text-fill-color: transparent;
-      pointer-events: none;
-    }
-    .num-wrap { position: relative; }
+  --ink:#F1EEFB;
+  --body-c:#C7C0E0;
+  --muted:#8E86AC;
 
-    /* ─── PLANET — pure CSS, no backdrop-filter ─── */
-    .scene {
-      width: 200px; height: 200px;
-      position: relative; margin: -0.5rem auto 1.8rem;
-      animation: levitate 4.5s ease-in-out infinite;
-      will-change: transform;
-    }
-    @keyframes levitate {
-      0%,100% { transform: translateY(0); }
-      50%      { transform: translateY(-16px); }
-    }
+  --hairline:rgba(255,255,255,.08);
+  --hairline-strong:rgba(255,255,255,.16);
 
-    .planet {
-      width: 140px; height: 140px;
-      border-radius: 50%;
-      position: absolute; left: 30px; top: 30px;
-      background: radial-gradient(circle at 30% 28%,
-        #d8f0ff 0%, #9fd4f0 35%, #5ab3e0 65%, #2a8fc4 100%);
-      box-shadow:
-        inset -16px -16px 35px rgba(0,0,0,0.13),
-        inset 8px 8px 24px rgba(255,255,255,0.45),
-        0 16px 50px rgba(58,159,214,0.4);
-    }
-    .ring {
-      position: absolute; left: 8px; top: 76px;
-      width: 184px; height: 50px;
-      border-radius: 50%;
-      border: 7px solid rgba(144,200,239,0.5);
-      transform: rotateX(72deg);
-    }
-    .crater {
-      position: absolute; border-radius: 50%;
-      background: rgba(0,0,0,0.07);
-    }
+  --primary:#9A7AFB;
+  --primary-active:#B196FB;
+  --primary-soft:#2E2650;
+  --on-primary:#1A1730;
 
-    /* twinkling dots — CSS only, no JS loops */
-    .stars-css {
-      position: fixed; inset: 0; pointer-events: none; z-index: 0;
-    }
-    .stars-css span {
-      position: absolute; border-radius: 50%;
-      background: var(--blue);
-      animation: twinkle var(--d,2s) ease-in-out var(--dl,0s) infinite;
-    }
-    @keyframes twinkle {
-      0%,100% { opacity: 0.2; }
-      50%      { opacity: 0.8; }
-    }
+  --clay-light:rgba(255,255,255,.05);
+  --clay-dark:rgba(0,0,0,.55);
+}
 
-    /* ─── TEXT ─── */
-    .err-label {
-      font-family: 'Syne', sans-serif;
-      font-size: 0.72rem; font-weight: 700;
-      letter-spacing: 0.22em; text-transform: uppercase;
-      color: var(--blue);
-      background: rgba(58,159,214,0.09);
-      border: 1px solid rgba(58,159,214,0.22);
-      padding: 0.3rem 0.9rem; border-radius: 100px;
-      margin-bottom: 1rem;
-      animation: fadeUp 0.5s 0.3s both;
-    }
-    h1 {
-      font-family: 'Syne', sans-serif;
-      font-size: clamp(1.5rem, 4vw, 2.4rem); font-weight: 800;
-      line-height: 1.15; margin-bottom: 0.9rem;
-      animation: fadeUp 0.5s 0.5s both;
-    }
-    h1 em { color: var(--blue); font-style: normal; }
-    .sub {
-      font-size: 0.95rem; color: var(--muted);
-      max-width: 400px; line-height: 1.7;
-      margin-bottom: 2rem;
-      animation: fadeUp 0.5s 0.65s both;
-    }
-    @keyframes fadeUp {
-      from { opacity:0; transform: translateY(18px); }
-      to   { opacity:1; transform: translateY(0); }
-    }
+/* =========================================================
+   BASE
+========================================================= */
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;min-height:100%}
+html{overflow-x:clip;scroll-behavior:smooth}
+body{
+  font-family:var(--font);
+  background:var(--canvas);
+  color:var(--body-c);
+  -webkit-font-smoothing:antialiased;
+  overflow-x:clip;
+  display:flex;
+  flex-direction:column;
+  min-height:100vh;
+  transition:background .3s ease,color .3s ease;
+}
+main{flex:1 0 auto}
+a{text-decoration:none;color:inherit}
+button{font-family:var(--font);border:none;background:none;cursor:pointer;color:inherit}
+h1,h2,h3,h4,p{margin:0}
+svg{flex-shrink:0}
+.wrap{max-width:1240px;margin:0 auto;padding:0 32px;width:100%}
+@media(max-width:640px){.wrap{padding:0 20px}}
+:focus-visible{outline:2px solid var(--primary);outline-offset:3px}
 
-    /* ─── BUTTONS ─── */
-    .btn-group {
-      display: flex; gap: 0.9rem; flex-wrap: wrap; justify-content: center;
-      animation: fadeUp 0.5s 0.8s both;
-    }
-    .btn {
-      font-family: 'DM Sans', sans-serif; font-weight: 500; font-size: 0.88rem;
-      padding: 0.7rem 1.6rem; border-radius: 12px; text-decoration: none;
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-    .btn-primary {
-      background: linear-gradient(135deg, var(--blue), var(--blue-dark));
-      color: #fff;
-      box-shadow: 0 6px 20px rgba(30,111,163,0.3);
-    }
-    .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 10px 28px rgba(30,111,163,0.4); }
-    .btn-ghost {
-      background: rgba(255,255,255,0.85);
-      color: var(--blue-dark);
-      border: 1.5px solid rgba(58,159,214,0.3);
-    }
-    .btn-ghost:hover { transform: translateY(-3px); background: #fff; border-color: var(--blue); }
+/* =========================================================
+   LOADER
+========================================================= */
+#loader{position:fixed;inset:0;z-index:9999;background:var(--canvas);display:flex;align-items:center;justify-content:center;transition:opacity .4s ease,visibility .4s ease}
+#loader.hide{opacity:0;visibility:hidden}
+.loader-blob{width:64px;height:64px;border-radius:28px;background:var(--primary-soft);box-shadow:8px 8px 20px var(--clay-dark),-8px -8px 20px var(--clay-light);animation:pulse 1.1s ease-in-out infinite}
+@keyframes pulse{0%,100%{transform:scale(.85)}50%{transform:scale(1.05)}}
 
-    /* ─── QUICK LINKS ─── */
-    .quick-links {
-      margin-top: 3rem; padding: 0 1.5rem;
-      width: 100%; max-width: 660px;
-      animation: fadeUp 0.5s 1s both;
-    }
-    .quick-title {
-      font-size: 0.68rem; font-weight: 700;
-      letter-spacing: 0.2em; text-transform: uppercase;
-      color: var(--muted); text-align: center; margin-bottom: 0.9rem;
-    }
-    .link-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(150px,1fr));
-      gap: 0.65rem;
-    }
-    .link-card {
-      background: rgba(255,255,255,0.8);
-      border: 1px solid rgba(144,200,239,0.4);
-      border-radius: 13px; padding: 0.85rem 0.9rem;
-      text-decoration: none; color: var(--text);
-      font-size: 0.81rem; font-weight: 500;
-      display: flex; align-items: center; gap: 0.55rem;
-      transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
-      box-shadow: 0 2px 8px rgba(144,200,239,0.15);
-    }
-    .link-card:hover {
-      transform: translateY(-3px);
-      border-color: var(--blue);
-      box-shadow: 0 6px 20px rgba(58,159,214,0.2);
-    }
-    .link-icon {
-      width: 28px; height: 28px; border-radius: 7px;
-      background: linear-gradient(135deg, var(--sky-mid), var(--blue));
-      display: flex; align-items: center; justify-content: center;
-      flex-shrink: 0; font-size: 0.82rem;
-    }
+/* =========================================================
+   HEADER
+========================================================= */
+.nav{
+  position:sticky;top:0;z-index:50;
+  background:color-mix(in srgb,var(--canvas) 80%,transparent);
+  -webkit-backdrop-filter:blur(16px) saturate(1.5);
+  backdrop-filter:blur(16px) saturate(1.5);
+  border-bottom:1px solid var(--hairline);
+  box-shadow:0 8px 24px -16px var(--clay-dark);
+}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;height:76px}
+.brand{display:flex;align-items:center;gap:10px;min-width:0}
+.brand-mark{width:36px;height:36px;border-radius:12px;display:flex;align-items:center;justify-content:center;background:var(--primary);color:var(--on-primary);box-shadow:var(--e-sm);flex:none}
+.brand-mark svg{width:20px;height:20px;fill:currentColor;stroke:none}
+.brand-text{display:flex;flex-direction:column;line-height:1.15;min-width:0}
+.brand-name{color:var(--ink);font-size:17px;font-weight:700;letter-spacing:-.2px;white-space:nowrap}
+.brand-accent{color:var(--primary)}
+.brand-by{color:var(--muted);font-size:11.5px;font-weight:400;white-space:nowrap}
+.nav-right{display:flex;align-items:center;gap:10px}
+.theme-btn{position:relative;overflow:hidden;width:44px;height:44px;border-radius:14px;background:var(--surface);display:flex;align-items:center;justify-content:center;color:var(--ink);box-shadow:var(--e-sm);transition:transform .2s var(--ease-out)}
+.theme-btn:hover{transform:translateY(-2px)}
+.theme-btn:active{transform:scale(.92)}
+.nav-cta{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:44px;padding:0 18px;border-radius:var(--radius-pill);background:var(--primary);color:var(--on-primary);font-size:14px;font-weight:600;box-shadow:var(--e-sm);transition:transform .2s var(--ease-out),background .2s}
+.nav-cta:hover{background:var(--primary-active);transform:translateY(-2px)}
+.nav-cta:active{transform:scale(.95)}
+.nav-cta svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+@media(max-width:640px){.nav .wrap{height:68px}.brand-by{display:none}.nav-cta span{display:none}.nav-cta{width:44px;padding:0}}
+@media(max-width:400px){.nav .wrap{padding:0 14px}.brand-name{font-size:15px}}
 
-    /* ─── FOOTER ─── */
-    footer {
-      width: 100%; margin-top: 3.5rem;
-      background: rgba(255,255,255,0.82);
-      border-top: 1px solid rgba(144,200,239,0.4);
-      padding: 2.2rem 2rem 1.4rem;
-    }
-    .footer-inner { max-width: 880px; margin: 0 auto; }
-    .footer-brand {
-      font-family: 'Syne', sans-serif; font-weight: 800;
-      font-size: 1.05rem; color: var(--blue-dark); margin-bottom: 0.3rem;
-    }
-    .footer-brand span { color: var(--blue); }
-    .footer-tagline { font-size: 0.78rem; color: var(--muted); margin-bottom: 1.6rem; }
-    .footer-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(150px,1fr));
-      gap: 1.2rem; margin-bottom: 1.8rem;
-    }
-    .footer-col h4 {
-      font-size: 0.66rem; font-weight: 700;
-      letter-spacing: 0.18em; text-transform: uppercase;
-      color: var(--blue); margin-bottom: 0.7rem;
-    }
-    .footer-col a {
-      display: block; font-size: 0.82rem; color: var(--muted);
-      text-decoration: none; margin-bottom: 0.45rem;
-      font-weight: 400; transition: color 0.18s;
-    }
-    .footer-col a:hover { color: var(--blue); }
-    .footer-badge {
-      display: inline-block;
-      background: var(--sky-mid); color: var(--blue-dark);
-      font-size: 0.65rem; font-weight: 600;
-      padding: 0.15rem 0.55rem; border-radius: 100px; margin-left: 0.35rem;
-    }
-    .footer-bottom {
-      display: flex; justify-content: space-between; flex-wrap: wrap; gap: 0.4rem;
-      padding-top: 1.1rem;
-      border-top: 1px solid rgba(144,200,239,0.3);
-      font-size: 0.74rem; color: var(--muted);
-    }
-    .footer-bottom a { color: var(--blue); text-decoration: none; }
-    .footer-bottom a:hover { text-decoration: underline; }
+/* theme icon morph */
+.theme-btn svg{position:absolute;inset:0;margin:auto;transition:transform .55s cubic-bezier(.2,.8,.2,1),opacity .3s ease}
+#themeIconSun{opacity:1;transform:rotate(0) scale(1)}
+#themeIconMoon{opacity:0;transform:rotate(-90deg) scale(.3)}
+[data-theme="dark"] #themeIconSun{opacity:0;transform:rotate(90deg) scale(.3)}
+[data-theme="dark"] #themeIconMoon{opacity:1;transform:rotate(0) scale(1)}
+::view-transition-old(root),::view-transition-new(root){animation:none;mix-blend-mode:normal}
+::view-transition-old(root){z-index:1}
+::view-transition-new(root){z-index:2}
+html.theme-swap *{transition:none!important}
+@media(prefers-reduced-motion:reduce){.theme-btn svg{transition:none}}
 
-    @media (max-width: 500px) {
-      .num { font-size: 6rem; }
-      .btn-group { flex-direction: column; width: 100%; max-width: 260px; }
-      .btn { text-align: center; }
-    }
-  </style>
+/* =========================================================
+   MOVED SECTION
+========================================================= */
+.moved{position:relative;overflow:hidden;padding:64px 0 72px;text-align:center}
+.blob{position:absolute;border-radius:50%;filter:blur(2px);opacity:.55;z-index:0;pointer-events:none}
+.blob-1{width:340px;height:340px;background:var(--primary-soft);top:-120px;left:-130px}
+.blob-2{width:260px;height:260px;background:#FFE3D2;bottom:-100px;right:-90px}
+[data-theme="dark"] .blob{opacity:.15}
+.moved .wrap{position:relative;z-index:1}
+
+.hero-badge{display:inline-flex;align-items:center;gap:8px;padding:8px 16px;border-radius:var(--radius-pill);background:var(--primary-soft);color:var(--primary);font-size:12px;font-weight:700;letter-spacing:1.3px;text-transform:uppercase}
+[data-theme="dark"] .hero-badge{color:var(--primary-active)}
+.hero-dot{width:7px;height:7px;border-radius:50%;background:currentColor}
+
+.moved h1{
+  margin:20px auto 0;
+  max-width:820px;
+  font-size:clamp(32px,6vw,54px);
+  line-height:1.08;
+  font-weight:700;
+  letter-spacing:-.3px;
+  color:var(--ink);
+}
+.moved h1 .accent{color:var(--primary)}
+.lede{margin:18px auto 0;max-width:620px;font-size:17.5px;line-height:1.6;color:var(--body-c)}
+.lede strong{color:var(--ink);font-weight:700;overflow-wrap:anywhere}
+
+/* card */
+.move-card{
+  max-width:640px;
+  margin:34px auto 0;
+  background:var(--surface);
+  border-radius:var(--radius-card);
+  padding:28px;
+  box-shadow:var(--e-lg);
+  text-align:left;
+}
+@media(max-width:640px){.move-card{padding:22px 18px;border-radius:var(--radius-lg)}}
+
+.swap{display:grid;gap:10px;margin:0 0 20px}
+.swap-row{
+  display:flex;align-items:center;gap:14px;
+  padding:13px 16px;
+  min-height:64px;
+  border-radius:var(--radius-md);
+  background:var(--canvas-deep);
+  box-shadow:var(--e-pressed);
+}
+[data-theme="dark"] .swap-row{box-shadow:none;border:1px solid var(--hairline-strong)}
+.swap-row.new{
+  background:var(--primary-soft);
+  box-shadow:none;
+  border:1.5px solid color-mix(in srgb,var(--primary) 34%,transparent);
+}
+.swap-ico{
+  flex:none;width:40px;height:40px;border-radius:14px;
+  display:grid;place-items:center;
+  background:var(--surface);color:var(--muted);box-shadow:var(--e-sm);
+}
+.swap-ico svg{width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.swap-row.new .swap-ico{
+  background:var(--primary);color:var(--on-primary);
+  box-shadow:4px 4px 12px color-mix(in srgb,var(--primary) 45%,transparent);
+}
+.swap-txt{min-width:0;flex:1}
+.swap-txt small{display:block;font-size:11px;font-weight:700;letter-spacing:1.3px;text-transform:uppercase;color:var(--muted)}
+.swap-txt b{display:block;margin-top:2px;font-size:15.5px;font-weight:700;color:var(--ink);overflow-wrap:anywhere;line-height:1.3}
+.swap-row.old .swap-txt b{color:var(--muted);text-decoration:line-through;text-decoration-thickness:2px;text-decoration-color:color-mix(in srgb,var(--muted) 60%,transparent)}
+.swap-arrow{
+  justify-self:center;display:grid;place-items:center;
+  width:36px;height:36px;margin:-6px 0;border-radius:50%;
+  background:var(--surface);color:var(--primary);box-shadow:var(--e-sm);
+}
+.swap-arrow svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+
+/* buttons */
+.btn{
+  min-height:46px;padding:0 24px;border-radius:var(--radius-pill);
+  display:inline-flex;align-items:center;justify-content:center;gap:9px;
+  font-size:15px;font-weight:600;
+  transition:transform .2s var(--ease-out),box-shadow .2s,background .2s,color .2s;
+}
+.btn svg{width:17px;height:17px}
+.btn-primary{background:var(--primary);color:var(--on-primary);box-shadow:var(--e-md)}
+.btn-primary:hover{background:var(--primary-active);transform:translateY(-3px)}
+.btn-primary:active{transform:scale(.96)}
+.btn-secondary{background:var(--surface);color:var(--ink);box-shadow:var(--e-md)}
+.btn-secondary:hover{color:var(--primary);transform:translateY(-3px)}
+.btn-secondary:active{transform:scale(.96)}
+.btn-lg{min-height:56px;padding:0 30px;font-size:16px;font-weight:700}
+.btn-block{width:100%}
+.btn svg{fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+
+.auto{
+  display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;
+  margin:16px 0 0;
+  font-size:13.5px;font-weight:600;color:var(--muted);
+}
+.auto[hidden]{display:none}
+.auto b{color:var(--ink);font-variant-numeric:tabular-nums}
+.auto-dot{width:9px;height:9px;border-radius:50%;background:var(--primary);animation:blink 1.1s ease-in-out infinite}
+@keyframes blink{0%,100%{opacity:.35;transform:scale(.85)}50%{opacity:1;transform:scale(1)}}
+.auto-x{
+  min-height:44px;padding:0 16px;border-radius:var(--radius-pill);
+  background:var(--surface);color:var(--ink);
+  font-size:13px;font-weight:700;box-shadow:var(--e-sm);
+  transition:transform .2s var(--ease-out),color .2s;
+}
+.auto-x:hover{color:var(--primary);transform:translateY(-2px)}
+.auto-x:active{transform:scale(.94)}
+
+.note{margin:14px 0 0;font-size:13.5px;line-height:1.55;color:var(--muted);text-align:center}
+.note[hidden]{display:none}
+
+/* section map */
+.map-block{max-width:640px;margin:38px auto 0}
+.map-title{
+  font-size:12px;font-weight:700;letter-spacing:1.6px;text-transform:uppercase;
+  color:var(--muted);margin-bottom:14px;text-align:center;
+}
+.chip-row{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
+.chip{
+  display:inline-flex;align-items:center;gap:7px;
+  min-height:44px;padding:10px 18px;border-radius:var(--radius-pill);
+  background:var(--surface);color:var(--ink);
+  font-size:13.5px;font-weight:600;border:1.5px solid transparent;
+  box-shadow:var(--e-sm);
+  transition:transform .2s var(--ease-out),color .2s,background .2s,border-color .2s;
+}
+.chip:hover{transform:translateY(-2px);color:var(--primary)}
+.chip:active{transform:scale(.96)}
+.chip[aria-current="page"]{background:var(--primary-soft);border-color:var(--primary);color:var(--primary);font-weight:700}
+[data-theme="dark"] .chip[aria-current="page"]{color:var(--primary-active)}
+.chip svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+
+/* good to know */
+.know{max-width:640px;margin:44px auto 0;text-align:left}
+.know h2{font-size:13px;font-weight:700;letter-spacing:1.6px;text-transform:uppercase;color:var(--muted);margin-bottom:14px;text-align:center}
+.faq-list{display:flex;flex-direction:column;gap:12px}
+.faq-item{background:var(--surface);border-radius:20px;box-shadow:var(--e-sm);overflow:hidden}
+.faq-item summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:16px 20px;font-size:15.5px;font-weight:700;color:var(--ink);min-height:56px}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-item summary:focus-visible{outline:2px solid var(--primary);outline-offset:-2px;border-radius:20px}
+.faq-chev{flex:none;width:30px;height:30px;border-radius:50%;background:var(--primary-soft);color:var(--primary);display:flex;align-items:center;justify-content:center;transition:transform .25s var(--ease-out),background .2s,color .2s}
+[data-theme="dark"] .faq-chev{color:var(--primary-active)}
+.faq-chev svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.faq-item[open] .faq-chev{transform:rotate(180deg);background:var(--primary);color:var(--on-primary)}
+.faq-item p{padding:0 20px 18px;font-size:14.5px;line-height:1.65;color:var(--muted)}
+.faq-item p a{color:var(--primary);font-weight:600;overflow-wrap:anywhere}
+
+.noscript{max-width:640px;margin:26px auto 0;padding:14px 18px;border-radius:var(--radius-md);background:var(--surface);border-left:5px solid var(--warning);color:var(--ink);font-size:14.5px;line-height:1.5;text-align:left}
+.noscript a{color:var(--primary);font-weight:700;overflow-wrap:anywhere}
+
+/* =========================================================
+   FOOTER
+========================================================= */
+footer.ft{
+  flex-shrink:0;
+  background:var(--surface);
+  border-top:1px solid var(--hairline);
+  padding:56px 0 0;
+  color:var(--muted);
+  font-size:15px;
+  line-height:1.5;
+}
+.ft-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:36px 44px;padding-bottom:44px}
+@media(max-width:900px){.ft-grid{grid-template-columns:repeat(3,1fr)}.ft-brand-col{grid-column:1/-1}}
+@media(max-width:640px){.ft-grid{grid-template-columns:1fr;gap:26px;padding-bottom:30px}}
+.ft-brand{display:inline-flex;align-items:center;gap:12px;color:var(--ink)}
+.ft-brand .brand-mark{width:44px;height:44px;border-radius:14px}
+.ft-brand .brand-mark svg{width:24px;height:24px}
+.ft-brand-name{color:var(--ink);font-size:20px;font-weight:700;line-height:1.2}
+.ft-brand-by{display:block;color:var(--muted);font-size:13px}
+.ft-desc{margin:16px 0 0;max-width:300px;font-size:14px;font-weight:300;line-height:1.55;color:var(--muted)}
+.ft-title{margin:0 0 10px;color:var(--ink);font-size:17px;font-weight:700}
+.ft-links{list-style:none;margin:0;padding:0}
+.ft-links a,.ft-legal a{
+  display:inline-flex;align-items:center;min-height:44px;
+  color:var(--body-c);font-size:14.5px;
+  transition:color .2s ease;
+}
+.ft-links a:hover,.ft-links a:focus-visible,.ft-legal a:hover,.ft-legal a:focus-visible{color:var(--primary)}
+.ft-bottom{border-top:1px solid var(--hairline)}
+.ft-bot-in{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px 24px;padding-top:12px;padding-bottom:12px}
+.ft-copy{color:var(--muted);font-size:14px}
+.ft-legal{display:flex;flex-wrap:wrap;gap:0 26px}
+@media(max-width:640px){.ft-bot-in{flex-direction:column;align-items:flex-start}footer.ft{padding-top:40px}}
+
+/* motion */
+@keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+.rise{animation:rise .6s var(--ease-out) both}
+.rise-2{animation-delay:.08s}
+.rise-3{animation-delay:.16s}
+.rise-4{animation-delay:.24s}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
+}
+</style>
 </head>
 <body>
 
-<!-- Static CSS twinkle stars — zero JS cost -->
-<div class="stars-css" id="sc"></div>
+<div id="loader" aria-hidden="true"><div class="loader-blob"></div></div>
 
-<div class="page">
-  <nav>
-    <a href="https://commercesehoga.github.io" class="logo">Commerce<span>SeHoga</span></a>
-    <a href="https://commercesehoga.github.io" class="nav-link">← Back to Home</a>
-  </nav>
-
-  <main class="hero">
-    <div class="num-wrap">
-      <span class="num" data-text="404">404</span>
+<!-- ================= HEADER ================= -->
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="https://thundertest.indevs.in" aria-label="ThunderStudy, go to thundertest.indevs.in">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg>
+      </span>
+      <span class="brand-text">
+        <span class="brand-name">Thunder<span class="brand-accent">Study</span></span>
+        <span class="brand-by">by wondermayank</span>
+      </span>
+    </a>
+    <div class="nav-right">
+      <a class="nav-cta" href="https://thundertest.indevs.in" id="headerCta">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        <span>thundertest.indevs.in</span>
+      </a>
+      <button class="theme-btn" id="themeBtn" type="button" aria-label="Toggle dark mode" aria-pressed="false">
+        <svg id="themeIconSun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.4M12 19.1v2.4M4.2 4.2l1.7 1.7M18.1 18.1l1.7 1.7M2.5 12h2.4M19.1 12h2.4M4.2 19.8l1.7-1.7M18.1 5.9l1.7-1.7"/>
+        </svg>
+        <svg id="themeIconMoon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true">
+          <path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5Z"/>
+        </svg>
+      </button>
     </div>
+  </div>
+</header>
 
-    <div class="scene">
-      <div class="ring"></div>
-      <div class="planet">
-        <div class="crater" style="width:20px;height:20px;top:36px;left:44px;"></div>
-        <div class="crater" style="width:13px;height:13px;top:74px;left:86px;"></div>
-        <div class="crater" style="width:16px;height:16px;top:98px;left:34px;"></div>
-      </div>
-    </div>
+<!-- ================= MOVED ================= -->
+<main>
+  <section class="moved">
+    <span class="blob blob-1" aria-hidden="true"></span>
+    <span class="blob blob-2" aria-hidden="true"></span>
+    <div class="wrap">
 
-    <div class="err-label">Error 404 · Page Not Found</div>
-    <h1>Oops! You've drifted into<br/><em>deep space</em></h1>
-    <p class="sub">The page you're looking for doesn't exist or has been moved. Let's get you back on track.</p>
+      <span class="hero-badge rise"><span class="hero-dot"></span>Moved</span>
 
-    <div class="btn-group">
-      <a href="https://commercesehoga.github.io" class="btn btn-primary">🏠 Go to Home</a>
-      <a href="https://commercesehoga.github.io/dashboard" class="btn btn-ghost">📊 CBT Platform</a>
-    </div>
+      <h1 class="rise rise-2">This page has <span class="accent">moved</span></h1>
 
-    <div class="quick-links">
-      <div class="quick-title">Explore CommerceSehoga</div>
-      <div class="link-grid">
-        <a href="https://commercesehoga.github.io/dashboard" class="link-card">
-          <div class="link-icon">📝</div><span>CBT Mock Platform</span>
-        </a>
-        <a href="https://wondermayank.github.io/" class="link-card">
-          <div class="link-icon">🌐</div><span>WonderMayank</span>
-        </a>
-        <a href="https://commercesehoga.github.io/help" class="link-card">
-          <div class="link-icon">💙</div><span>Donate / Support</span>
-        </a>
-        <a href="https://wondermayank.github.io/contact" class="link-card">
-          <div class="link-icon">✉️</div><span>Contact Owner</span>
-        </a>
-      </div>
-    </div>
-  </main>
+      <p class="lede rise rise-3" id="lede">
+        ThunderStudy and ThunderTest now live on <strong>thundertest.indevs.in</strong>.
+        Same tools, same free content, new address.
+      </p>
 
-  <footer>
-    <div class="footer-inner">
-      <div class="footer-brand">Commerce<span>SeHoga</span></div>
-      <div class="footer-tagline">Your commerce learning companion · powered by WonderMayank</div>
-      <div class="footer-grid">
-        <div class="footer-col">
-          <h4>Platform</h4>
-          <a href="https://commercesehoga.github.io">Home</a>
-          <a href="https://commercesehoga.github.io/dashboard">CBT Mock Platform<span class="footer-badge">New</span></a>
-          <a href="https://commercesehoga.github.io/help">Donation / Support</a>
+      <div class="move-card rise rise-4">
+        <div class="swap">
+          <div class="swap-row old">
+            <span class="swap-ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg>
+            </span>
+            <span class="swap-txt">
+              <small>Old address</small>
+              <b id="oldUrl">commercesehoga.github.io/</b>
+            </span>
+          </div>
+
+          <span class="swap-arrow" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M12 5v14M6 13l6 6 6-6"/></svg>
+          </span>
+
+          <div class="swap-row new">
+            <span class="swap-ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="m5 12 5 5 9-10"/></svg>
+            </span>
+            <span class="swap-txt">
+              <small>New address</small>
+              <b id="newUrl">thundertest.indevs.in</b>
+            </span>
+          </div>
         </div>
-        <div class="footer-col">
-          <h4>Creator</h4>
-          <a href="https://wondermayank.github.io/">WonderMayank</a>
-          <a href="https://wondermayank.github.io/contact">Contact Owner</a>
-        </div>
-        <div class="footer-col">
-          <h4>Legal</h4>
-          <a href="https://wondermayank.github.io/terms">Terms of Service</a>
-          <a href="https://wondermayank.github.io/privacy">Privacy Policy</a>
-          <a href="https://wondermayank.github.io/disclaimer">Disclaimer</a>
+
+        <a class="btn btn-primary btn-lg btn-block" id="goBtn" href="https://thundertest.indevs.in">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          <span id="goLabel">Open thundertest.indevs.in</span>
+        </a>
+
+        <p class="auto" id="autoLine">
+          <span class="auto-dot" aria-hidden="true"></span>
+          <span>Opening in <b id="secs">9</b>s</span>
+          <button class="auto-x" id="cancelAuto" type="button">Stay here</button>
+        </p>
+
+        <p class="note" id="note" hidden></p>
+      </div>
+
+      <noscript>
+        <p class="noscript">
+          JavaScript is off, so the automatic check cannot run.
+          Head straight to <a href="https://thundertest.indevs.in">thundertest.indevs.in</a>.
+        </p>
+      </noscript>
+
+      <div class="map-block">
+        <p class="map-title">All moved sections</p>
+        <div class="chip-row" id="mapRow">
+          <a class="chip" href="https://thundertest.indevs.in" data-slug="">Home</a>
+          <a class="chip" href="https://thundertest.indevs.in/cuet" data-slug="cuet">CUET</a>
+          <a class="chip" href="https://thundertest.indevs.in/ssc" data-slug="ssc">SSC</a>
+          <a class="chip" href="https://thundertest.indevs.in/banking" data-slug="banking">Banking</a>
+          <a class="chip" href="https://thundertest.indevs.in/jee-neet" data-slug="jee-neet">JEE / NEET</a>
+          <a class="chip" href="https://thundertest.indevs.in/exam" data-slug="exam">Exam</a>
+          <a class="chip" href="https://thundertest.indevs.in/commerce" data-slug="commerce">Commerce</a>
+          <a class="chip" href="https://thundertest.indevs.in/science" data-slug="science">Science</a>
         </div>
       </div>
-      <div class="footer-bottom">
-        <span>© 2025 CommerceSehoga · <a href="https://wondermayank.github.io/">WonderMayank</a></span>
-        <span>Built with 💙 for Commerce students</span>
+
+      <div class="know">
+        <h2>Good to know</h2>
+        <div class="faq-list">
+          <details class="faq-item" open>
+            <summary>
+              Why has the address changed?
+              <span class="faq-chev" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></span>
+            </summary>
+            <p>Every ThunderStudy page now lives on one domain, <a href="https://thundertest.indevs.in">thundertest.indevs.in</a>. The old <strong>commercesehoga.github.io</strong> addresses are no longer used.</p>
+          </details>
+          <details class="faq-item">
+            <summary>
+              What about my bookmarks?
+              <span class="faq-chev" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></span>
+            </summary>
+            <p>They still open this page, so nothing is lost. Use the button above once and save the new address. Every old path keeps the same name, for example <strong>/cuet</strong> becomes <a href="https://thundertest.indevs.in/cuet">thundertest.indevs.in/cuet</a>.</p>
+          </details>
+          <details class="faq-item">
+            <summary>
+              I typed the address myself and got here.
+              <span class="faq-chev" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></span>
+            </summary>
+            <p>Then that page never existed. Check the spelling, or start from the new home page at <a href="https://thundertest.indevs.in">thundertest.indevs.in</a>.</p>
+          </details>
+        </div>
       </div>
+
     </div>
-  </footer>
-</div>
+  </section>
+</main>
+
+<!-- ================= FOOTER ================= -->
+<footer class="ft">
+  <div class="wrap ft-grid">
+    <div class="ft-brand-col">
+      <a class="ft-brand" href="https://wondermayank.in/" aria-label="WonderMayank home">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg>
+        </span>
+        <span>
+          <span class="ft-brand-name">Wonder<span class="brand-accent">Mayank</span></span>
+          <span class="ft-brand-by">Web Developer &amp; Creator</span>
+        </span>
+      </a>
+      <p class="ft-desc">Free project tools, vibecoding experiments and exam-prep resources for Indian students.</p>
+    </div>
+
+    <nav aria-label="ThunderStudy">
+      <h2 class="ft-title">ThunderStudy</h2>
+      <ul class="ft-links">
+        <li><a href="https://thunderstudy.indevs.in/">ThunderStudy</a></li>
+        <li><a href="https://thundertest.indevs.in/">ThunderTest</a></li>
+        <li><a href="https://blog.thunderstudy.indevs.in/">Blog</a></li>
+        <li><a href="https://ai.thunderstudy.indevs.in/">AI</a></li>
+      </ul>
+    </nav>
+
+    <nav aria-label="Support">
+      <h2 class="ft-title">Support</h2>
+      <ul class="ft-links">
+        <li><a href="https://wondermayank.in/faq">FAQ</a></li>
+        <li><a href="https://wondermayank.in/mail">Mail</a></li>
+        <li><a href="https://wondermayank.in/contact">Contact</a></li>
+        <li><a href="https://wondermayank.in/copyright">Copyright</a></li>
+      </ul>
+    </nav>
+
+    <nav aria-label="wondermayank">
+      <h2 class="ft-title">wondermayank</h2>
+      <ul class="ft-links">
+        <li><a href="https://make.wondermayank.in/">Vibecoding</a></li>
+        <li><a href="https://project.wondermayank.in/">Useful Projects</a></li>
+        <li><a href="https://wondermayank.in/">Portfolio</a></li>
+        <li><a href="https://wondermayank.in/about">About</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <div class="ft-bottom">
+    <div class="wrap ft-bot-in">
+      <span class="ft-copy">&copy; 2026 WonderMayank. All rights reserved.</span>
+      <nav class="ft-legal" aria-label="Legal">
+        <a href="https://wondermayank.in/cookies">Cookies</a>
+        <a href="https://wondermayank.in/terms">Terms</a>
+        <a href="https://wondermayank.in/privacy">Privacy</a>
+        <a href="https://wondermayank.in/disclaimer">Disclaimer</a>
+        <a href="https://wondermayank.in/sitemap">Sitemap</a>
+      </nav>
+    </div>
+  </div>
+</footer>
 
 <script>
-  // ── Static twinkle stars (DOM, no canvas, no animation loop) ──
-  const sc = document.getElementById('sc');
-  const frag = document.createDocumentFragment();
-  for (let i = 0; i < 28; i++) {
-    const s = document.createElement('span');
-    const sz = 2 + Math.random() * 3;
-    s.style.cssText =
-      `width:${sz}px;height:${sz}px;` +
-      `top:${(Math.random()*100).toFixed(1)}%;` +
-      `left:${(Math.random()*100).toFixed(1)}%;` +
-      `--d:${(1.5+Math.random()*3).toFixed(1)}s;` +
-      `--dl:${(Math.random()*4).toFixed(1)}s;` +
-      `opacity:0.3;`;
-    frag.appendChild(s);
+/* ---------------- loader ---------------- */
+(function(){
+  var l=document.getElementById('loader');
+  function hide(){ if(l) l.classList.add('hide'); }
+  window.addEventListener('DOMContentLoaded',function(){ setTimeout(hide,180); });
+  setTimeout(hide,1500);
+})();
+
+/* ---------------- theme ---------------- */
+(function(){
+  var btn=document.getElementById('themeBtn');
+  function sync(){
+    var dark=document.documentElement.getAttribute('data-theme')==='dark';
+    btn.setAttribute('aria-pressed',dark?'true':'false');
+    btn.setAttribute('aria-label',dark?'Switch to light mode':'Switch to dark mode');
   }
-  sc.appendChild(frag);
-
-  // ── 3D tilt on mouse — throttled to ~30fps ──
-  const numEl = document.querySelector('.num');
-  let ticking = false, rafId = null;
-  let targetRx = 0, targetRy = 0;
-
-  document.addEventListener('mousemove', (e) => {
-    if (ticking) return;
-    ticking = true;
-    cancelAnimationFrame(rafId);
-    rafId = requestAnimationFrame(() => {
-      const cx = window.innerWidth / 2;
-      const cy = window.innerHeight / 2;
-      targetRx = ((e.clientY - cy) / cy) * -7;
-      targetRy = ((e.clientX - cx) / cx) * 9;
-      numEl.style.animation = 'none';
-      numEl.style.transform = `rotateX(${targetRx}deg) rotateY(${targetRy}deg)`;
-      ticking = false;
+  sync();
+  btn.addEventListener('click',function(){
+    var de=document.documentElement, next=de.getAttribute('data-theme')==='dark'?'light':'dark';
+    function apply(){
+      de.setAttribute('data-theme',next);
+      try{ localStorage.setItem('theme',next); }catch(e){}
+      var mt=document.getElementById('metaTheme');
+      if(mt) mt.setAttribute('content',next==='dark'?'#9A7AFB':'#573AFC');
+      var ms=document.getElementById('metaScheme');
+      if(ms) ms.setAttribute('content',next);
+      sync();
+    }
+    var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if(!document.startViewTransition||reduce){ apply(); return; }
+    var r=btn.getBoundingClientRect(), x=r.left+r.width/2, y=r.top+r.height/2;
+    var rad=Math.hypot(Math.max(x,innerWidth-x),Math.max(y,innerHeight-y));
+    de.classList.add('theme-swap');
+    var t=document.startViewTransition(apply);
+    t.ready.then(function(){
+      de.animate(
+        {clipPath:['circle(0px at '+x+'px '+y+'px)','circle('+rad+'px at '+x+'px '+y+'px)']},
+        {duration:650,easing:'cubic-bezier(.4,0,.2,1)',pseudoElement:'::view-transition-new(root)'}
+      );
     });
-  }, { passive: true });
-
-  document.addEventListener('mouseleave', () => {
-    numEl.style.animation = 'sway 7s ease-in-out infinite';
-    numEl.style.transform = '';
-    ticking = false;
+    t.finished.then(function(){ de.classList.remove('theme-swap'); },function(){ de.classList.remove('theme-swap'); });
   });
+})();
+
+/* ---------------- moved-page resolver ----------------
+   Old GitHub Pages path  ->  new path on thundertest.indevs.in
+   cuet, ssc, banking, jee-neet, exam, commerce, science keep their name.
+   Everything else goes to the new home page.
+------------------------------------------------------- */
+(function(){
+  var BASE = 'https://thundertest.indevs.in';
+
+  var KNOWN = {
+    '':        'Home',
+    'cuet':    'CUET',
+    'ssc':     'SSC',
+    'banking': 'Banking',
+    'jee-neet':'JEE / NEET',
+    'exam':    'Exam',
+    'commerce':'Commerce',
+    'science': 'Science'
+  };
+
+  /* work out the requested path, whatever the server appends */
+  var raw = location.pathname
+              .replace(/\/index\.html?$/i,'/')
+              .replace(/\/{2,}/g,'/')
+              .replace(/\/+$/,'');
+
+  var seg = (raw.split('/').filter(Boolean).pop() || '')
+              .replace(/\.html?$/i,'')
+              .toLowerCase();
+
+  if(seg === '404' || seg === 'index') seg = '';
+
+  var matched = Object.prototype.hasOwnProperty.call(KNOWN, seg);
+  var slug    = matched ? seg : '';
+  var target  = BASE + (slug ? '/' + slug : '/');
+  var newText = 'thundertest.indevs.in' + (slug ? '/' + slug : '');
+  var oldText = location.host + (raw || '/');
+
+  /* fill the card */
+  var oldEl = document.getElementById('oldUrl');
+  var newEl = document.getElementById('newUrl');
+  var goBtn = document.getElementById('goBtn');
+  var goLbl = document.getElementById('goLabel');
+  var cta   = document.getElementById('headerCta');
+  var note  = document.getElementById('note');
+
+  if(oldEl) oldEl.textContent = oldText;
+  if(newEl) newEl.textContent = newText;
+  if(goBtn) goBtn.setAttribute('href', target);
+  if(goLbl) goLbl.textContent = 'Open ' + newText;
+  if(cta)   cta.setAttribute('href', target);
+
+  if(note){
+    if(matched && slug){
+      note.textContent = 'Your ' + KNOWN[slug] + ' section kept the same name, so only the domain changed.';
+      note.hidden = false;
+    }else if(!matched){
+      note.textContent = 'We could not match "' + seg + '" to any section, so this goes to the new home page.';
+      note.hidden = false;
+    }
+  }
+
+  /* highlight the matching chip */
+  var chips = document.querySelectorAll('#mapRow .chip');
+  for(var i=0;i<chips.length;i++){
+    if(chips[i].getAttribute('data-slug') === slug){
+      chips[i].setAttribute('aria-current','page');
+    }
+  }
+
+  /* auto-open with a visible countdown and a cancel */
+  var line  = document.getElementById('autoLine');
+  var secsEl= document.getElementById('secs');
+  var stop  = document.getElementById('cancelAuto');
+  var left  = 9, timer = null, cancelled = false;
+
+  function tick(){
+    left--;
+    if(secsEl) secsEl.textContent = String(Math.max(0,left));
+    if(left <= 0){
+      clearInterval(timer);
+      timer = null;
+      if(!cancelled) location.replace(target);
+    }
+  }
+
+  function cancel(){
+    cancelled = true;
+    if(timer){ clearInterval(timer); timer = null; }
+    if(line) line.hidden = true;
+  }
+
+  if(stop) stop.addEventListener('click', cancel);
+  document.addEventListener('keydown',function(e){
+    if(e.key === 'Escape' && !cancelled) cancel();
+  });
+
+  /* respect a reduced-motion / save-data hint by not auto-opening */
+  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var saveData = navigator.connection && navigator.connection.saveData;
+  if(reduce || saveData){
+    if(line) line.hidden = true;
+  }else if(timer === null){
+    if(secsEl) secsEl.textContent = String(left);
+    timer = setInterval(tick, 1000);
+  }
+})();
 </script>
 </body>
 </html>
