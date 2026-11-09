@@ -1,808 +1,718 @@
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-IN">
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<title>ThunderStudy — Free CBSE Class 12, CUET &amp; Mock Test Preparation</title>
-<meta name="description" content="ThunderStudy offers free CBSE Class 12 study material, CUET preparation and mock tests for Commerce, Science and Humanities streams — no login, no fees, 100% free."/>
-<link rel="canonical" href="https://commercesehoga.github.io/"/>
-
-<!-- Open Graph -->
-<meta property="og:type" content="website"/>
-<meta property="og:title" content="ThunderStudy — Free Education For All"/>
-<meta property="og:description" content="Free CBSE Class 12 study material, CUET preparation and mock tests across Commerce, Science and Humanities streams."/>
-<meta property="og:url" content="https://commercesehoga.github.io/"/>
-<meta property="og:image" content="/og-image.png"/>
-
-<!-- Twitter Card -->
-<meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:title" content="ThunderStudy — Free Education For All"/>
-<meta name="twitter:description" content="Free CBSE Class 12 study material, CUET preparation and mock tests across Commerce, Science and Humanities streams."/>
-<meta name="twitter:image" content="/og-image.png"/>
-
-<link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
-
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-11GVYLFSCP"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>This page has moved to thundertest.indevs.in | ThunderStudy</title>
+<meta name="description" content="ThunderStudy and ThunderTest pages have moved to thundertest.indevs.in. Use the button to open the same page at its new address.">
+<meta name="robots" content="noindex, follow">
+<meta name="theme-color" id="metaTheme" content="#573AFC">
+<meta name="color-scheme" id="metaScheme" content="light">
+<meta name="darkreader-lock">
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-11GVYLFSCP');
+/* Theme is only ever light (blue) or dark (purple), from the saved choice, never from the phone or system. */
+(function(){var t='light';try{var s=localStorage.getItem('theme');if(s==='dark'||s==='light')t=s;}catch(e){}
+document.documentElement.setAttribute('data-theme',t);
+var m=document.getElementById('metaTheme');if(m)m.setAttribute('content',t==='dark'?'#9A7AFB':'#573AFC');
+var c=document.getElementById('metaScheme');if(c)c.setAttribute('content',t);})();
 </script>
-
-<link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet"/>
-
-<script>
-/* No-flash theme init */
-(function(){
-  var t = localStorage.getItem('theme');
-  if(!t){ t = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; }
-  document.documentElement.setAttribute('data-theme', t);
-})();
-</script>
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "EducationalOrganization",
-  "name": "ThunderStudy",
-  "url": "https://commercesehoga.github.io/",
-  "description": "Free CBSE Class 12 study material, CUET preparation and mock tests across Commerce, Science and Humanities streams.",
-  "sameAs": [
-    "https://t.me/Thunderstudy_official",
-    "https://youtube.com/@Thunderstudy_official",
-    "https://instagram.com/Thunderstudyx"
-  ]
-}
-</script>
-
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 <style>
-/* ══════════════════════════════════════
-   TOKENS — ThunderStudy Design System (Option B / Blue)
-══════════════════════════════════════ */
+/* =========================================================
+   TOKENS — clay system, light + dark, fixed
+========================================================= */
 :root{
-  --primary:#6699FB;
-  --primary-active:#4a7ff0;
-  --primary-focus:#89B4FF;
-  --primary-disabled:#D6D6D6;
+  color-scheme:light;
+  --canvas:#F4F1FC;
+  --canvas-deep:#ECE6FB;
+  --surface:#FAF8FE;
 
-  --ink:#1d1d1f;
-  --body:#3c3c3c;
-  --body-strong:#1a1a1a;
-  --muted:#6b6b6b;
-  --muted-soft:#9a9a9a;
+  --ink:#2B2640;
+  --body-c:#5C5575;
+  --muted:#6B6485;
 
-  --hairline:#e6e6e6;
-  --hairline-strong:#cccccc;
+  --hairline:rgba(43,38,64,.08);
+  --hairline-strong:rgba(43,38,64,.16);
 
-  --canvas:#ffffff;
-  --canvas-parchment:#F5F5FF;
-  --surface-soft:#f7f7f7;
-  --surface-card:#fafafa;
-  --surface-pearl:#fafafc;
-  --surface-strong:#ebebeb;
-  --surface-dark:#0e1524;
-  --surface-tile-1:#1b2333;
-  --surface-tile-2:#202a3d;
-
+  --primary:#573AFC;
+  --primary-active:#4527E0;
+  --primary-soft:#E4DEFF;
   --on-primary:#ffffff;
-  --on-dark:#ffffff;
-  --on-dark-soft:#b9c2d6;
 
   --success:#22c55e;
   --warning:#f59e0b;
   --error:#dc2626;
 
-  --r-sm:8px;--r-md:11px;--r-lg:18px;--r-pill:9999px;
-  --sp-xxs:4px;--sp-xs:8px;--sp-sm:12px;--sp-md:16px;--sp-lg:24px;--sp-xl:32px;--sp-xxl:48px;--sp-section:80px;
-  --product-shadow:rgba(0,0,0,0.22) 3px 5px 30px;
-}
+  --clay-light:rgba(255,255,255,.9);
+  --clay-dark:rgba(120,108,180,.5);
 
+  --radius-card:28px;
+  --radius-lg:24px;
+  --radius-md:20px;
+  --radius-sm:16px;
+  --radius-pill:999px;
+
+  --font:'Inter',system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+
+  --e-sm:4px 4px 10px var(--clay-dark),-4px -4px 10px var(--clay-light);
+  --e-md:6px 6px 14px var(--clay-dark),-6px -6px 14px var(--clay-light);
+  --e-lg:10px 10px 24px var(--clay-dark),-10px -10px 24px var(--clay-light);
+  --e-pressed:inset 4px 4px 10px var(--clay-dark),inset -4px -4px 10px var(--clay-light);
+  --ease-out:cubic-bezier(.2,.8,.2,1);
+}
 [data-theme="dark"]{
-  --primary:#89B4FF;
-  --primary-active:#6699FB;
-  --ink:#f5f5f7;
-  --body:#d1d1d6;
-  --body-strong:#ffffff;
-  --muted:#8e8e93;
-  --muted-soft:#636366;
-  --hairline:#2c2c2e;
-  --hairline-strong:#3a3a3c;
-  --canvas:#0e0e10;
-  --canvas-parchment:#161618;
-  --surface-soft:#1a1a1c;
-  --surface-card:#1c1c1e;
-  --surface-pearl:#1e1e20;
-  --surface-strong:#2c2c2e;
-  --surface-dark:#000000;
-  --surface-tile-1:#111113;
-  --surface-tile-2:#131315;
+  color-scheme:dark;
+  --canvas:#1A1730;
+  --canvas-deep:#15122A;
+  --surface:#221D3C;
+
+  --ink:#F1EEFB;
+  --body-c:#C7C0E0;
+  --muted:#8E86AC;
+
+  --hairline:rgba(255,255,255,.08);
+  --hairline-strong:rgba(255,255,255,.16);
+
+  --primary:#9A7AFB;
+  --primary-active:#B196FB;
+  --primary-soft:#2E2650;
+  --on-primary:#1A1730;
+
+  --clay-light:rgba(255,255,255,.05);
+  --clay-dark:rgba(0,0,0,.55);
 }
 
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
+/* =========================================================
+   BASE
+========================================================= */
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;min-height:100%}
+html{overflow-x:clip;scroll-behavior:smooth}
 body{
-  background:var(--canvas);color:var(--ink);
-  font-family:'Inter',system-ui,-apple-system,sans-serif;
-  min-height:100vh;transition:background .25s,color .25s;
+  font-family:var(--font);
+  background:var(--canvas);
+  color:var(--body-c);
+  -webkit-font-smoothing:antialiased;
+  overflow-x:clip;
+  display:flex;
+  flex-direction:column;
+  min-height:100vh;
+  transition:background .3s ease,color .3s ease;
 }
+main{flex:1 0 auto}
+a{text-decoration:none;color:inherit}
+button{font-family:var(--font);border:none;background:none;cursor:pointer;color:inherit}
+h1,h2,h3,h4,p{margin:0}
+svg{flex-shrink:0}
+.wrap{max-width:1240px;margin:0 auto;padding:0 32px;width:100%}
+@media(max-width:640px){.wrap{padding:0 20px}}
+:focus-visible{outline:2px solid var(--primary);outline-offset:3px}
 
-.hero-display{font-size:clamp(2.2rem,7.5vw,68px);font-weight:700;line-height:1.05;letter-spacing:-.6px;}
-.display-lg{font-size:clamp(1.7rem,5vw,40px);font-weight:700;line-height:1.1;}
-.display-md{font-size:clamp(1.4rem,4vw,32px);font-weight:700;line-height:1.15;}
-.display-sm{font-size:24px;font-weight:700;line-height:1.25;}
-.lead{font-size:clamp(1rem,2.4vw,22px);font-weight:400;line-height:1.5;}
-.title-md{font-size:18px;font-weight:700;line-height:1.4;}
-.body-md{font-size:17px;font-weight:400;line-height:1.5;letter-spacing:-.1px;}
-.body-light{font-size:16px;font-weight:300;line-height:1.6;}
-.caption{font-size:14px;font-weight:400;line-height:1.43;}
-.label-uppercase{font-size:12px;font-weight:700;line-height:1.3;letter-spacing:2px;text-transform:uppercase;}
-.fine-print{font-size:12px;font-weight:400;line-height:1.3;color:var(--muted);}
+/* =========================================================
+   LOADER
+========================================================= */
+#loader{position:fixed;inset:0;z-index:9999;background:var(--canvas);display:flex;align-items:center;justify-content:center;transition:opacity .4s ease,visibility .4s ease}
+#loader.hide{opacity:0;visibility:hidden}
+.loader-blob{width:64px;height:64px;border-radius:28px;background:var(--primary-soft);box-shadow:8px 8px 20px var(--clay-dark),-8px -8px 20px var(--clay-light);animation:pulse 1.1s ease-in-out infinite}
+@keyframes pulse{0%,100%{transform:scale(.85)}50%{transform:scale(1.05)}}
 
-/* ══ LOADING SCREEN ══ */
-#loader{
-  position:fixed;inset:0;z-index:9999;
-  background:var(--surface-dark);
-  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px;
-  transition:opacity .5s,visibility .5s;
+/* =========================================================
+   HEADER
+========================================================= */
+.nav{
+  position:sticky;top:0;z-index:50;
+  background:color-mix(in srgb,var(--canvas) 80%,transparent);
+  -webkit-backdrop-filter:blur(16px) saturate(1.5);
+  backdrop-filter:blur(16px) saturate(1.5);
+  border-bottom:1px solid var(--hairline);
+  box-shadow:0 8px 24px -16px var(--clay-dark);
 }
-#loader.hide{opacity:0;visibility:hidden;pointer-events:none;}
-.loader-ring{width:52px;height:52px;}
-.loader-ring circle{
-  fill:none;stroke:var(--primary);stroke-width:3;stroke-linecap:round;
-  stroke-dasharray:120;stroke-dashoffset:40;
-  transform-origin:center;animation:ringSpin 1.1s linear infinite;
-}
-@keyframes ringSpin{to{transform:rotate(360deg);}}
-.loader-label{font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--on-dark-soft);}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;height:76px}
+.brand{display:flex;align-items:center;gap:10px;min-width:0}
+.brand-mark{width:36px;height:36px;border-radius:12px;display:flex;align-items:center;justify-content:center;background:var(--primary);color:var(--on-primary);box-shadow:var(--e-sm);flex:none}
+.brand-mark svg{width:20px;height:20px;fill:currentColor;stroke:none}
+.brand-text{display:flex;flex-direction:column;line-height:1.15;min-width:0}
+.brand-name{color:var(--ink);font-size:17px;font-weight:700;letter-spacing:-.2px;white-space:nowrap}
+.brand-accent{color:var(--primary)}
+.brand-by{color:var(--muted);font-size:11.5px;font-weight:400;white-space:nowrap}
+.nav-right{display:flex;align-items:center;gap:10px}
+.theme-btn{position:relative;overflow:hidden;width:44px;height:44px;border-radius:14px;background:var(--surface);display:flex;align-items:center;justify-content:center;color:var(--ink);box-shadow:var(--e-sm);transition:transform .2s var(--ease-out)}
+.theme-btn:hover{transform:translateY(-2px)}
+.theme-btn:active{transform:scale(.92)}
+.nav-cta{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:44px;padding:0 18px;border-radius:var(--radius-pill);background:var(--primary);color:var(--on-primary);font-size:14px;font-weight:600;box-shadow:var(--e-sm);transition:transform .2s var(--ease-out),background .2s}
+.nav-cta:hover{background:var(--primary-active);transform:translateY(-2px)}
+.nav-cta:active{transform:scale(.95)}
+.nav-cta svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+@media(max-width:640px){.nav .wrap{height:68px}.brand-by{display:none}.nav-cta span{display:none}.nav-cta{width:44px;padding:0}}
+@media(max-width:400px){.nav .wrap{padding:0 14px}.brand-name{font-size:15px}}
 
-/* ══ NAV ══ */
-.top-nav{
-  position:sticky;top:0;z-index:500;height:64px;
-  display:flex;align-items:center;justify-content:space-between;
-  padding:0 24px;background:var(--canvas);border-bottom:1px solid var(--hairline);
-  transition:box-shadow .25s,backdrop-filter .25s;
-}
-.top-nav.scrolled{box-shadow:0 1px 24px rgba(0,0,0,.06);backdrop-filter:blur(14px) saturate(160%);}
-.nav-brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink);}
-.nav-logo{width:26px;height:26px;flex-shrink:0;}
-.nav-brand-name{font-weight:700;font-size:17px;letter-spacing:-.2px;color:var(--ink);}
-.nav-links{display:flex;align-items:center;gap:28px;}
-.nav-link{font-size:14px;font-weight:500;letter-spacing:.2px;color:var(--muted);text-decoration:none;transition:color .2s;}
-.nav-link:hover{color:var(--ink);}
-.nav-actions{display:flex;align-items:center;gap:12px;}
-.nav-cta{height:38px;padding:0 18px;font-size:13px;border-radius:var(--r-pill);}
-@media(max-width:768px){.nav-cta{display:none;}}
-.icon-btn{
-  width:40px;height:40px;border-radius:var(--r-pill);border:1px solid var(--hairline);
-  background:var(--canvas);color:var(--ink);display:flex;align-items:center;justify-content:center;
-  cursor:pointer;transition:transform .15s,background .2s;
-}
-.icon-btn:hover{background:var(--surface-soft);}
-.icon-btn:active{transform:scale(.95);}
-.icon-btn svg{width:18px;height:18px;}
-.icon-moon{display:none;}
-[data-theme="dark"] .icon-sun{display:none;}
-[data-theme="dark"] .icon-moon{display:block;}
-@media(max-width:640px){.nav-links{display:none;}}
+/* theme icon morph */
+.theme-btn svg{position:absolute;inset:0;margin:auto;transition:transform .55s cubic-bezier(.2,.8,.2,1),opacity .3s ease}
+#themeIconSun{opacity:1;transform:rotate(0) scale(1)}
+#themeIconMoon{opacity:0;transform:rotate(-90deg) scale(.3)}
+[data-theme="dark"] #themeIconSun{opacity:0;transform:rotate(90deg) scale(.3)}
+[data-theme="dark"] #themeIconMoon{opacity:1;transform:rotate(0) scale(1)}
+::view-transition-old(root),::view-transition-new(root){animation:none;mix-blend-mode:normal}
+::view-transition-old(root){z-index:1}
+::view-transition-new(root){z-index:2}
+html.theme-swap *{transition:none!important}
+@media(prefers-reduced-motion:reduce){.theme-btn svg{transition:none}}
 
-/* ══ BUTTONS ══ */
+/* =========================================================
+   MOVED SECTION
+========================================================= */
+.moved{position:relative;overflow:hidden;padding:64px 0 72px;text-align:center}
+.blob{position:absolute;border-radius:50%;filter:blur(2px);opacity:.55;z-index:0;pointer-events:none}
+.blob-1{width:340px;height:340px;background:var(--primary-soft);top:-120px;left:-130px}
+.blob-2{width:260px;height:260px;background:#FFE3D2;bottom:-100px;right:-90px}
+[data-theme="dark"] .blob{opacity:.15}
+.moved .wrap{position:relative;z-index:1}
+
+.hero-badge{display:inline-flex;align-items:center;gap:8px;padding:8px 16px;border-radius:var(--radius-pill);background:var(--primary-soft);color:var(--primary);font-size:12px;font-weight:700;letter-spacing:1.3px;text-transform:uppercase}
+[data-theme="dark"] .hero-badge{color:var(--primary-active)}
+.hero-dot{width:7px;height:7px;border-radius:50%;background:currentColor}
+
+.moved h1{
+  margin:20px auto 0;
+  max-width:820px;
+  font-size:clamp(32px,6vw,54px);
+  line-height:1.08;
+  font-weight:700;
+  letter-spacing:-.3px;
+  color:var(--ink);
+}
+.moved h1 .accent{color:var(--primary)}
+.lede{margin:18px auto 0;max-width:620px;font-size:17.5px;line-height:1.6;color:var(--body-c)}
+.lede strong{color:var(--ink);font-weight:700;overflow-wrap:anywhere}
+
+/* card */
+.move-card{
+  max-width:640px;
+  margin:34px auto 0;
+  background:var(--surface);
+  border-radius:var(--radius-card);
+  padding:28px;
+  box-shadow:var(--e-lg);
+  text-align:left;
+}
+@media(max-width:640px){.move-card{padding:22px 18px;border-radius:var(--radius-lg)}}
+
+.swap{display:grid;gap:10px;margin:0 0 20px}
+.swap-row{
+  display:flex;align-items:center;gap:14px;
+  padding:13px 16px;
+  min-height:64px;
+  border-radius:var(--radius-md);
+  background:var(--canvas-deep);
+  box-shadow:var(--e-pressed);
+}
+[data-theme="dark"] .swap-row{box-shadow:none;border:1px solid var(--hairline-strong)}
+.swap-row.new{
+  background:var(--primary-soft);
+  box-shadow:none;
+  border:1.5px solid color-mix(in srgb,var(--primary) 34%,transparent);
+}
+.swap-ico{
+  flex:none;width:40px;height:40px;border-radius:14px;
+  display:grid;place-items:center;
+  background:var(--surface);color:var(--muted);box-shadow:var(--e-sm);
+}
+.swap-ico svg{width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.swap-row.new .swap-ico{
+  background:var(--primary);color:var(--on-primary);
+  box-shadow:4px 4px 12px color-mix(in srgb,var(--primary) 45%,transparent);
+}
+.swap-txt{min-width:0;flex:1}
+.swap-txt small{display:block;font-size:11px;font-weight:700;letter-spacing:1.3px;text-transform:uppercase;color:var(--muted)}
+.swap-txt b{display:block;margin-top:2px;font-size:15.5px;font-weight:700;color:var(--ink);overflow-wrap:anywhere;line-height:1.3}
+.swap-row.old .swap-txt b{color:var(--muted);text-decoration:line-through;text-decoration-thickness:2px;text-decoration-color:color-mix(in srgb,var(--muted) 60%,transparent)}
+.swap-arrow{
+  justify-self:center;display:grid;place-items:center;
+  width:36px;height:36px;margin:-6px 0;border-radius:50%;
+  background:var(--surface);color:var(--primary);box-shadow:var(--e-sm);
+}
+.swap-arrow svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+
+/* buttons */
 .btn{
-  display:inline-flex;align-items:center;justify-content:center;gap:8px;
-  font-size:15px;font-weight:600;line-height:1;letter-spacing:0;
-  border-radius:var(--r-pill);padding:14px 28px;height:48px;
-  text-decoration:none;cursor:pointer;border:none;transition:transform .15s,background .2s;
+  min-height:46px;padding:0 24px;border-radius:var(--radius-pill);
+  display:inline-flex;align-items:center;justify-content:center;gap:9px;
+  font-size:15px;font-weight:600;
+  transition:transform .2s var(--ease-out),box-shadow .2s,background .2s,color .2s;
 }
-.btn:active{transform:scale(.95);}
-.btn-primary{background:var(--primary);color:var(--on-primary);}
-.btn-primary:hover{background:var(--primary-active);}
-.btn-secondary{background:var(--canvas);color:var(--ink);border:1px solid var(--hairline-strong);}
-.btn-secondary:hover{background:var(--surface-soft);}
-.btn-secondary-on-dark{background:transparent;color:var(--on-dark);border:1px solid var(--on-dark);}
-.btn-secondary-on-dark:hover{background:rgba(255,255,255,.08);}
-.text-link{
-  display:inline-flex;align-items:center;gap:4px;
-  font-size:13px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;
-  color:var(--ink);text-decoration:none;
-}
-.text-link svg{width:14px;height:14px;}
+.btn svg{width:17px;height:17px}
+.btn-primary{background:var(--primary);color:var(--on-primary);box-shadow:var(--e-md)}
+.btn-primary:hover{background:var(--primary-active);transform:translateY(-3px)}
+.btn-primary:active{transform:scale(.96)}
+.btn-secondary{background:var(--surface);color:var(--ink);box-shadow:var(--e-md)}
+.btn-secondary:hover{color:var(--primary);transform:translateY(-3px)}
+.btn-secondary:active{transform:scale(.96)}
+.btn-lg{min-height:56px;padding:0 30px;font-size:16px;font-weight:700}
+.btn-block{width:100%}
+.btn svg{fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 
-/* ══ LAYOUT ══ */
-.wrap{max-width:1160px;margin:0 auto;padding:0 24px;}
-.section{padding:var(--sp-section) 0;}
-.section-parchment{background:var(--canvas-parchment);}
-.section-dark{background:var(--surface-dark);color:var(--on-dark);}
-.eyebrow{
-  font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;
-  color:var(--primary-focus,var(--primary));text-align:center;margin-bottom:18px;
+.auto{
+  display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;
+  margin:16px 0 0;
+  font-size:13.5px;font-weight:600;color:var(--muted);
 }
-.sec-title{text-align:center;margin-bottom:14px;}
-.sec-sub{text-align:center;color:var(--muted);max-width:560px;margin:0 auto var(--sp-xl);line-height:1.6;}
-.section-dark .sec-sub{color:var(--on-dark-soft);}
-
-/* ══ HERO ══ */
-.hero{
-  background:var(--surface-dark);color:var(--on-dark);
-  padding:110px 24px 88px;text-align:center;position:relative;overflow:hidden;
+.auto[hidden]{display:none}
+.auto b{color:var(--ink);font-variant-numeric:tabular-nums}
+.auto-dot{width:9px;height:9px;border-radius:50%;background:var(--primary);animation:blink 1.1s ease-in-out infinite}
+@keyframes blink{0%,100%{opacity:.35;transform:scale(.85)}50%{opacity:1;transform:scale(1)}}
+.auto-x{
+  min-height:44px;padding:0 16px;border-radius:var(--radius-pill);
+  background:var(--surface);color:var(--ink);
+  font-size:13px;font-weight:700;box-shadow:var(--e-sm);
+  transition:transform .2s var(--ease-out),color .2s;
 }
-.hero-visual{position:relative;display:inline-flex;align-items:center;justify-content:center;width:132px;height:132px;margin-bottom:36px;}
-.hero-visual-glow{
-  position:absolute;inset:-60px;border-radius:50%;
-  background:radial-gradient(circle,rgba(102,153,251,.35),transparent 70%);
-  filter:blur(6px);pointer-events:none;
+.auto-x:hover{color:var(--primary);transform:translateY(-2px)}
+.auto-x:active{transform:scale(.94)}
+
+.note{margin:14px 0 0;font-size:13.5px;line-height:1.55;color:var(--muted);text-align:center}
+.note[hidden]{display:none}
+
+/* section map */
+.map-block{max-width:640px;margin:38px auto 0}
+.map-title{
+  font-size:12px;font-weight:700;letter-spacing:1.6px;text-transform:uppercase;
+  color:var(--muted);margin-bottom:14px;text-align:center;
 }
-.hero-visual-card{
-  position:relative;z-index:2;width:100px;height:100px;border-radius:var(--r-lg);
-  background:var(--surface-tile-1);border:1px solid rgba(255,255,255,.08);
-  display:flex;align-items:center;justify-content:center;
-  filter:drop-shadow(var(--product-shadow));
+.chip-row{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
+.chip{
+  display:inline-flex;align-items:center;gap:7px;
+  min-height:44px;padding:10px 18px;border-radius:var(--radius-pill);
+  background:var(--surface);color:var(--ink);
+  font-size:13.5px;font-weight:600;border:1.5px solid transparent;
+  box-shadow:var(--e-sm);
+  transition:transform .2s var(--ease-out),color .2s,background .2s,border-color .2s;
 }
-.hero-visual-card svg{width:50px;height:50px;color:var(--primary-focus,var(--primary));}
-.hero-float{
-  position:absolute;z-index:3;display:flex;align-items:center;gap:6px;
-  padding:7px 14px;border-radius:var(--r-pill);background:var(--surface-tile-2);
-  border:1px solid rgba(255,255,255,.1);font-size:12px;font-weight:600;color:var(--on-dark-soft);
-  white-space:nowrap;
+.chip:hover{transform:translateY(-2px);color:var(--primary)}
+.chip:active{transform:scale(.96)}
+.chip[aria-current="page"]{background:var(--primary-soft);border-color:var(--primary);color:var(--primary);font-weight:700}
+[data-theme="dark"] .chip[aria-current="page"]{color:var(--primary-active)}
+.chip svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+
+/* good to know */
+.know{max-width:640px;margin:44px auto 0;text-align:left}
+.know h2{font-size:13px;font-weight:700;letter-spacing:1.6px;text-transform:uppercase;color:var(--muted);margin-bottom:14px;text-align:center}
+.faq-list{display:flex;flex-direction:column;gap:12px}
+.faq-item{background:var(--surface);border-radius:20px;box-shadow:var(--e-sm);overflow:hidden}
+.faq-item summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:16px 20px;font-size:15.5px;font-weight:700;color:var(--ink);min-height:56px}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-item summary:focus-visible{outline:2px solid var(--primary);outline-offset:-2px;border-radius:20px}
+.faq-chev{flex:none;width:30px;height:30px;border-radius:50%;background:var(--primary-soft);color:var(--primary);display:flex;align-items:center;justify-content:center;transition:transform .25s var(--ease-out),background .2s,color .2s}
+[data-theme="dark"] .faq-chev{color:var(--primary-active)}
+.faq-chev svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.faq-item[open] .faq-chev{transform:rotate(180deg);background:var(--primary);color:var(--on-primary)}
+.faq-item p{padding:0 20px 18px;font-size:14.5px;line-height:1.65;color:var(--muted)}
+.faq-item p a{color:var(--primary);font-weight:600;overflow-wrap:anywhere}
+
+.noscript{max-width:640px;margin:26px auto 0;padding:14px 18px;border-radius:var(--radius-md);background:var(--surface);border-left:5px solid var(--warning);color:var(--ink);font-size:14.5px;line-height:1.5;text-align:left}
+.noscript a{color:var(--primary);font-weight:700;overflow-wrap:anywhere}
+
+/* =========================================================
+   FOOTER
+========================================================= */
+footer.ft{
+  flex-shrink:0;
+  background:var(--surface);
+  border-top:1px solid var(--hairline);
+  padding:56px 0 0;
+  color:var(--muted);
+  font-size:15px;
+  line-height:1.5;
 }
-.hero-float svg{width:13px;height:13px;color:var(--primary-focus,var(--primary));flex-shrink:0;}
-.hero-float-1{top:-6px;left:-92px;animation:floatY 4.5s ease-in-out infinite;}
-.hero-float-2{bottom:2px;right:-104px;animation:floatY 4.5s ease-in-out 1.4s infinite;}
-@keyframes floatY{0%,100%{transform:translateY(0);}50%{transform:translateY(-8px);}}
-@media(max-width:640px){.hero-float{display:none;}}
+.ft-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:36px 44px;padding-bottom:44px}
+@media(max-width:900px){.ft-grid{grid-template-columns:repeat(3,1fr)}.ft-brand-col{grid-column:1/-1}}
+@media(max-width:640px){.ft-grid{grid-template-columns:1fr;gap:26px;padding-bottom:30px}}
+.ft-brand{display:inline-flex;align-items:center;gap:12px;color:var(--ink)}
+.ft-brand .brand-mark{width:44px;height:44px;border-radius:14px}
+.ft-brand .brand-mark svg{width:24px;height:24px}
+.ft-brand-name{color:var(--ink);font-size:20px;font-weight:700;line-height:1.2}
+.ft-brand-by{display:block;color:var(--muted);font-size:13px}
+.ft-desc{margin:16px 0 0;max-width:300px;font-size:14px;font-weight:300;line-height:1.55;color:var(--muted)}
+.ft-title{margin:0 0 10px;color:var(--ink);font-size:17px;font-weight:700}
+.ft-links{list-style:none;margin:0;padding:0}
+.ft-links a,.ft-legal a{
+  display:inline-flex;align-items:center;min-height:44px;
+  color:var(--body-c);font-size:14.5px;
+  transition:color .2s ease;
+}
+.ft-links a:hover,.ft-links a:focus-visible,.ft-legal a:hover,.ft-legal a:focus-visible{color:var(--primary)}
+.ft-bottom{border-top:1px solid var(--hairline)}
+.ft-bot-in{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px 24px;padding-top:12px;padding-bottom:12px}
+.ft-copy{color:var(--muted);font-size:14px}
+.ft-legal{display:flex;flex-wrap:wrap;gap:0 26px}
+@media(max-width:640px){.ft-bot-in{flex-direction:column;align-items:flex-start}footer.ft{padding-top:40px}}
 
-.eyebrow-on-dark{color:var(--on-dark-soft);}
-.hero h1{margin-bottom:18px;}
-.hero .lead{color:var(--on-dark-soft);max-width:520px;margin:0 auto 40px;}
-.hero-ctas{display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;}
-
-/* stagger reveal (hero content fades/slides in after loader) */
-.reveal-item{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease;}
-.reveal-in .reveal-item{opacity:1;transform:translateY(0);}
-.reveal-item:nth-child(1){transition-delay:.05s;}
-.reveal-item:nth-child(2){transition-delay:.15s;}
-.reveal-item:nth-child(3){transition-delay:.25s;}
-.reveal-item:nth-child(4){transition-delay:.35s;}
-.reveal-item:nth-child(5){transition-delay:.45s;}
-
-/* scroll-reveal for sections/cards further down the page */
-.sr{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease;}
-.sr.sr-in{opacity:1;transform:translateY(0);}
-.sr-stagger .sr:nth-child(1){transition-delay:0s;}
-.sr-stagger .sr:nth-child(2){transition-delay:.08s;}
-.sr-stagger .sr:nth-child(3){transition-delay:.16s;}
-.sr-stagger .sr:nth-child(4){transition-delay:.24s;}
-.sr-stagger .sr:nth-child(5){transition-delay:.32s;}
-
+/* motion */
+@keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+.rise{animation:rise .6s var(--ease-out) both}
+.rise-2{animation-delay:.08s}
+.rise-3{animation-delay:.16s}
+.rise-4{animation-delay:.24s}
 @media(prefers-reduced-motion:reduce){
-  .reveal-item,.sr{opacity:1!important;transform:none!important;transition:none!important;}
-  .hero-float{animation:none!important;}
-  .loader-ring circle{animation-duration:1.6s;}
-}
-
-/* ══ STATS ══ */
-.stats{display:flex;justify-content:center;flex-wrap:wrap;gap:12px;padding:40px 24px;}
-.stat-pill{
-  display:flex;align-items:center;gap:8px;padding:10px 20px;
-  background:var(--canvas);border:1px solid var(--hairline);border-radius:var(--r-pill);
-  font-size:14px;font-weight:600;color:var(--body);
-}
-.stat-dot{width:6px;height:6px;border-radius:50%;background:var(--primary);}
-
-/* ══ TICKER ══ */
-.ticker-wrap{
-  background:var(--canvas-parchment);border-top:1px solid var(--hairline);border-bottom:1px solid var(--hairline);
-  overflow:hidden;height:40px;display:flex;align-items:center;
-}
-.ticker-label{
-  flex-shrink:0;padding:0 18px;font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;
-  color:var(--primary);white-space:nowrap;border-right:1px solid var(--hairline);height:100%;display:flex;align-items:center;gap:7px;
-}
-.ticker-track{flex:1;overflow:hidden;}
-.ticker-inner{display:flex;white-space:nowrap;animation:ticker 34s linear infinite;}
-.ticker-inner:hover{animation-play-state:paused;}
-@keyframes ticker{from{transform:translateX(0);}to{transform:translateX(-50%);}}
-.tick-item{display:inline-flex;align-items:center;gap:8px;padding:0 26px;font-size:13px;font-weight:500;color:var(--body);}
-.tick-dot{width:4px;height:4px;border-radius:50%;background:var(--primary);flex-shrink:0;}
-
-/* ══ SOCIAL ══ */
-.social-grid{display:flex;justify-content:center;flex-wrap:wrap;gap:12px;}
-.soc-card{
-  display:flex;align-items:center;gap:10px;padding:12px 20px;border-radius:var(--r-lg);
-  text-decoration:none;border:1px solid var(--hairline);background:var(--canvas);transition:border-color .2s,transform .15s;
-}
-.soc-card:hover{border-color:var(--primary);transform:translateY(-2px);}
-.soc-card svg{width:22px;height:22px;flex-shrink:0;}
-.soc-card .sc-txt{display:flex;flex-direction:column;gap:1px;}
-.soc-card .sc-name{font-size:14px;font-weight:700;color:var(--ink);}
-.soc-card .sc-handle{font-size:12px;font-weight:400;color:var(--muted);}
-
-/* ══ GRID CARDS (platforms / streams) ══ */
-.card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px;}
-.course-card{
-  background:var(--canvas);border:1px solid var(--hairline);border-radius:var(--r-lg);
-  padding:var(--sp-lg);display:flex;flex-direction:column;text-decoration:none;transition:border-color .2s,transform .15s;
-}
-.course-card:hover{border-color:var(--hairline-strong);transform:translateY(-3px);}
-.cc-cover{
-  aspect-ratio:16/10;border-radius:var(--r-md);margin-bottom:var(--sp-md);
-  background:var(--surface-tile-1);display:flex;align-items:center;justify-content:center;
-  overflow:hidden;
-}
-.cc-cover svg{width:34px;height:34px;color:var(--primary-focus,var(--primary));}
-.cc-cover img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s ease;}
-.course-card:hover .cc-cover img{transform:scale(1.05);}
-.cc-name{margin-bottom:6px;color:var(--ink);}
-.cc-desc{color:var(--muted);margin-bottom:var(--sp-md);flex:1;}
-.cc-chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:var(--sp-md);}
-.cc-chip{font-size:12px;font-weight:600;padding:4px 10px;border-radius:var(--r-pill);background:var(--surface-soft);color:var(--muted);}
-
-/* ══ TRUST / PROOF ══ */
-.stat-band{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-bottom:56px;}
-.stat-block{text-align:center;padding:8px;}
-.stat-number{font-size:clamp(1.8rem,4vw,40px);font-weight:700;letter-spacing:-.5px;color:var(--ink);line-height:1.1;}
-.stat-number .stat-suffix{color:var(--primary);}
-.stat-label{font-size:13px;color:var(--muted);margin-top:6px;}
-@media(max-width:768px){.stat-band{grid-template-columns:repeat(2,1fr);gap:28px 16px;}}
-
-.testimonial-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
-.testimonial-card{
-  background:var(--canvas);border:1px solid var(--hairline);border-radius:var(--r-lg);
-  padding:var(--sp-lg);display:flex;flex-direction:column;gap:14px;
-}
-.testimonial-quote-icon{width:24px;height:24px;color:var(--primary);opacity:.5;}
-.testimonial-text{font-size:15px;line-height:1.6;color:var(--body);}
-.testimonial-person{display:flex;align-items:center;gap:10px;margin-top:auto;}
-.testimonial-avatar{
-  width:36px;height:36px;border-radius:50%;background:var(--surface-tile-1);color:var(--primary-focus,var(--primary));
-  display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0;
-}
-.testimonial-name{font-size:14px;font-weight:700;color:var(--ink);}
-.testimonial-role{font-size:12px;color:var(--muted);}
-@media(max-width:768px){.testimonial-grid{grid-template-columns:1fr;}}
-
-/* ══ CTA BAND ══ */
-.cta-band{text-align:center;}
-.cta-band .display-md{margin-bottom:20px;}
-
-/* ══ FAQ ══ */
-.faq-list{max-width:720px;margin:0 auto;display:flex;flex-direction:column;gap:1px;}
-.faq-item{border-bottom:1px solid var(--hairline);padding:20px 0;}
-.faq-q{font-weight:700;font-size:16px;color:var(--ink);margin-bottom:8px;}
-.faq-a{color:var(--muted);font-size:15px;line-height:1.6;}
-
-/* ══ FOOTER ══ */
-footer{background:var(--canvas-parchment);padding:64px 24px 32px;}
-.footer-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;max-width:1160px;margin:0 auto;}
-.footer-col h4{font-size:13px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--ink);margin-bottom:16px;}
-.footer-col a{display:block;font-size:14px;color:var(--muted);text-decoration:none;margin-bottom:10px;}
-.footer-col a:hover{color:var(--ink);}
-.footer-bottom{max-width:1160px;margin:32px auto 0;padding-top:24px;border-top:1px solid var(--hairline);text-align:center;}
-@media(max-width:640px){.footer-grid{grid-template-columns:1fr;gap:24px;}}
-
-.up{
-  position:fixed;bottom:28px;right:28px;width:46px;height:46px;
-  background:var(--primary);color:var(--on-primary);border:none;border-radius:var(--r-full,9999px);
-  display:flex;align-items:center;justify-content:center;cursor:pointer;
-  opacity:0;pointer-events:none;transition:opacity .3s,transform .2s;z-index:100;
-}
-.up svg{width:18px;height:18px;}
-.up.on{opacity:1;pointer-events:all;}
-.up:hover{transform:translateY(-3px);}
-
-/* ══ RESPONSIVE ══ */
-@media(max-width:640px){
-  .section{padding:56px 0;}
-  .hero{padding:64px 20px 56px;}
-  .course-card[style*="flex-direction:row"]{flex-direction:column!important;text-align:center;}
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
 }
 </style>
 </head>
 <body>
 
-<!-- LOADING SCREEN -->
-<div id="loader">
-  <svg class="loader-ring" viewBox="0 0 52 52"><circle cx="26" cy="26" r="20"/></svg>
-  <div class="loader-label">ThunderStudy</div>
-</div>
+<div id="loader" aria-hidden="true"><div class="loader-blob"></div></div>
 
-<!-- NAV -->
-<nav class="top-nav">
-  <a href="#" class="nav-brand">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
-  <!-- Blue rounded background -->
-  <rect width="32" height="32" rx="7" fill="#2563eb"/>
-  <!-- Inner subtle top highlight -->
-  <rect width="32" height="16" rx="7" fill="rgba(255,255,255,0.08)"/>
-  <!-- White lightning bolt -->
-  <path d="M19 4L8 18H15L10 28L24 14H17L19 4Z" fill="white"/>
-<script xmlns=""/></svg>
-    <span class="nav-brand-name">ThunderStudy</span>
-  </a>
-  <div class="nav-links">
-    <a href="#streams" class="nav-link">Streams</a>
-    <a href="#studyhub" class="nav-link">StudyHub</a>
-    <a href="#follow" class="nav-link">Follow</a>
-    <a href="#faq" class="nav-link">FAQ</a>
-  </div>
-  <div class="nav-actions">
-    <a href="https://commercesehoga.github.io/dashboard" target="_blank" rel="noreferrer" class="btn btn-primary nav-cta">Mock Tests</a>
-    <button class="icon-btn" id="themeToggle" aria-label="Toggle dark mode">
-      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
-      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-    </button>
-  </div>
-</nav>
-
-<!-- TICKER -->
-<div class="ticker-wrap">
-  <div class="ticker-label">Live</div>
-  <div class="ticker-track"><div class="ticker-inner" id="tickerInner"></div></div>
-</div>
-
-<main>
-
-<!-- HERO -->
-<section class="hero" id="heroSection">
-  <div class="hero-visual reveal-item">
-    <div class="hero-visual-glow"></div>
-    <div class="hero-float hero-float-1">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
-      CBSE 2026 Ready
-    </div>
-    <div class="hero-visual-card">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg>
-    </div>
-    <div class="hero-float hero-float-2">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-      CUET Mock Tests
-    </div>
-  </div>
-  <div class="eyebrow eyebrow-on-dark reveal-item">Free Education For All</div>
-  <h1 class="hero-display reveal-item">ThunderStudy</h1>
-  <p class="lead reveal-item">Class 12 CBSE, CUET preparation and free mock tests across Science, Commerce and Humanities — built by the Thunder team, no login required.</p>
-  <div class="hero-ctas reveal-item">
-    <a href="https://commercesehoga.github.io" target="_blank" rel="noreferrer" class="btn btn-primary">Explore Streams</a>
-    <a href="https://commercesehoga.blogspot.com" target="_blank" rel="noreferrer" class="btn btn-secondary-on-dark">Visit Blogspot</a>
-  </div>
-</section>
-
-<!-- STATS -->
-<div class="stats">
-  <div class="stat-pill"><span class="stat-dot"></span>3 Stream Editions</div>
-  <div class="stat-pill"><span class="stat-dot"></span>19 Class 12 Subjects</div>
-  <div class="stat-pill"><span class="stat-dot"></span>Free Mock Tests</div>
-  <div class="stat-pill"><span class="stat-dot"></span>100% Free</div>
-</div>
-
-<!-- SOCIAL -->
-<section class="section sr" id="follow">
+<!-- ================= HEADER ================= -->
+<header class="nav">
   <div class="wrap">
-    <div class="eyebrow">Follow Us Everywhere</div>
-    <h2 class="sec-title display-sm">@thunderstudy</h2>
-    <div style="height:32px"></div>
-    <div class="social-grid">
-      <a href="https://t.me/Thunderstudy_official" target="_blank" rel="noreferrer" class="soc-card">
-        <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M24 48C37.2548 48 48 37.2548 48 24C48 10.7452 37.2548 0 24 0C10.7452 0 0 10.7452 0 24C0 37.2548 10.7452 48 24 48Z" fill="url(#tgGrad)"/><path d="M8.93822 25.174C11.7438 23.6286 14.8756 22.3388 17.8018 21.0424C22.836 18.919 27.8902 16.8324 32.9954 14.8898C33.9887 14.5588 35.7734 14.2351 35.9484 15.7071C35.8526 17.7907 35.4584 19.8621 35.188 21.9335C34.5017 26.4887 33.7085 31.0283 32.935 35.5685C32.6685 37.0808 30.774 37.8637 29.5618 36.8959C26.6486 34.9281 23.713 32.9795 20.837 30.9661C19.8949 30.0088 20.7685 28.6341 21.6099 27.9505C24.0093 25.5859 26.5539 23.5769 28.8279 21.0901C29.4413 19.6088 27.6289 20.8572 27.0311 21.2397C23.7463 23.5033 20.5419 25.9051 17.0787 27.8945C15.3097 28.8683 13.2479 28.0361 11.4797 27.4927C9.89428 26.8363 7.57106 26.175 8.93806 25.1741L8.93822 25.174Z" fill="white"/><defs><linearGradient id="tgGrad" x1="18.0028" y1="2.0016" x2="6.0028" y2="30" gradientUnits="userSpaceOnUse"><stop stop-color="#37AEE2"/><stop offset="1" stop-color="#1E96C8"/></linearGradient></defs></svg>
-        <div class="sc-txt"><div class="sc-name">Telegram</div><div class="sc-handle">@Thunderstudy_official</div></div>
-      </a>
-      <a href="https://youtube.com/@Thunderstudy_official" target="_blank" rel="noreferrer" class="soc-card">
-        <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 24C0 10.7452 10.7452 0 24 0C37.2548 0 48 10.7452 48 24C48 37.2548 37.2548 48 24 48C10.7452 48 0 37.2548 0 24Z" fill="#FF0000"/><path d="M36.265 18.0732C35.9706 16.9422 35.1031 16.0516 34.0016 15.7493C32.0054 15.2 24 15.2 24 15.2C24 15.2 15.9946 15.2 13.9983 15.7493C12.8967 16.0516 12.0292 16.9422 11.7348 18.0732C11.2 20.1231 11.2 24.4 11.2 24.4C11.2 24.4 11.2 28.6768 11.7348 30.7268C12.0292 31.8578 12.8967 32.7484 13.9983 33.0508C15.9946 33.6 24 33.6 24 33.6C24 33.6 32.0054 33.6 34.0016 33.0508C35.1031 32.7484 35.9706 31.8578 36.265 30.7268C36.8 28.6768 36.8 24.4 36.8 24.4C36.8 24.4 36.8 20.1231 36.265 18.0732" fill="white"/><path d="M21.6 28.8V20.8L28 24.8001L21.6 28.8Z" fill="#FF0000"/></svg>
-        <div class="sc-txt"><div class="sc-name">YouTube</div><div class="sc-handle">@Thunderstudy_official</div></div>
-      </a>
-      <a href="https://instagram.com/Thunderstudyx" target="_blank" rel="noreferrer" class="soc-card">
-        <svg viewBox="0 0 24 24" fill="none" stroke="#E1306C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="#E1306C" stroke="none"/></svg>
-        <div class="sc-txt"><div class="sc-name">Instagram</div><div class="sc-handle">@Thunderstudyx</div></div>
-      </a>
-      <a href="https://x.com/Thunderstudyx" target="_blank" rel="noreferrer" class="soc-card">
-        <svg viewBox="0 0 24 24" fill="currentColor" style="color:var(--ink)" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-        <div class="sc-txt"><div class="sc-name">X</div><div class="sc-handle">@Thunderstudyx</div></div>
-      </a>
-      <a href="https://commercesehoga.blogspot.com" target="_blank" rel="noreferrer" class="soc-card">
-        <svg viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg>
-        <div class="sc-txt"><div class="sc-name">Website</div><div class="sc-handle">commercesehoga.blogspot.com</div></div>
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- STREAMS -->
-<section class="section section-parchment sr" id="streams">
-  <div class="wrap">
-    <div class="eyebrow">CBSE Class 12</div>
-    <h2 class="sec-title display-md">Choose Your Stream</h2>
-    <p class="sec-sub">Every stream includes full syllabus notes, sample papers and CUET-aligned mock tests.</p>
-    <div class="card-grid sr-stagger">
-      <a href="https://commercesehoga.github.io/commerce/" target="_blank" rel="noreferrer" class="course-card sr">
-        <div class="cc-cover"><img src="https://commercesehoga.github.io/commerce.png" alt="Commerce Hub" loading="lazy"/></div>
-        <div class="title-md cc-name">Commerce Hub</div>
-        <p class="body-light cc-desc">Accountancy, Business Studies, Economics and Maths with CUET Commerce prep.</p>
-        <div class="cc-chips"><span class="cc-chip">Accountancy</span><span class="cc-chip">BST</span><span class="cc-chip">Economics</span></div>
-        <span class="text-link">Learn more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg></span>
-      </a>
-      <a href="https://commercesehoga.github.io/science/" target="_blank" rel="noreferrer" class="course-card sr">
-        <div class="cc-cover"><img src="https://commercesehoga.github.io/science.png" alt="Science Hub" loading="lazy"/></div>
-        <div class="title-md cc-name">Science Hub</div>
-        <p class="body-light cc-desc">Physics, Chemistry, Biology and Maths with CUET Science preparation.</p>
-        <div class="cc-chips"><span class="cc-chip">Physics</span><span class="cc-chip">Chemistry</span><span class="cc-chip">Biology</span></div>
-        <span class="text-link">Learn more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg></span>
-      </a>
-      <a href="https://commercesehoga.github.io/humanities/" target="_blank" rel="noreferrer" class="course-card sr">
-        <div class="cc-cover"><img src="https://commercesehoga.github.io/humanities.png" alt="Humanities Hub" loading="lazy"/></div>
-        <div class="title-md cc-name">Humanities Hub</div>
-        <p class="body-light cc-desc">History, Geography, Political Science, Sociology and Psychology.</p>
-        <div class="cc-chips"><span class="cc-chip">History</span><span class="cc-chip">Geography</span><span class="cc-chip">Pol. Sci</span></div>
-        <span class="text-link">Learn more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg></span>
-      </a>
-      <a href="https://commercesehoga.github.io" target="_blank" rel="noreferrer" class="course-card sr">
-        <div class="cc-cover"><img src="https://thunderstudy.indevs.in/og-cover.png" alt="ThunderStudy Complete" loading="lazy"/></div>
-        <div class="title-md cc-name">ThunderStudy Complete</div>
-        <p class="body-light cc-desc">All streams, all subjects, CUET prep and mock tests — the full platform.</p>
-        <div class="cc-chips"><span class="cc-chip">19 Subjects</span><span class="cc-chip">14 CUET</span><span class="cc-chip">Mock Tests</span></div>
-        <span class="text-link">Learn more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg></span>
-      </a>
-      <a href="https://commercesehoga.github.io/dashboard" target="_blank" rel="noreferrer" class="course-card sr">
-        <div class="cc-cover"><img src="https://commercesehoga.github.io/og-image.png" alt="Mock Test Platform" loading="lazy"/></div>
-        <div class="title-md cc-name">Mock Test Platform</div>
-        <p class="body-light cc-desc">Timed CBT-style mock tests across CBSE, CUET, Banking and SSC with instant scoring.</p>
-        <div class="cc-chips"><span class="cc-chip">CBT Format</span><span class="cc-chip">Instant Score</span><span class="cc-chip">All Streams</span></div>
-        <span class="text-link">Learn more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg></span>
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- TRUST / PROOF -->
-<section class="section sr" id="proof">
-  <div class="wrap">
-    <div class="stat-band">
-      <div class="stat-block sr">
-        <div class="stat-number"><span class="counter" data-target="12000" data-suffix="+">0</span></div>
-        <div class="stat-label">Students Helped</div>
-      </div>
-      <div class="stat-block sr">
-        <div class="stat-number"><span class="counter" data-target="19">0</span></div>
-        <div class="stat-label">Class 12 Subjects</div>
-      </div>
-      <div class="stat-block sr">
-        <div class="stat-number"><span class="counter" data-target="14">0</span></div>
-        <div class="stat-label">CUET Domains Covered</div>
-      </div>
-      <div class="stat-block sr">
-        <div class="stat-number"><span class="stat-suffix">100%</span></div>
-        <div class="stat-label">Free, Always</div>
-      </div>
-    </div>
-
-    <div class="eyebrow">What Students Say</div>
-    <h2 class="sec-title display-md">Trusted By Learners Across India</h2>
-    <p class="sec-sub">Real feedback from students preparing with ThunderStudy.</p>
-
-    <div class="testimonial-grid sr-stagger">
-      <div class="testimonial-card sr">
-        <svg class="testimonial-quote-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 7c-2.2 0-4 1.8-4 4v6h6v-6H6c0-1.1.9-2 2-2V7zm10 0c-2.2 0-4 1.8-4 4v6h6v-6h-3c0-1.1.9-2 2-2V7z"/></svg>
-        <p class="testimonial-text">The Commerce Hub notes covered exactly what showed up in my boards. Sample papers were the biggest help.</p>
-        <div class="testimonial-person">
-          <div class="testimonial-avatar">R</div>
-          <div><div class="testimonial-name">Riya S.</div><div class="testimonial-role">Class 12, Commerce</div></div>
-        </div>
-      </div>
-      <div class="testimonial-card sr">
-        <svg class="testimonial-quote-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 7c-2.2 0-4 1.8-4 4v6h6v-6H6c0-1.1.9-2 2-2V7zm10 0c-2.2 0-4 1.8-4 4v6h6v-6h-3c0-1.1.9-2 2-2V7z"/></svg>
-        <p class="testimonial-text">Free mock tests helped me figure out my weak topics in Physics weeks before the exam. No sign-up hassle either.</p>
-        <div class="testimonial-person">
-          <div class="testimonial-avatar">A</div>
-          <div><div class="testimonial-name">Aarav K.</div><div class="testimonial-role">Class 12, Science</div></div>
-        </div>
-      </div>
-      <div class="testimonial-card sr">
-        <svg class="testimonial-quote-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 7c-2.2 0-4 1.8-4 4v6h6v-6H6c0-1.1.9-2 2-2V7zm10 0c-2.2 0-4 1.8-4 4v6h6v-6h-3c0-1.1.9-2 2-2V7z"/></svg>
-        <p class="testimonial-text">CUET GAT practice papers on ThunderStudy were closer to the real exam pattern than anything else I found.</p>
-        <div class="testimonial-person">
-          <div class="testimonial-avatar">P</div>
-          <div><div class="testimonial-name">Priya M.</div><div class="testimonial-role">Class 12, Humanities</div></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- STUDYHUB -->
-<section class="section section-parchment sr" id="studyhub">
-  <div class="wrap">
-    <div class="eyebrow">Resources</div>
-    <h2 class="sec-title display-md">StudyHub — Premium Study Material</h2>
-    <p class="sec-sub">Curated books, notes and sample papers for CBSE and CUET, available to purchase in one place.</p>
-    <a href="https://commercesehoga.github.io/studyhub" target="_blank" rel="noreferrer" class="course-card" style="max-width:640px;margin:0 auto;flex-direction:row;align-items:center;gap:var(--sp-lg);padding:var(--sp-lg);">
-      <div class="cc-cover" style="width:96px;height:96px;flex-shrink:0;margin-bottom:0;aspect-ratio:auto;">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20M4 19.5A2.5 2.5 0 0 0 6.5 22H20V2H6.5A2.5 2.5 0 0 0 4 4.5v15z"/></svg>
-      </div>
-      <div style="flex:1;">
-        <div class="title-md cc-name">Visit StudyHub</div>
-        <p class="body-light cc-desc" style="margin-bottom:var(--sp-sm);">Buy printed and digital study material — CBSE Class 12 books and CUET sample papers.</p>
-        <span class="text-link">Browse StudyHub <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg></span>
-      </div>
+    <a class="brand" href="https://thundertest.indevs.in" aria-label="ThunderStudy, go to thundertest.indevs.in">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg>
+      </span>
+      <span class="brand-text">
+        <span class="brand-name">Thunder<span class="brand-accent">Study</span></span>
+        <span class="brand-by">by wondermayank</span>
+      </span>
     </a>
-  </div>
-</section>
-
-<!-- CTA -->
-<section class="section section-dark cta-band sr">
-  <div class="wrap">
-    <div class="eyebrow" style="color:var(--on-dark-soft)">Built &amp; Designed By</div>
-    <h2 class="display-md">Wondermayank</h2>
-    <p class="body-light" style="color:var(--on-dark-soft);margin-bottom:28px;">Creative Developer &amp; Designer</p>
-    <a href="https://wondermayank.github.io" target="_blank" rel="noreferrer" class="btn btn-secondary-on-dark">Visit Portfolio</a>
-  </div>
-</section>
-
-<!-- FAQ -->
-<section class="section section-parchment sr" id="faq">
-  <div class="wrap">
-    <div class="eyebrow">Frequently Asked Questions</div>
-    <h2 class="sec-title display-md">Common Questions</h2>
-    <div style="height:32px"></div>
-    <div class="faq-list sr-stagger">
-      <div class="faq-item sr">
-        <div class="faq-q">Is ThunderStudy really free?</div>
-        <p class="faq-a">Yes. All study material, sample papers and mock tests on ThunderStudy are free, with no login and no hidden fees.</p>
-      </div>
-      <div class="faq-item sr">
-        <div class="faq-q">Which exams does ThunderStudy cover?</div>
-        <p class="faq-a">CBSE Class 12 across Commerce, Science and Humanities streams, plus CUET preparation and mock tests.</p>
-      </div>
-      <div class="faq-item sr">
-        <div class="faq-q">Do I need to create an account to use the mock tests?</div>
-        <p class="faq-a">No account is required to browse study material. Some mock test features may prompt a lightweight sign-in to save your progress.</p>
-      </div>
-      <div class="faq-item sr">
-        <div class="faq-q">How can I stay updated on new material?</div>
-        <p class="faq-a">Follow ThunderStudy on Telegram, YouTube, Instagram or X — new notes and mock tests are announced there first.</p>
-      </div>
+    <div class="nav-right">
+      <a class="nav-cta" href="https://thundertest.indevs.in" id="headerCta">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        <span>thundertest.indevs.in</span>
+      </a>
+      <button class="theme-btn" id="themeBtn" type="button" aria-label="Toggle dark mode" aria-pressed="false">
+        <svg id="themeIconSun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.4M12 19.1v2.4M4.2 4.2l1.7 1.7M18.1 18.1l1.7 1.7M2.5 12h2.4M19.1 12h2.4M4.2 19.8l1.7-1.7M18.1 5.9l1.7-1.7"/>
+        </svg>
+        <svg id="themeIconMoon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true">
+          <path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5Z"/>
+        </svg>
+      </button>
     </div>
   </div>
-</section>
+</header>
 
+<!-- ================= MOVED ================= -->
+<main>
+  <section class="moved">
+    <span class="blob blob-1" aria-hidden="true"></span>
+    <span class="blob blob-2" aria-hidden="true"></span>
+    <div class="wrap">
+
+      <span class="hero-badge rise"><span class="hero-dot"></span>Moved</span>
+
+      <h1 class="rise rise-2">This page has <span class="accent">moved</span></h1>
+
+      <p class="lede rise rise-3" id="lede">
+        ThunderStudy and ThunderTest now live on <strong>thundertest.indevs.in</strong>.
+        Same tools, same free content, new address.
+      </p>
+
+      <div class="move-card rise rise-4">
+        <div class="swap">
+          <div class="swap-row old">
+            <span class="swap-ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg>
+            </span>
+            <span class="swap-txt">
+              <small>Old address</small>
+              <b id="oldUrl">commercesehoga.github.io/</b>
+            </span>
+          </div>
+
+          <span class="swap-arrow" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M12 5v14M6 13l6 6 6-6"/></svg>
+          </span>
+
+          <div class="swap-row new">
+            <span class="swap-ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="m5 12 5 5 9-10"/></svg>
+            </span>
+            <span class="swap-txt">
+              <small>New address</small>
+              <b id="newUrl">thundertest.indevs.in</b>
+            </span>
+          </div>
+        </div>
+
+        <a class="btn btn-primary btn-lg btn-block" id="goBtn" href="https://thundertest.indevs.in">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          <span id="goLabel">Open thundertest.indevs.in</span>
+        </a>
+
+        <p class="auto" id="autoLine">
+          <span class="auto-dot" aria-hidden="true"></span>
+          <span>Opening in <b id="secs">9</b>s</span>
+          <button class="auto-x" id="cancelAuto" type="button">Stay here</button>
+        </p>
+
+        <p class="note" id="note" hidden></p>
+      </div>
+
+      <noscript>
+        <p class="noscript">
+          JavaScript is off, so the automatic check cannot run.
+          Head straight to <a href="https://thundertest.indevs.in">thundertest.indevs.in</a>.
+        </p>
+      </noscript>
+
+      <div class="map-block">
+        <p class="map-title">All moved sections</p>
+        <div class="chip-row" id="mapRow">
+          <a class="chip" href="https://thundertest.indevs.in" data-slug="">Home</a>
+          <a class="chip" href="https://thundertest.indevs.in/cuet" data-slug="cuet">CUET</a>
+          <a class="chip" href="https://thundertest.indevs.in/ssc" data-slug="ssc">SSC</a>
+          <a class="chip" href="https://thundertest.indevs.in/banking" data-slug="banking">Banking</a>
+          <a class="chip" href="https://thundertest.indevs.in/jee-neet" data-slug="jee-neet">JEE / NEET</a>
+          <a class="chip" href="https://thundertest.indevs.in/exam" data-slug="exam">Exam</a>
+          <a class="chip" href="https://thundertest.indevs.in/commerce" data-slug="commerce">Commerce</a>
+          <a class="chip" href="https://thundertest.indevs.in/science" data-slug="science">Science</a>
+        </div>
+      </div>
+
+      <div class="know">
+        <h2>Good to know</h2>
+        <div class="faq-list">
+          <details class="faq-item" open>
+            <summary>
+              Why has the address changed?
+              <span class="faq-chev" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></span>
+            </summary>
+            <p>Every ThunderStudy page now lives on one domain, <a href="https://thundertest.indevs.in">thundertest.indevs.in</a>. The old <strong>commercesehoga.github.io</strong> addresses are no longer used.</p>
+          </details>
+          <details class="faq-item">
+            <summary>
+              What about my bookmarks?
+              <span class="faq-chev" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></span>
+            </summary>
+            <p>They still open this page, so nothing is lost. Use the button above once and save the new address. Every old path keeps the same name, for example <strong>/cuet</strong> becomes <a href="https://thundertest.indevs.in/cuet">thundertest.indevs.in/cuet</a>.</p>
+          </details>
+          <details class="faq-item">
+            <summary>
+              I typed the address myself and got here.
+              <span class="faq-chev" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></span>
+            </summary>
+            <p>Then that page never existed. Check the spelling, or start from the new home page at <a href="https://thundertest.indevs.in">thundertest.indevs.in</a>.</p>
+          </details>
+        </div>
+      </div>
+
+    </div>
+  </section>
 </main>
 
-<footer>
-  <div class="footer-grid">
-    <div class="footer-col">
-      <h4>Thunder</h4>
-      <a href="https://commercesehoga.github.io/">ThunderStudy Home</a>
-      <a href="https://commercesehoga.github.io/dashboard">CBT Mock Platform</a>
-      <a href="https://thunderstudy.github.io">Free Study Material</a>
-      <a href="https://commercesehoga.github.io/help">Help / Donate</a>
+<!-- ================= FOOTER ================= -->
+<footer class="ft">
+  <div class="wrap ft-grid">
+    <div class="ft-brand-col">
+      <a class="ft-brand" href="https://wondermayank.in/" aria-label="WonderMayank home">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg>
+        </span>
+        <span>
+          <span class="ft-brand-name">Wonder<span class="brand-accent">Mayank</span></span>
+          <span class="ft-brand-by">Web Developer &amp; Creator</span>
+        </span>
+      </a>
+      <p class="ft-desc">Free project tools, vibecoding experiments and exam-prep resources for Indian students.</p>
     </div>
-    <div class="footer-col">
-      <h4>wondermayank</h4>
-      <a href="https://wondermayank.indevs.in">Portfolio</a>
-      <a href="https://wondermayank.github.io/">wondermayank.github.io</a>
-      <a href="https://wondermayank.in/mail">Mail</a>
-      <a href="https://wondermayank.in/contact">Contact</a>
-    </div>
-    <div class="footer-col">
-      <h4>Legal</h4>
-      <a href="https://wondermayank.in/terms">Terms</a>
-      <a href="https://wondermayank.in/privacy">Privacy</a>
-      <a href="https://wondermayank.in/disclaimer">Disclaimer</a>
-    </div>
+
+    <nav aria-label="ThunderStudy">
+      <h2 class="ft-title">ThunderStudy</h2>
+      <ul class="ft-links">
+        <li><a href="https://thunderstudy.indevs.in/">ThunderStudy</a></li>
+        <li><a href="https://thundertest.indevs.in/">ThunderTest</a></li>
+        <li><a href="https://blog.thunderstudy.indevs.in/">Blog</a></li>
+        <li><a href="https://ai.thunderstudy.indevs.in/">AI</a></li>
+      </ul>
+    </nav>
+
+    <nav aria-label="Support">
+      <h2 class="ft-title">Support</h2>
+      <ul class="ft-links">
+        <li><a href="https://wondermayank.in/faq">FAQ</a></li>
+        <li><a href="https://wondermayank.in/mail">Mail</a></li>
+        <li><a href="https://wondermayank.in/contact">Contact</a></li>
+        <li><a href="https://wondermayank.in/copyright">Copyright</a></li>
+      </ul>
+    </nav>
+
+    <nav aria-label="wondermayank">
+      <h2 class="ft-title">wondermayank</h2>
+      <ul class="ft-links">
+        <li><a href="https://make.wondermayank.in/">Vibecoding</a></li>
+        <li><a href="https://project.wondermayank.in/">Useful Projects</a></li>
+        <li><a href="https://wondermayank.in/">Portfolio</a></li>
+        <li><a href="https://wondermayank.in/about">About</a></li>
+      </ul>
+    </nav>
   </div>
-  <div class="footer-bottom">
-    <p class="fine-print">© 2025 Thunder · by wondermayank</p>
+
+  <div class="ft-bottom">
+    <div class="wrap ft-bot-in">
+      <span class="ft-copy">&copy; 2026 WonderMayank. All rights reserved.</span>
+      <nav class="ft-legal" aria-label="Legal">
+        <a href="https://wondermayank.in/cookies">Cookies</a>
+        <a href="https://wondermayank.in/terms">Terms</a>
+        <a href="https://wondermayank.in/privacy">Privacy</a>
+        <a href="https://wondermayank.in/disclaimer">Disclaimer</a>
+        <a href="https://wondermayank.in/sitemap">Sitemap</a>
+      </nav>
+    </div>
   </div>
 </footer>
 
-<button class="up" id="upBtn" aria-label="Scroll to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
-</button>
-
 <script>
-/* THEME TOGGLE */
-document.getElementById('themeToggle').addEventListener('click',()=>{
-  const html=document.documentElement;
-  const next=html.getAttribute('data-theme')==='dark'?'light':'dark';
-  html.setAttribute('data-theme',next);
-  localStorage.setItem('theme',next);
-});
+/* ---------------- loader ---------------- */
+(function(){
+  var l=document.getElementById('loader');
+  function hide(){ if(l) l.classList.add('hide'); }
+  window.addEventListener('DOMContentLoaded',function(){ setTimeout(hide,180); });
+  setTimeout(hide,1500);
+})();
 
-/* LOADER */
-window.addEventListener('load',()=>{
-  document.getElementById('loader').classList.add('hide');
-});
-setTimeout(()=>document.getElementById('loader').classList.add('hide'),1500);
-
-/* TICKER */
-const TICKS=[
-  "CBSE Board Exams 2026 — Prepare Now",
-  "CUET Free Mock Tests Available",
-  "Free Banking CBT Mock Test — IBPS, SBI, Clerk",
-  "Free SSC CBT Mock Test — CGL, CHSL, MTS",
-  "StudyHub — All Study Material in One Place",
-  "Commerce Hub is Live — Accountancy, BST, Economics",
-  "Science Hub is Live — Physics, Chemistry, Biology, Maths",
-  "Free Education For All — No Login, No Fees",
-  "Mobile Friendly — Study Anywhere, Anytime",
-  "Follow @Thunderstudy on All Platforms",
-  "Visit commercesehoga.blogspot.com — Main Website",
-];
-const ti=document.getElementById('tickerInner');
-[...TICKS,...TICKS].forEach(t=>{
-  const s=document.createElement('span');
-  s.className='tick-item';
-  s.innerHTML=`<span class="tick-dot"></span>${t}`;
-  ti.appendChild(s);
-});
-
-/* SCROLL TOP */
-window.addEventListener('scroll',()=>document.getElementById('upBtn').classList.toggle('on',window.scrollY>300));
-
-/* NAV SCROLLED STATE */
-const navEl=document.querySelector('.top-nav');
-window.addEventListener('scroll',()=>navEl.classList.toggle('scrolled',window.scrollY>10));
-
-/* MOTION PREFERENCE */
-const prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-/* HERO STAGGER REVEAL */
-const heroSection=document.getElementById('heroSection');
-if(prefersReducedMotion){
-  heroSection.classList.add('reveal-in');
-}else{
-  setTimeout(()=>heroSection.classList.add('reveal-in'),1600);
-}
-
-/* SCROLL-TRIGGERED REVEALS */
-if(prefersReducedMotion){
-  document.querySelectorAll('.sr').forEach(el=>el.classList.add('sr-in'));
-}else{
-  const srObserver=new IntersectionObserver((entries)=>{
-    entries.forEach(entry=>{
-      if(entry.isIntersecting){
-        entry.target.classList.add('sr-in');
-        srObserver.unobserve(entry.target);
-      }
-    });
-  },{threshold:0.15,rootMargin:'0px 0px -40px 0px'});
-  document.querySelectorAll('.sr').forEach(el=>srObserver.observe(el));
-}
-
-/* ANIMATED COUNTERS */
-function animateCounter(el){
-  const target=parseFloat(el.dataset.target);
-  const suffix=el.dataset.suffix||'';
-  const isDecimal=target%1!==0;
-  const duration=1300;
-  const start=performance.now();
-  function tick(now){
-    const p=Math.min((now-start)/duration,1);
-    const eased=1-Math.pow(1-p,3);
-    const val=target*eased;
-    el.textContent=(isDecimal?val.toFixed(1):Math.round(val).toLocaleString('en-IN'))+suffix;
-    if(p<1) requestAnimationFrame(tick);
+/* ---------------- theme ---------------- */
+(function(){
+  var btn=document.getElementById('themeBtn');
+  function sync(){
+    var dark=document.documentElement.getAttribute('data-theme')==='dark';
+    btn.setAttribute('aria-pressed',dark?'true':'false');
+    btn.setAttribute('aria-label',dark?'Switch to light mode':'Switch to dark mode');
   }
-  requestAnimationFrame(tick);
-}
-const counters=document.querySelectorAll('.counter');
-if(prefersReducedMotion){
-  counters.forEach(el=>{
-    const target=parseFloat(el.dataset.target);
-    el.textContent=target.toLocaleString('en-IN')+(el.dataset.suffix||'');
-  });
-}else{
-  const counterObserver=new IntersectionObserver((entries)=>{
-    entries.forEach(entry=>{
-      if(entry.isIntersecting){
-        animateCounter(entry.target);
-        counterObserver.unobserve(entry.target);
-      }
+  sync();
+  btn.addEventListener('click',function(){
+    var de=document.documentElement, next=de.getAttribute('data-theme')==='dark'?'light':'dark';
+    function apply(){
+      de.setAttribute('data-theme',next);
+      try{ localStorage.setItem('theme',next); }catch(e){}
+      var mt=document.getElementById('metaTheme');
+      if(mt) mt.setAttribute('content',next==='dark'?'#9A7AFB':'#573AFC');
+      var ms=document.getElementById('metaScheme');
+      if(ms) ms.setAttribute('content',next);
+      sync();
+    }
+    var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if(!document.startViewTransition||reduce){ apply(); return; }
+    var r=btn.getBoundingClientRect(), x=r.left+r.width/2, y=r.top+r.height/2;
+    var rad=Math.hypot(Math.max(x,innerWidth-x),Math.max(y,innerHeight-y));
+    de.classList.add('theme-swap');
+    var t=document.startViewTransition(apply);
+    t.ready.then(function(){
+      de.animate(
+        {clipPath:['circle(0px at '+x+'px '+y+'px)','circle('+rad+'px at '+x+'px '+y+'px)']},
+        {duration:650,easing:'cubic-bezier(.4,0,.2,1)',pseudoElement:'::view-transition-new(root)'}
+      );
     });
-  },{threshold:0.4});
-  counters.forEach(el=>counterObserver.observe(el));
-}
+    t.finished.then(function(){ de.classList.remove('theme-swap'); },function(){ de.classList.remove('theme-swap'); });
+  });
+})();
+
+/* ---------------- moved-page resolver ----------------
+   Old GitHub Pages path  ->  new path on thundertest.indevs.in
+   cuet, ssc, banking, jee-neet, exam, commerce, science keep their name.
+   Everything else goes to the new home page.
+------------------------------------------------------- */
+(function(){
+  var BASE = 'https://thundertest.indevs.in';
+
+  var KNOWN = {
+    '':        'Home',
+    'cuet':    'CUET',
+    'ssc':     'SSC',
+    'banking': 'Banking',
+    'jee-neet':'JEE / NEET',
+    'exam':    'Exam',
+    'commerce':'Commerce',
+    'science': 'Science'
+  };
+
+  /* work out the requested path, whatever the server appends */
+  var raw = location.pathname
+              .replace(/\/index\.html?$/i,'/')
+              .replace(/\/{2,}/g,'/')
+              .replace(/\/+$/,'');
+
+  var seg = (raw.split('/').filter(Boolean).pop() || '')
+              .replace(/\.html?$/i,'')
+              .toLowerCase();
+
+  if(seg === '404' || seg === 'index') seg = '';
+
+  var matched = Object.prototype.hasOwnProperty.call(KNOWN, seg);
+  var slug    = matched ? seg : '';
+  var target  = BASE + (slug ? '/' + slug : '/');
+  var newText = 'thundertest.indevs.in' + (slug ? '/' + slug : '');
+  var oldText = location.host + (raw || '/');
+
+  /* fill the card */
+  var oldEl = document.getElementById('oldUrl');
+  var newEl = document.getElementById('newUrl');
+  var goBtn = document.getElementById('goBtn');
+  var goLbl = document.getElementById('goLabel');
+  var cta   = document.getElementById('headerCta');
+  var note  = document.getElementById('note');
+
+  if(oldEl) oldEl.textContent = oldText;
+  if(newEl) newEl.textContent = newText;
+  if(goBtn) goBtn.setAttribute('href', target);
+  if(goLbl) goLbl.textContent = 'Open ' + newText;
+  if(cta)   cta.setAttribute('href', target);
+
+  if(note){
+    if(matched && slug){
+      note.textContent = 'Your ' + KNOWN[slug] + ' section kept the same name, so only the domain changed.';
+      note.hidden = false;
+    }else if(!matched){
+      note.textContent = 'We could not match "' + seg + '" to any section, so this goes to the new home page.';
+      note.hidden = false;
+    }
+  }
+
+  /* highlight the matching chip */
+  var chips = document.querySelectorAll('#mapRow .chip');
+  for(var i=0;i<chips.length;i++){
+    if(chips[i].getAttribute('data-slug') === slug){
+      chips[i].setAttribute('aria-current','page');
+    }
+  }
+
+  /* auto-open with a visible countdown and a cancel */
+  var line  = document.getElementById('autoLine');
+  var secsEl= document.getElementById('secs');
+  var stop  = document.getElementById('cancelAuto');
+  var left  = 9, timer = null, cancelled = false;
+
+  function tick(){
+    left--;
+    if(secsEl) secsEl.textContent = String(Math.max(0,left));
+    if(left <= 0){
+      clearInterval(timer);
+      timer = null;
+      if(!cancelled) location.replace(target);
+    }
+  }
+
+  function cancel(){
+    cancelled = true;
+    if(timer){ clearInterval(timer); timer = null; }
+    if(line) line.hidden = true;
+  }
+
+  if(stop) stop.addEventListener('click', cancel);
+  document.addEventListener('keydown',function(e){
+    if(e.key === 'Escape' && !cancelled) cancel();
+  });
+
+  /* respect a reduced-motion / save-data hint by not auto-opening */
+  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var saveData = navigator.connection && navigator.connection.saveData;
+  if(reduce || saveData){
+    if(line) line.hidden = true;
+  }else if(timer === null){
+    if(secsEl) secsEl.textContent = String(left);
+    timer = setInterval(tick, 1000);
+  }
+})();
 </script>
 </body>
 </html>
